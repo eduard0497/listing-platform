@@ -62,45 +62,45 @@ function Navbar() {
         </div>
         {userLoggedIn ? (
           <div className={styles.navbar_links_container}>
-            <a href="/user-dashboard">
+            <Link href="/user-dashboard">
               <>
                 <RiUserSettingsLine size={iconSize} />
                 dashboard
               </>
-            </a>
+            </Link>
             <button onClick={handleLogOut}>
               <>
                 <GoSignOut size={iconSize} />
                 sign out
               </>
             </button>
-            <a href="/">
+            <Link href="/">
               <>
                 <BiSupport size={iconSize} />
                 contact us
               </>
-            </a>
+            </Link>
           </div>
         ) : (
           <div className={styles.navbar_links_container}>
-            <a href="/user-signin">
+            <Link href="/user-signin">
               <>
                 <VscSignIn size={iconSize} />
                 sign in
               </>
-            </a>
-            <a href="/user-register">
+            </Link>
+            <Link href="/user-register">
               <>
                 <GiArchiveRegister size={iconSize} />
                 join us
               </>
-            </a>
-            <a href="/">
+            </Link>
+            <Link href="/">
               <>
                 <BiSupport size={iconSize} />
                 contact us
               </>
-            </a>
+            </Link>
           </div>
         )}
       </div>

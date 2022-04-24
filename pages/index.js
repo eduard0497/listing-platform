@@ -29,9 +29,9 @@ export default function Home() {
   const [sellingSpecialHouses, setSellingSpecialHouses] = useState([]);
   const [rentingSpecialHouses, setRentingSpecialHouses] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
     // stex fetcherna arvelu
-    await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-houses-for-sale`)
+    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-houses-for-sale`)
       .then((response) => response.json())
       .then((data) => {
         setSellingSpecialHouses(data.specialHousesForSale);

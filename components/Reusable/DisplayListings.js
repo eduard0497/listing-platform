@@ -20,11 +20,11 @@ function DisplayListings({
   itemsToDisplay,
   amountOfItemsToDisplay,
 }) {
+  const [pageNumber, setPageNumber] = useState(0);
   if (itemsToDisplay.length === 0) {
     return null;
   }
 
-  const [pageNumber, setPageNumber] = useState(0);
   const itemsPerPage = amountOfItemsToDisplay;
   const pagesVisited = pageNumber * itemsPerPage;
 
@@ -72,13 +72,16 @@ function DisplayListings({
                   >
                     {item.city ? (
                       <h5>
-                        {<FaMapMarkerAlt />} {item.city}, {item.state} {item.zip}
+                        {<FaMapMarkerAlt />} {item.city}, {item.state}{" "}
+                        {item.zip}
                       </h5>
                     ) : (
                       "City, State Zip"
                     )}
 
-                    <h5>Exp: {new Date(item.timestamp).toLocaleDateString()}</h5>
+                    <h5>
+                      Exp: {new Date(item.timestamp).toLocaleDateString()}
+                    </h5>
                   </div>
                 </div>
               </div>
