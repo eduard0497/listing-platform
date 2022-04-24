@@ -63,10 +63,10 @@ function Navbar() {
         {userLoggedIn ? (
           <div className={styles.navbar_links_container}>
             <Link href="/user-dashboard">
-              <>
+              <a>
                 <RiUserSettingsLine size={iconSize} />
                 dashboard
-              </>
+              </a>
             </Link>
             <button onClick={handleLogOut}>
               <>
@@ -75,10 +75,10 @@ function Navbar() {
               </>
             </button>
             <Link href="/">
-              <>
+              <a>
                 <BiSupport size={iconSize} />
                 contact us
-              </>
+              </a>
             </Link>
           </div>
         ) : (
