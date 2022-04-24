@@ -91,6 +91,10 @@
   outline-offset: var(--navbar_links_link_outline_default_offset);
   transition: all var(--navbar_links_transition_time);
 }
+.navbar_links_container > svg {
+  
+}
+
 .navbar_links_container > a:hover {
   outline-offset: var(--navbar_links_link_outline_hover_offset);
 }

@@ -84,22 +84,22 @@ function Navbar() {
         ) : (
           <div className={styles.navbar_links_container}>
             <Link href="/user-signin">
-              <>
+              <a>
                 <VscSignIn size={iconSize} />
                 sign in
-              </>
+              </a>
             </Link>
             <Link href="/user-register">
-              <>
+              <a>
                 <GiArchiveRegister size={iconSize} />
                 join us
-              </>
+              </a>
             </Link>
             <Link href="/">
-              <>
+              <a>
                 <BiSupport size={iconSize} />
                 contact us
-              </>
+              </a>
             </Link>
           </div>
         )}
