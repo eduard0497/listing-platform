@@ -1,0 +1,147 @@
+.user_dashboard_container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--user_dashboard_content_gap);
+  justify-content: center;
+  align-items: center;
+  padding: var(--user_dashboard_container_padding);
+}
+
+.user_dashboard_container_inner_box {
+  width: var(--user_dashboard_selector_box_width);
+  text-align: center;
+  padding: var(--user_dashboard_selector_box_padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(--user_dashboard_selector_box_gap);
+  background: var(--user_dashboard_selector_box_background);
+  border-radius: var(--border_radius);
+  box-shadow: var(--box_shadow);
+  transition: var(--transition_time) all var(--transition_function);
+}
+
+.user_dashboard_container_inner_box:hover {
+  box-shadow: var(--box_shadow_hover);
+}
+
+.user_dashboard_container_inner_box > h2 {
+  color: var(--user_dashboard_selector_box_title_color);
+}
+
+.user_dashboard_container_inner_box > select {
+  padding: var(--user_dashboard_selector_box_select_padding);
+  border-radius: var(--border_radius);
+  border: var(--user_dashboard_selector_box_select_border_width) solid
+    var(--user_dashboard_selector_box_select_border_color);
+  outline: none;
+  color: var(--general_form_box_input_border_color);
+}
+
+.user_dashboard_container_display_posted {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--user_dashboard_container_display_posted_general_vertical_gap);
+}
+
+.user_dashboard_container_display_posted_ads_container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--user_dashboard_container_display_posted_vertical_inner_ads_gap);
+  color: var(--user_dashboard_container_text_color);
+}
+
+.user_dashboard_container_display_posted_ads_container_cards {
+  display: flex;
+  align-items: center;
+  gap: var(--user_dashboard_container_display_posted_card_gap_between_cards);
+  flex-wrap: wrap;
+}
+
+.user_dashboard_container_display_posted_ads_container_cards_card {
+  width: var(--user_dashboard_container_display_posted_card_width);
+  /* height: var(--user_dashboard_container_display_posted_card_height); */
+  display: flex;
+  padding: var(--user_dashboard_container_display_posted_card_padding);
+  border-radius: var(--border_radius);
+  flex-direction: column;
+
+  gap: var(--user_dashboard_container_display_posted_card_gap_inside);
+  background: var(--general_form_background);
+  box-shadow: var(--box_shadow);
+  transition: all var(--transition_time) var(--transition_function);
+}
+.user_dashboard_container_display_posted_ads_container_cards_card:hover {
+  box-shadow: var(--box_shadow_hover);
+}
+.user_dashboard_container_display_posted_ads_container_cards_card > div {
+  height: 210px;
+}
+.user_dashboard_container_display_posted_ads_container_cards_card > div > img {
+  width: 100%;
+  height: 100%;
+}
+
+.user_dashboard_container_display_running_ad_container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--user_dashboard_container_display_running_ad_container_gap);
+  color: var(
+    --user_dashboard_container_display_running_ad_container_ad_text_color
+  );
+}
+.user_dashboard_container_display_running_ad_container_ad {
+  padding: var(
+    --user_dashboard_container_display_running_ad_container_ad_padding
+  );
+  border-radius: var(--border_radius);
+  display: flex;
+  flex-direction: column;
+  gap: var(
+    --user_dashboard_container_display_running_ad_container_ad_inner_gap
+  );
+  background: var(--general_form_background);
+  box-shadow: var(--box_shadow);
+  transition: all var(--transition_time) var(--transition_function);
+}
+.user_dashboard_container_display_running_ad_container_ad:hover {
+  box-shadow: var(--box_shadow_hover);
+}
+
+.user_dashboard_posted_houses_container {
+  color: var(--user_dashboard_posted_houses_container_color);
+  overflow-x: scroll;
+  padding-bottom: 5px;
+}
+
+.user_dashboard_posted_houses_container_table {
+  border-radius: var(--border_radius);
+  margin-top: var(--user_dashboard_posted_houses_container_title_table_gap);
+  text-align: center;
+  background: var(--general_form_background);
+  box-shadow: var(--box_shadow);
+  transition: all var(--transition_time) var(--transition_function);
+  padding: 5px;
+}
+.user_dashboard_posted_houses_container_table:hover {
+  box-shadow: var(--box_shadow_hover);
+}
+.user_dashboard_posted_houses_container_table > thead > tr > th {
+  padding: var(--user_dashboard_posted_houses_container_table_item_padding);
+}
+.user_dashboard_posted_houses_container_table > tbody > tr > td {
+  padding: var(--user_dashboard_posted_houses_container_table_item_padding);
+  border: var(--user_dashboard_posted_houses_container_table_item_border_width)
+    solid var(--user_dashboard_posted_houses_container_table_item_border_color);
+}
+
+@media screen and (max-width: 1200px) {
+  .user_dashboard_container_inner_box {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .user_dashboard_container_inner_box {
+    width: 100%;
+  }
+}

@@ -1,0 +1,194 @@
+.form_parent_container {
+  width: var(--general_form_parent_container_width);
+  padding: var(--general_form_parent_container_padding);
+}
+
+.form_box {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  max-width: var(--general_form_box_max_width);
+  padding: var(--general_form_box_padding);
+  display: flex;
+  flex-direction: column;
+  gap: var(
+    --general_form_box_inner_gap_between_title_fields_and_contol_buttons
+  );
+  border-radius: var(--border_radius);
+  background: var(--general_form_background);
+  box-shadow: var(--box_shadow);
+  transition: all var(--transition_time) var(--transition_function);
+  /* animation: generalBoxAnimation var(--general_form_anim_duration)
+    var(--general_form_anim_timing_function); */
+}
+.form_box:hover {
+  box-shadow: var(--box_shadow_hover);
+}
+
+/* @keyframes generalBoxAnimation {
+  0% {
+    margin-top: 100%;
+  }
+
+  100% {
+    margin-top: 0%;
+  }
+} */
+
+.form_box > h1 {
+  color: var(--general_form_title_color);
+}
+
+.form_box_fields {
+  display: flex;
+  flex-direction: column;
+  gap: var(--general_form_box_inner_gap_between_field_elements);
+}
+
+.form_box_fields > input {
+  padding: var(--general_form_box_input_padding);
+  border-radius: var(--border_radius);
+  /*  */
+  border-bottom: var(--general_form_box_input_border_width) solid lightgray;
+  border-top: var(--general_form_box_input_border_width) solid transparent;
+  border-left: var(--general_form_box_input_border_width) solid transparent;
+  border-right: var(--general_form_box_input_border_width) solid transparent;
+  /*  */
+  /* border: var(--general_form_box_input_border_width) solid
+    var(--general_form_box_input_border_color); */
+  color: var(--general_form_box_input_border_color);
+}
+.form_box_fields > input:focus {
+  outline: none;
+  border: var(--general_form_box_input_border_width) solid
+    var(--general_form_box_input_border_color);
+}
+
+.form_box_fields > select {
+  padding: var(--general_form_box_input_padding);
+  border-radius: var(--border_radius);
+  /* border: var(--general_form_box_input_border_width) solid
+    var(--general_form_box_input_border_color); */
+  border-bottom: var(--general_form_box_input_border_width) solid lightgray;
+  border-top: var(--general_form_box_input_border_width) solid transparent;
+  border-left: var(--general_form_box_input_border_width) solid transparent;
+  border-right: var(--general_form_box_input_border_width) solid transparent;
+  color: var(--general_form_box_input_border_color);
+}
+.form_box_fields > select:focus {
+  color: var(--general_form_box_input_border_color);
+  outline: none;
+  border: var(--general_form_box_input_border_width) solid
+    var(--general_form_box_input_border_color);
+}
+
+.form_box_fields > textarea {
+  padding: var(--general_form_box_input_padding);
+  border-radius: var(--border_radius);
+  border-bottom: var(--general_form_box_input_border_width) solid lightgray;
+  border-top: var(--general_form_box_input_border_width) solid transparent;
+  border-left: var(--general_form_box_input_border_width) solid transparent;
+  border-right: var(--general_form_box_input_border_width) solid transparent;
+  /* border: var(--general_form_box_input_border_width) solid
+    var(--general_form_box_input_border_color); */
+  color: var(--general_form_box_input_border_color);
+}
+.form_box_fields > textarea:focus {
+  outline: none;
+  border: var(--general_form_box_input_border_width) solid
+    var(--general_form_box_input_border_color);
+}
+
+.form_box_row_with_two_items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form_box_control_buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.image_upload_container > input {
+  display: none;
+}
+
+.image_upload_container {
+  display: flex;
+  align-items: center;
+  gap: var(--general_form_image_upload_button_text_gap);
+}
+
+.image_upload_container > label {
+  background: var(--general_form_image_upload_button_background_color);
+  color: var(--general_form_image_upload_button_text_color);
+  font-weight: bolder;
+  padding: var(--general_form_image_upload_button_padding);
+  border: var(--general_form_image_upload_button_border_width) solid
+    var(--general_form_image_upload_button_border_color);
+  border-radius: var(--border_radius);
+  outline: none;
+  cursor: pointer;
+}
+.image_upload_container > label:hover {
+  background: var(--general_form_image_upload_button_border_color);
+  color: var(--general_form_image_upload_button_background_color);
+  border: var(--general_form_image_upload_button_border_width) solid
+    var(--general_form_image_upload_button_background_color);
+}
+.image_upload_container > h5 {
+  color: var(--general_form_image_upload_info_text_color);
+}
+
+.general_form_clear_button {
+  min-width: var(--general_form_box_clear_button_min_width);
+  height: var(--general_form_box_clear_button_height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border_radius);
+  cursor: pointer;
+  background: var(--general_form_box_clear_button_background_color);
+  border: var(--general_form_box_clear_button_border_width) solid
+    var(--general_form_box_clear_button_border_color);
+  color: var(--general_form_box_clear_button_border_color);
+  outline: var(--general_form_box_clear_button_border_width) solid
+    var(--general_form_box_clear_button_border_color);
+  outline-offset: var(--general_form_box_clear_button_default_offset);
+  transition: all var(--general_form_box_submit_and_clear_transition_time);
+}
+.general_form_clear_button:hover {
+  outline-offset: var(--general_form_box_clear_button_hover_offset);
+}
+
+.general_form_submit_button {
+  min-width: var(--general_form_box_submit_button_min_width);
+  height: var(--general_form_box_submit_button_height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border_radius);
+  outline: none;
+  cursor: pointer;
+  background: var(--general_form_box_submit_button_background_color);
+  border: var(--general_form_box_submit_button_border_width) solid
+    var(--general_form_box_submit_button_border_color);
+  color: var(--general_form_box_submit_button_border_color);
+  outline: var(--general_form_box_submit_button_border_width) solid
+    var(--general_form_box_submit_button_border_color);
+  outline-offset: var(--general_form_box_submit_button_default_offset);
+  transition: all var(--general_form_box_submit_and_clear_transition_time);
+}
+.general_form_submit_button:hover {
+  outline-offset: var(--general_form_box_submit_button_hover_offset);
+}
+
+@media screen and (max-width: 450px) {
+  .form_parent_container {
+    padding: var(--general_form_parent_container_padding_450px);
+  }
+  .form_box {
+    padding: var(--general_form_box_padding_450px);
+  }
+}

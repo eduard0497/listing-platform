@@ -1,16 +1,230 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+:root {
+  /* GENERAL */
+  --web_background-color: #eeeeee;
+  --border_radius: 5px;
+  --box_shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  --box_shadow_hover: 0 15px 20px 0 rgba(0, 0, 0, 0.2);
+  --transition_time: 0.3s;
+  --transition_function: ease-out;
+
+  /* LAYOUT */
+  --general_content_padding: 5px;
+  --navbar_content_footer_gap: 10px;
+  /* navbar */
+  --navbar_min_height: 70px;
+  --navbar_background_color: #006a82;
+  --navbar_bottom_border_color: #006a82;
+  --navbar_bottom_border_width: 3px;
+  --navbar_bottom_border_icon_margin_left_right: 15px;
+  --navbar_bottom_radius: 20px;
+  --navbar_padding: 10px 25px;
+  --navbar_logo_burger_gap: 15px;
+  --navbar_burger_width: 20px;
+  --navbar_burger_row_height: 3px;
+  --navbar_burger_row_marign: 4px;
+  --navbar_burger_row_color: #006a82;
+  --navbar_links_container_link_gaps: 10px;
+  --navbar_links_link_padding: 5px 10px;
+  --navbar_links_link_font_size: 15px;
+  --navbar_links_link_border_width: 2px;
+  --navbar_links_link_outline_width: 2px;
+  --navbar_links_link_outline_default_offset: -2px;
+  --navbar_links_link_outline_hover_offset: 3px;
+  --navbar_links_color: #eeeeee;
+  --navbar_links_transition_time: 0.1s;
+  /* navbar links mobile */
+  --navbar_links_mobile_padding: 20px 25px 50px 25px;
+
+  /* footer */
+  --footer_min_height: 70px;
+  --footer_background_color: #006a82;
+  --footer_top_radius: 20px;
+  --footer_padding: 15px;
+  /* children and right ads */
+  --content_and_right_ads_container_margin_top_and_bottom: 50px 0px;
+  --content_and_right_ads_container_min_height: 80vh;
+  --content_and_right_ads_container_padding: 0px 10px;
+  --content_and_right_ads_container_gap: 10px;
+  --content_and_right_ads_container_children_flex: 0.8;
+  --content_and_right_ads_container_ads_flex: 0.2;
+  --content_and_right_ads_container_ads_image_gap: 5px;
+  --content_and_right_ads_container_ads_image_width: 100%;
+  --content_and_right_ads_container_ads_image_height: auto;
+  /* children and right ads mobile */
+  --content_and_right_ads_container_mobile_ads_image_gap: 15px;
+  --content_and_right_ads_container_mobile_ads_image_width: 200px;
+
+  /* children only */
+  --children_only_min_height: 90vh;
+
+  /* SCROLLING TEXT */
+  --scrolling_text_container_background_color: #006a82;
+  --scrolling_text_container_height: 50px;
+  --scrolling_text_color: #eeeeee;
+
+  /* TOP ADS */
+  --top_ads_container_width: 100%;
+  --top_ads_container_max_height: 350px;
+  --top_ads_container_padding: 0px 10px;
+  --top_ads_container_gap: 10px;
+  /* video */
+  --top_ads_video_container_flex: 0.5;
+  --top_ads_video_width: 100%;
+  --top_ads_video_height: 100%;
+  /* images */
+  --top_ads_images_container_flex: 0.25;
+  --top_ads_images_width: 100%;
+  --top_ads_images_height: 100%;
+
+  /* HOMEPAGE */
+  --homepage_content_gap: 50px;
+  /* homepage special listings */
+  --homepage_special_listings_container_title_bottom_margin: 20px;
+  --homepage_special_listings_container_inner_gap: 15px;
+  --homepage_special_listings_container_gap_between_cards: 10px;
+  --homepage_special_listings_container_card_colors: #006a82;
+  --homepage_special_listings_container_card_height: 315px;
+  --homepage_special_listings_container_card_width: 22%;
+  --homepage_special_listings_container_card_width_1650: 35%;
+  --homepage_special_listings_container_card_width_1600: 30%;
+  --homepage_special_listings_container_card_width_826: 37%;
+  --homepage_special_listings_container_card_width_786: 32%;
+  --homepage_special_listings_container_card_width_700: 45%;
+  --homepage_special_listings_container_card_width_614: 100%;
+  --homepage_special_listings_container_card_padding: 5px;
+  --homepage_special_listings_container_card_gap_between_infos: 7px;
+  --homepage_special_listings_container_card_background: white;
+  --homepage_special_listings_container_card_image_height: 230px;
+  --homepage_special_listings_container_card_image_slide_left_button_gap: 3px;
+  --homepage_special_listings_container_card_image_slide_left_button_color: #006a82;
+  --homepage_special_listings_container_card_image_slide_right_button_gap: 3px;
+  --homepage_special_listings_container_card_image_slide_right_button_color: #006a82;
+
+  /* GENERAL FORM */
+  --general_form_anim_duration: 1s;
+  /* --general_form_anim_timing_function: cubic-bezier(0.13, 0.28, 0.49, 1.35); */
+  --general_form_anim_timing_function: ease-out;
+  --general_form_background: white;
+  --general_form_parent_container_width: 100%;
+  --general_form_parent_container_padding: 20px 10px 100px 10px;
+  --general_form_parent_container_padding_450px: 0px 0px 100px 0px;
+  --general_form_box_max_width: 550px;
+  --general_form_box_padding: 20px 20px;
+  --general_form_box_padding_450px: 10px;
+  --general_form_title_color: #006a82;
+  --general_form_box_inner_gap_between_title_fields_and_contol_buttons: 40px;
+  --general_form_box_inner_gap_between_field_elements: 10px;
+  --general_form_box_input_padding: 7px;
+  --general_form_box_input_border_width: 2px;
+  --general_form_box_input_border_color: #006a82;
+  --general_form_box_input_placeholder_color: #999;
+  --general_form_box_submit_and_clear_transition_time: 0.1s;
+  --general_form_box_submit_button_min_width: 100px;
+  --general_form_box_submit_button_height: 40px;
+  --general_form_box_submit_button_background_color: white;
+  --general_form_box_submit_button_border_width: 2px;
+  --general_form_box_submit_button_border_color: #006a82;
+  --general_form_box_submit_button_default_offset: -2px;
+  --general_form_box_submit_button_hover_offset: 2px;
+  --general_form_box_clear_button_min_width: 100px;
+  --general_form_box_clear_button_height: 40px;
+  --general_form_box_clear_button_background_color: white;
+  --general_form_box_clear_button_border_width: 2px;
+  --general_form_box_clear_button_border_color: #006a82;
+  --general_form_box_clear_button_default_offset: -2px;
+  --general_form_box_clear_button_hover_offset: 2px;
+  --general_form_image_upload_button_text_gap: 15px;
+  --general_form_image_upload_button_background_color: white;
+  --general_form_image_upload_button_text_color: #006a82;
+  --general_form_image_upload_button_padding: 7px;
+  --general_form_image_upload_button_border_width: 2px;
+  --general_form_image_upload_button_border_color: #006a82;
+  --general_form_image_upload_info_text_color: #006a82;
+
+  /* POPUP */
+  --popup_container_transperent_background: rgba(0, 0, 0, 0.9);
+  --popup_container_inner_padding: 200px 10px 0px 10px;
+  --popup_container_inner_box_max_width: 450px;
+  --popup_container_inner_box_min_height: 100px;
+  --popup_container_inner_box_padding: 15px;
+  --popup_container_inner_box_gap_between_text_and_close_button: 40px;
+  --popup_container_inner_box_background_color: white;
+  --popup_container_inner_box_text_color: #006a82;
+  --popup_container_inner_box_button_padding: 5px 10px;
+  --popup_container_inner_box_button_background: white;
+  --popup_container_inner_box_button_border_width: 2px;
+  --popup_container_inner_box_button_border_color: #006a82;
+
+  /* USER DASHBOARD */
+  --user_dashboard_container_padding: 0px 10px;
+  --user_dashboard_content_gap: 20px;
+  --user_dashboard_selector_box_width: 40%;
+  --user_dashboard_selector_box_padding: 10px 10px 30px 10px;
+  --user_dashboard_selector_box_gap: 10px;
+  --user_dashboard_selector_box_background: white;
+  --user_dashboard_selector_box_title_color: #006a82;
+  --user_dashboard_selector_box_select_padding: 10px;
+  --user_dashboard_selector_box_select_border_width: 2px;
+  --user_dashboard_selector_box_select_border_color: #006a82;
+  --user_dashboard_container_display_posted_general_vertical_gap: 10px;
+  --user_dashboard_container_display_posted_vertical_inner_ads_gap: 10px;
+  --user_dashboard_container_display_posted_card_width: 300px;
+  --user_dashboard_container_display_posted_card_height: 350px;
+  --user_dashboard_container_display_posted_card_padding: 5px;
+  --user_dashboard_container_display_posted_card_gap_inside: 5px;
+  --user_dashboard_container_display_posted_card_gap_between_cards: 10px;
+  --user_dashboard_container_border_width: 2px;
+  --user_dashboard_container_text_color: #006a82;
+  --user_dashboard_container_border_color: #006a82;
+  --user_dashboard_container_display_running_ad_container_gap: 15px;
+  --user_dashboard_container_display_running_ad_container_ad_padding: 5px;
+  --user_dashboard_container_display_running_ad_container_ad_inner_gap: 5px;
+  --user_dashboard_container_display_running_ad_container_ad_text_color: #006a82;
+  --user_dashboard_posted_houses_container_color: #006a82;
+  --user_dashboard_posted_houses_container_title_table_gap: 15px;
+  --user_dashboard_posted_houses_container_table_item_padding: 5px;
+  --user_dashboard_posted_houses_container_table_item_border_width: 1px;
+  --user_dashboard_posted_houses_container_table_item_border_color: #006a82;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  overflow-x: hidden;
+  background-color: var(--web_background-color);
 }
 
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
+}
+
+input::-moz-placeholder {
+  color: var(--general_form_box_input_placeholder_color);
+  opacity: 1;
+}
+
+input:-ms-input-placeholder {
+  color: var(--general_form_box_input_placeholder_color);
+}
+
+input::-webkit-input-placeholder {
+  color: var(--general_form_box_input_placeholder_color);
+}
+
+.logo_and_text_together {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+video {
+  border-radius: var(--border_radius);
+}
+
+textarea {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
