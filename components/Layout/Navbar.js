@@ -42,7 +42,6 @@ function Navbar() {
 
   return (
     <div className={styles.navbar_container}>
-      <div className={styles.navbar_logo_container}>
         <div
           className={styles.burger}
           onClick={() => setBurgerToggle(!burgerToggle)}
@@ -56,7 +55,6 @@ function Navbar() {
             <a onClick={closeBurger}>LOGO</a>
           </Link>
         </div>
-      </div>
 
       <div
         className={
