@@ -15,6 +15,10 @@ function Navbar() {
 
   const [burgerToggle, setBurgerToggle] = useState(false);
 
+  const closeBurger = () => {
+    setBurgerToggle(!burgerToggle);
+  };
+
   useEffect(() => {
     if (sessionStorage.getItem("access_token")) {
       setUserLoggedIn(true);
@@ -30,6 +34,7 @@ function Navbar() {
       sessionStorage.removeItem("admin_id");
     }
     setTimeout(async () => {
+      closeBurger();
       await router.push("/");
       window.location.reload();
     }, 800);
@@ -46,7 +51,9 @@ function Navbar() {
           <div className={styles.line2}></div>
           <div className={styles.line3}></div>
         </div>
-        <Link href="/">LOGO</Link>
+        <Link href="/">
+          <a onClick={closeBurger}>LOGO</a>
+        </Link>
       </div>
 
       <div
@@ -55,15 +62,23 @@ function Navbar() {
         }
       >
         <div className={styles.navbar_links_container}>
-          <Link href="/">jobs</Link>
-          <Link href="/">buy</Link>
-          <Link href="/">sell</Link>
-          <Link href="/">home made food</Link>
+          <Link href="/">
+            <a onClick={closeBurger}>jobs</a>
+          </Link>
+          <Link href="/">
+            <a onClick={closeBurger}>buy</a>
+          </Link>
+          <Link href="/">
+            <a onClick={closeBurger}>sell</a>
+          </Link>
+          <Link href="/">
+            <a onClick={closeBurger}>home made food</a>
+          </Link>
         </div>
         {userLoggedIn ? (
           <div className={styles.navbar_links_container}>
             <Link href="/user-dashboard">
-              <a>
+              <a onClick={closeBurger}>
                 <RiUserSettingsLine size={iconSize} />
                 dashboard
               </a>
@@ -75,7 +90,7 @@ function Navbar() {
               </>
             </button>
             <Link href="/">
-              <a>
+              <a onClick={closeBurger}>
                 <BiSupport size={iconSize} />
                 contact us
               </a>
@@ -84,19 +99,19 @@ function Navbar() {
         ) : (
           <div className={styles.navbar_links_container}>
             <Link href="/user-signin">
-              <a>
+              <a onClick={closeBurger}>
                 <VscSignIn size={iconSize} />
                 sign in
               </a>
             </Link>
             <Link href="/user-register">
-              <a>
+              <a onClick={closeBurger}>
                 <GiArchiveRegister size={iconSize} />
                 join us
               </a>
             </Link>
             <Link href="/">
-              <a>
+              <a onClick={closeBurger}>
                 <BiSupport size={iconSize} />
                 contact us
               </a>
