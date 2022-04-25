@@ -75,6 +75,7 @@
   display: flex;
   justify-content: space-between;
   padding: 10px;
+  overflow-x: scroll;
 }
 
 .admin_pending_container_item_left {

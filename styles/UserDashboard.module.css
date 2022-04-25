@@ -110,8 +110,11 @@
 
 .user_dashboard_posted_houses_container {
   color: var(--user_dashboard_posted_houses_container_color);
-  overflow-x: scroll;
   padding-bottom: 5px;
+}
+
+.user_dashboard_posted_houses_container_table_outer {
+  overflow-x: scroll;
 }
 
 .user_dashboard_posted_houses_container_table {
