@@ -100,7 +100,7 @@ function ApprAndArchivedAds({
                     )}
                   </td>
                   <td>{new Date(item.timestamp).toLocaleString()}</td>
-                  <td>{new Date(item.expires).toLocaleDateString()}</td>
+                  <td>{new Date(item.expires).toLocaleString()}</td>
 
                   {approved && (
                     <td>
@@ -140,6 +140,7 @@ function ApprAndArchivedAds({
               <th>ID</th>
               <th>User Posted</th>
               <th>Text</th>
+              <th>Date Added</th>
               <th>Expires</th>
               <th>Control</th>
             </tr>
@@ -152,7 +153,7 @@ function ApprAndArchivedAds({
                   <td>{item.user_added}</td>
                   <td>{item.text}</td>
                   <td>{new Date(item.timestamp).toLocaleString()}</td>
-                  <td>{new Date(item.expires).toLocaleDateString()}</td>
+                  <td>{new Date(item.expires).toLocaleString()}</td>
 
                   {approved && (
                     <td>

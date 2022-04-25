@@ -6,7 +6,7 @@ import ReactPlayer from "react-player";
 // redirect link unena avelacnem funkcian
 
 const defaultState = {
-  videoLink: "https://www.youtube.com/watch?v=MgnlbDVuPdg",
+  videoLink: "https://www.youtube.com/watch?v=HKS0BjJMKlY",
   images: [],
 };
 

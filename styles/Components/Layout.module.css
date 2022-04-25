@@ -91,9 +91,6 @@
   outline-offset: var(--navbar_links_link_outline_default_offset);
   transition: all var(--navbar_links_transition_time);
 }
-.navbar_links_container > svg {
-  
-}
 
 .navbar_links_container > a:hover {
   outline-offset: var(--navbar_links_link_outline_hover_offset);
@@ -175,7 +172,7 @@
   border-radius: var(--border_radius);
 }
 
-@media only screen and (max-width: 990px) {
+@media only screen and (max-width: 1007px) {
   .burger {
     display: block;
     /* transition: transform 2s ease-in; */
@@ -253,7 +250,6 @@
   }
 }
 @media only screen and (max-width: 450px) {
-  
   .content_and_ads_container_ads > a > img {
     width: 100%;
   }

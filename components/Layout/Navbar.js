@@ -16,7 +16,7 @@ function Navbar() {
   const [burgerToggle, setBurgerToggle] = useState(false);
 
   const closeBurger = () => {
-    setBurgerToggle(!burgerToggle);
+    setBurgerToggle(false);
   };
 
   useEffect(() => {
@@ -51,9 +51,11 @@ function Navbar() {
           <div className={styles.line2}></div>
           <div className={styles.line3}></div>
         </div>
-        <Link href="/">
-          <a onClick={closeBurger}>LOGO</a>
-        </Link>
+        <div className={styles.navbar_links_container}>
+          <Link href="/">
+            <a onClick={closeBurger}>LOGO</a>
+          </Link>
+        </div>
       </div>
 
       <div

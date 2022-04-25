@@ -30,12 +30,18 @@ export default function Home() {
   const [rentingSpecialHouses, setRentingSpecialHouses] = useState([]);
 
   useEffect(() => {
+    let isMounted = true;
     // stex fetcherna arvelu
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-houses-for-sale`)
       .then((response) => response.json())
       .then((data) => {
-        setSellingSpecialHouses(data.specialHousesForSale);
+        if (isMounted) {
+          setSellingSpecialHouses(data.specialHousesForSale);
+        }
       });
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (

@@ -7,7 +7,11 @@
 
 .admin_links {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
+}
+.admin_links > button {
+  padding: 3px;
 }
 
 .admin_dashboard_content {
