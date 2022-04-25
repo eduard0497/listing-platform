@@ -154,6 +154,12 @@
   --popup_container_inner_box_button_background: white;
   --popup_container_inner_box_button_border_width: 2px;
   --popup_container_inner_box_button_border_color: #006a82;
+  --popup_container_inner_box_button_border_width: 2px;
+  --popup_container_inner_box_button_border_color: #006a82;
+  --popup_container_inner_box_button_border_default_offset: -2px;
+  --popup_container_inner_box_button_border_hover_offset: 2px;
+  --popup_container_inner_box_button_transition: 0.1s;
+
 
   /* USER DASHBOARD */
   --user_dashboard_container_padding: 0px 10px;

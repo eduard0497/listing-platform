@@ -32,7 +32,6 @@ function AllUserPosted() {
   const [postedHousesForRent, setPostedHousesForRent] = useState([]);
   const [pendingHousesForRent, setPendingHousesForRent] = useState([]);
   //
-  console.log(sideAdsPosted)
 
   useEffect(async () => {
     setLoading(true);

@@ -117,83 +117,85 @@ function GetAllPrices() {
           <button onClick={allowToMakeChanges}>Allow Changes</button>
         </div>
 
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Price ID</th>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Price</th>
-              <th>Expires in days</th>
-              <th>Stripe Link</th>
-            </tr>
-          </thead>
-          <tbody className={styles.table_body}>
-            {allPrices.map((item) => (
-              <tr key={item.id} className={styles.table_rows}>
-                <td>{item.id}</td>
-                <td>
-                  <input
-                    type="text"
-                    id={item.id + "_name"}
-                    defaultValue={item.name}
-                    readOnly={allowToChangeInputs}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    id={item.id + "_type"}
-                    defaultValue={item.type}
-                    readOnly={allowToChangeInputs}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    id={item.id + "_price"}
-                    defaultValue={item.price}
-                    readOnly={allowToChangeInputs}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    defaultValue={item.expires}
-                    id={item.id + "_expires"}
-                    readOnly={allowToChangeInputs}
-                  />
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    defaultValue={item.stripe_link}
-                    id={item.id + "_stripe_link"}
-                    readOnly={allowToChangeInputs}
-                  />
-                </td>
-                <td>
-                  <button
-                    value={item.id}
-                    onClick={handleUpdate}
-                    className={styles.admin_update_button}
-                  >
-                    UPDATE
-                  </button>
-                </td>
-                <td>
-                  <button
-                    value={item.id}
-                    onClick={handleDelete}
-                    className={styles.admin_delete_button}
-                  >
-                    DELETE
-                  </button>
-                </td>
+        <div className={styles.table_outer_for_scroll}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Price ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Expires in days</th>
+                <th>Stripe Link</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className={styles.table_body}>
+              {allPrices.map((item) => (
+                <tr key={item.id} className={styles.table_rows}>
+                  <td>{item.id}</td>
+                  <td>
+                    <input
+                      type="text"
+                      id={item.id + "_name"}
+                      defaultValue={item.name}
+                      readOnly={allowToChangeInputs}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      id={item.id + "_type"}
+                      defaultValue={item.type}
+                      readOnly={allowToChangeInputs}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      id={item.id + "_price"}
+                      defaultValue={item.price}
+                      readOnly={allowToChangeInputs}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      defaultValue={item.expires}
+                      id={item.id + "_expires"}
+                      readOnly={allowToChangeInputs}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      defaultValue={item.stripe_link}
+                      id={item.id + "_stripe_link"}
+                      readOnly={allowToChangeInputs}
+                    />
+                  </td>
+                  <td>
+                    <button
+                      value={item.id}
+                      onClick={handleUpdate}
+                      className={styles.admin_update_button}
+                    >
+                      UPDATE
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      value={item.id}
+                      onClick={handleDelete}
+                      className={styles.admin_delete_button}
+                    >
+                      DELETE
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <form

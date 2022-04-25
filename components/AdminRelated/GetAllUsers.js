@@ -37,6 +37,7 @@ function GetAllUsers() {
     })
       .then((response) => response.json())
       .then((data) => {
+        getAllUsers();
         alert(data.msg);
       });
   };
@@ -53,6 +54,7 @@ function GetAllUsers() {
     })
       .then((response) => response.json())
       .then((data) => {
+        getAllUsers();
         alert(data.msg);
       });
   };
@@ -71,54 +73,57 @@ function GetAllUsers() {
         placeholder="Search by email"
         onChange={(e) => setEmailToSearch(e.target.value)}
       />
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>User ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Is Email Active</th>
-            <th>Date Registered</th>
-            <th>DELETE USER</th>
-            <th>BAN USER</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filterByEmail(emailToSearch).map((user) => (
-            <tr key={user.user_id} className={styles.table_rows}>
-              <td>{user.user_id}</td>
-              <td>{user.first_name}</td>
-              <td>{user.last_name}</td>
-              <td>{user.email}</td>
-              <td>{user.is_email_active ? "Active" : "Inactive"}</td>
-              <td>{new Date(user.timestamp).toLocaleDateString()}</td>
-              <td>
-                <button
-                  onClick={deleteUser}
-                  value={user.user_id}
-                  className={styles.admin_delete_button}
-                >
-                  DELETE THE USER
-                </button>
-              </td>
-              <td>
-                {user.is_banned ? (
-                  "BANNED!!!"
-                ) : (
+
+      <div className={styles.table_outer_for_scroll}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Is Email Active</th>
+              <th>Date Registered</th>
+              <th>DELETE USER</th>
+              <th>BAN USER</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filterByEmail(emailToSearch).map((user) => (
+              <tr key={user.user_id} className={styles.table_rows}>
+                <td>{user.user_id}</td>
+                <td>{user.first_name}</td>
+                <td>{user.last_name}</td>
+                <td>{user.email}</td>
+                <td>{user.is_email_active ? "Active" : "Inactive"}</td>
+                <td>{new Date(user.timestamp).toLocaleDateString()}</td>
+                <td>
                   <button
-                    onClick={banUser}
+                    onClick={deleteUser}
                     value={user.user_id}
                     className={styles.admin_delete_button}
                   >
-                    BAN THE USER
+                    DELETE THE USER
                   </button>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                </td>
+                <td>
+                  {user.is_banned ? (
+                    "BANNED!!!"
+                  ) : (
+                    <button
+                      onClick={banUser}
+                      value={user.user_id}
+                      className={styles.admin_delete_button}
+                    >
+                      BAN THE USER
+                    </button>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
