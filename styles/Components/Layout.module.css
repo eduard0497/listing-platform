@@ -237,6 +237,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-around;
     gap: var(--content_and_right_ads_container_mobile_ads_image_gap);
     margin-top: 100px;
   }
