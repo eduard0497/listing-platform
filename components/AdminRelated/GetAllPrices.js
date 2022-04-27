@@ -112,7 +112,7 @@ function GetAllPrices() {
   return (
     <div className={styles.price_and_categories_container}>
       <div className={styles.categories}>
-        <div className={styles.manage_buttons}>
+        <div className={styles.admin_links}>
           <button onClick={getGeneralPricingInfo}>Get All Prices</button>
           <button onClick={allowToMakeChanges}>Allow Changes</button>
         </div>

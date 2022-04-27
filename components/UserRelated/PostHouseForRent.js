@@ -312,7 +312,7 @@ function PostHouseForRent() {
             value={data.is_special}
           >
             <option value="">Choose Listing Option</option>
-            <option value={true}>SPACIAL</option>
+            <option value={true}>SPECIAL</option>
             <option value={false}>Regular</option>
           </select>
         </div>

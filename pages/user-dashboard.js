@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PostHouseForSale from "../components/UserRelated/PostHouseForSale";
 import PostHouseForRent from "../components/UserRelated/PostHouseForRent";
 import UpdatePassword from "../components/UserRelated/UpdatePassword";
@@ -11,7 +11,23 @@ import AllUserPosted from "../components/UserRelated/AllUserPosted/AllUserPosted
 // sax optionnery stex petqa avelacnem
 
 function UserDashboard() {
+  const [userExists, setUserExists] = useState(false);
+  useEffect(() => {
+    if (
+      !sessionStorage.getItem("user_id") ||
+      !sessionStorage.getItem("access_token")
+    ) {
+      setUserExists(false);
+    } else {
+      setUserExists(true);
+    }
+  }, []);
+
   const [picked, setPicked] = useState("");
+
+  if (!userExists) {
+    return null;
+  }
   return (
     <div className={styles.user_dashboard_container}>
       <div className={styles.user_dashboard_container_inner_box}>

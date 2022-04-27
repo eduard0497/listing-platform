@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "../../styles/AdminDashboard.module.css";
+import styles from "../../../styles/AdminDashboard.module.css";
 
 function GetAllUsers() {
   const [allUsers, setAllUsers] = useState([]);
@@ -67,12 +67,16 @@ function GetAllUsers() {
 
   return (
     <div>
-      <button onClick={getAllUsers}>Refresh | Users: {allUsers.length}</button>
-      <input
-        type="text"
-        placeholder="Search by email"
-        onChange={(e) => setEmailToSearch(e.target.value)}
-      />
+      <div className={styles.admin_links}>
+        <button onClick={getAllUsers}>
+          Refresh | Users: {allUsers.length}
+        </button>
+        <input
+          type="text"
+          placeholder="Search by email"
+          onChange={(e) => setEmailToSearch(e.target.value)}
+        />
+      </div>
 
       <div className={styles.table_outer_for_scroll}>
         <table className={styles.table}>

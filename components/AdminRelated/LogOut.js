@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import styles from "../../styles/AdminDashboard.module.css";
 
 function LogOut() {
   const router = useRouter();
@@ -11,8 +12,8 @@ function LogOut() {
     }, 800);
   };
   return (
-    <div>
-      <button onClick={logOut}>Sign Out</button>
+    <div className={styles.admin_links}  >
+      <button style={{background: "red", fontWeight: "bold"}} onClick={logOut}>Sign Out</button>
     </div>
   );
 }

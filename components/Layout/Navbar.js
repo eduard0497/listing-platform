@@ -42,19 +42,19 @@ function Navbar() {
 
   return (
     <div className={styles.navbar_container}>
-        <div
-          className={styles.burger}
-          onClick={() => setBurgerToggle(!burgerToggle)}
-        >
-          <div className={styles.line1}></div>
-          <div className={styles.line2}></div>
-          <div className={styles.line3}></div>
-        </div>
-        <div className={styles.navbar_links_container}>
-          <Link href="/">
-            <a onClick={closeBurger}>LOGO</a>
-          </Link>
-        </div>
+      <div
+        className={styles.burger}
+        onClick={() => setBurgerToggle(!burgerToggle)}
+      >
+        <div className={styles.line1}></div>
+        <div className={styles.line2}></div>
+        <div className={styles.line3}></div>
+      </div>
+      <div className={styles.navbar_links_container}>
+        <Link href="/">
+          <a onClick={closeBurger}>LOGO</a>
+        </Link>
+      </div>
 
       <div
         className={
@@ -83,18 +83,18 @@ function Navbar() {
                 dashboard
               </a>
             </Link>
+            <Link href="/contact-us">
+              <a onClick={closeBurger}>
+                <BiSupport size={iconSize} />
+                contact us
+              </a>
+            </Link>
             <button onClick={handleLogOut}>
               <>
                 <GoSignOut size={iconSize} />
                 sign out
               </>
             </button>
-            <Link href="/">
-              <a onClick={closeBurger}>
-                <BiSupport size={iconSize} />
-                contact us
-              </a>
-            </Link>
           </div>
         ) : (
           <div className={styles.navbar_links_container}>
@@ -108,12 +108,6 @@ function Navbar() {
               <a onClick={closeBurger}>
                 <GiArchiveRegister size={iconSize} />
                 join us
-              </a>
-            </Link>
-            <Link href="/">
-              <a onClick={closeBurger}>
-                <BiSupport size={iconSize} />
-                contact us
               </a>
             </Link>
           </div>

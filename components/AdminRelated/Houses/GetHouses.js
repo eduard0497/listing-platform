@@ -18,6 +18,8 @@ function GetHouses() {
   const [showArchivedForSale, setShowArchivedForSale] = useState(false);
   const [showArchivedForRent, setShowArchivedForRent] = useState(false);
 
+  const [searchByUserID, setSearchByUserID] = useState("");
+
   const getAll = () => {
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-get-houses`, {
       method: "post",
@@ -42,14 +44,46 @@ function GetHouses() {
       });
   };
 
+  const foldAll = () => {
+    setShowPendingForSale(false);
+    setShowPendingForRent(false);
+    setShowApprovedForSale(false);
+    setShowApprovedForRent(false);
+    setShowArchivedForSale(false);
+    setShowArchivedForRent(false);
+  };
+  const unfoldAll = () => {
+    setShowPendingForSale(true);
+    setShowPendingForRent(true);
+    setShowApprovedForSale(true);
+    setShowApprovedForRent(true);
+    setShowArchivedForSale(true);
+    setShowArchivedForRent(true);
+  };
+
   const buttonStyle = {
     padding: "5px",
   };
 
+  const filterAll = (array) => {
+    if (searchByUserID) {
+      return array.filter((item) => item.user_posted == searchByUserID);
+    } else {
+      return array;
+    }
+  };
+
   return (
     <div className={styles.admin_pending_container}>
-      <div>
-        <button onClick={getAll}>Get All</button>
+      <div className={styles.admin_links}>
+        <button onClick={getAll}>GET All</button>
+        <button onClick={foldAll}>FOLD ALL</button>
+        <button onClick={unfoldAll}>UNFOLD ALL</button>
+        <input
+          type="text"
+          placeholder="Type User ID to filter"
+          onChange={(e) => setSearchByUserID(e.target.value)}
+        />
       </div>
 
       {/*  */}
@@ -100,7 +134,7 @@ function GetHouses() {
       </button>
       {showApprovedForSale && (
         <ApprAndArchHouses
-          listings={allApprovedHousesForSale}
+          listings={filterAll(allApprovedHousesForSale)}
           sale={true}
           approved={true}
           getAll={getAll}
@@ -115,7 +149,7 @@ function GetHouses() {
       </button>
       {showArchivedForSale && (
         <ApprAndArchHouses
-          listings={allArchivedHousesForSale}
+          listings={filterAll(allArchivedHousesForSale)}
           sale={true}
           archived={true}
           getAll={getAll}
@@ -132,7 +166,7 @@ function GetHouses() {
       </button>
       {showApprovedForRent && (
         <ApprAndArchHouses
-          listings={allApprovedHousesForRent}
+          listings={filterAll(allApprovedHousesForRent)}
           rent={true}
           approved={true}
           getAll={getAll}
@@ -147,7 +181,7 @@ function GetHouses() {
       </button>
       {showArchivedForRent && (
         <ApprAndArchHouses
-          listings={allArchivedHousesForRent}
+          listings={filterAll(allArchivedHousesForRent)}
           rent={true}
           archived={true}
           getAll={getAll}

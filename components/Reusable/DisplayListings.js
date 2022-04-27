@@ -3,11 +3,7 @@ import styles from "../../styles/Components/DisplayListings.module.css";
 import ReactPaginate from "react-paginate";
 import ImageSlider from "./ImageSlider";
 import { FaMapMarkerAlt } from "react-icons/fa";
-// eji vra poxelu baner kan, te inch cuyc ta card-i vra
-// pagination styling
-// change image buttons
-// card-eri guynery avelacnem css-i mej
-// myusnern el
+import { FaArrowRight, FaArrowLeft, FaCalendarPlus } from "react-icons/fa";
 
 DisplayListings.defaultProps = {
   containerTitle: "Passed Title Here",
@@ -21,7 +17,7 @@ function DisplayListings({
   amountOfItemsToDisplay,
 }) {
   const [pageNumber, setPageNumber] = useState(0);
-  if (itemsToDisplay.length === 0) {
+  if (!itemsToDisplay.length) {
     return null;
   }
 
@@ -80,7 +76,8 @@ function DisplayListings({
                     )}
 
                     <h5>
-                      Exp: {new Date(item.timestamp).toLocaleDateString()}
+                      {<FaCalendarPlus />}{" "}
+                      {new Date(item.timestamp).toLocaleDateString()}
                     </h5>
                   </div>
                 </div>
@@ -88,11 +85,12 @@ function DisplayListings({
             );
           })}
       </div>
-      <div className={styles.home_special_listings_container_pagination}>
-        {itemsToDisplay.length < itemsPerPage ? null : (
+
+      {itemsToDisplay.length < itemsPerPage ? null : (
+        <div className={styles.home_special_listings_container_pagination}>
           <ReactPaginate
-            previousLabel={"<<"}
-            nextLabel={">>"}
+            previousLabel={<FaArrowLeft />}
+            nextLabel={<FaArrowRight />}
             pageCount={pageCount}
             onPageChange={changePage}
             containerClassName="pagination_container"
@@ -101,8 +99,8 @@ function DisplayListings({
             disabledClassName="pagination_disabled_button"
             activeClassName="pagination_active_button"
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

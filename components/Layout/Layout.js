@@ -28,7 +28,8 @@ function Layout({ children }) {
       route.pathname === "/user-dashboard" ||
       route.pathname === "/admin-login" ||
       route.pathname === "/admin-register" ||
-      route.pathname === "/forgot-password"
+      route.pathname === "/forgot-password" ||
+      route.pathname === "/contact-us"
     ) {
       setShowContent(false);
     } else {

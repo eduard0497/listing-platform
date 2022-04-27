@@ -160,7 +160,6 @@
   --popup_container_inner_box_button_border_hover_offset: 2px;
   --popup_container_inner_box_button_transition: 0.1s;
 
-
   /* USER DASHBOARD */
   --user_dashboard_container_padding: 0px 10px;
   --user_dashboard_content_gap: 20px;
@@ -191,6 +190,12 @@
   --user_dashboard_posted_houses_container_table_item_padding: 5px;
   --user_dashboard_posted_houses_container_table_item_border_width: 1px;
   --user_dashboard_posted_houses_container_table_item_border_color: #006a82;
+
+  /* REACT PAGINATE */
+  --paginate_button_padding: 5px;
+  --paginate_button_padding_active: 7px;
+  --paginate_button_border_width: 2px;
+  --paginate_button_border_color: #006a82;
 }
 
 html,
@@ -233,4 +238,62 @@ video {
 textarea {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.pagination_container {
+  display: flex;
+  gap: 7px;
+  height: 50px;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination_container a {
+  transition: all 0.1s ease-in;
+  padding: var(--paginate_button_padding);
+  background: white;
+  border: var(--paginate_button_border_width) solid
+    var(--paginate_button_border_color);
+  border-radius: var(--border_radius);
+  outline: none;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: none;
+  animation: none;
+}
+
+.pagination_container a:hover {
+  padding: var(--paginate_button_padding_active);
+}
+
+.pagination_active_button a {
+  padding: var(--paginate_button_padding_active);
+  border: var(--paginate_button_border_width) solid
+    var(--paginate_button_border_color);
+  border-radius: var(--border_radius);
+  font-weight: bold;
+  background-color: white;
+  cursor: pointer;
+  user-select: none;
+}
+
+.pagination_previous_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--paginate_button_padding_active);
+}
+
+.pagination_next_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--paginate_button_padding_active);
+}
+
+.pagination_disabled_button a {
+  background-color: var(--web_background-color);
+  user-select: none;
 }

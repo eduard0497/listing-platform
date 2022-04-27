@@ -35,6 +35,37 @@ function GetAds() {
   const [showApprovedRunning, setShowApprovedRunning] = useState(false);
   const [showArchivedRunning, setShowArchivedRunning] = useState(false);
 
+  const [searchByUserID, setSearchByUserID] = useState("");
+
+  const foldAll = () => {
+    setShowPendingBanners(false);
+    setShowApprovedBanners(false);
+    setShowArchivedBanners(false);
+    setShowPendingSides(false);
+    setShowApprovedSides(false);
+    setShowArchivedSides(false);
+    setShowPendingVideos(false);
+    setShowApprovedVideos(false);
+    setShowArchivedVideos(false);
+    setShowPendingRunning(false);
+    setShowApprovedRunning(false);
+    setShowArchivedRunning(false);
+  };
+  const unfoldAll = () => {
+    setShowPendingBanners(true);
+    setShowApprovedBanners(true);
+    setShowArchivedBanners(true);
+    setShowPendingSides(true);
+    setShowApprovedSides(true);
+    setShowArchivedSides(true);
+    setShowPendingVideos(true);
+    setShowApprovedVideos(true);
+    setShowArchivedVideos(true);
+    setShowPendingRunning(true);
+    setShowApprovedRunning(true);
+    setShowArchivedRunning(true);
+  };
+
   const getAll = async () => {
     await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-get-all-ads`, {
       method: "post",
@@ -65,16 +96,31 @@ function GetAds() {
       });
   };
 
+  const filterAll = (array) => {
+    if (searchByUserID) {
+      return array.filter((item) => item.user_added == searchByUserID);
+    } else {
+      return array;
+    }
+  };
+
   const buttonStyle = {
     padding: "5px",
   };
 
   return (
     <div className={styles.admin_pending_container}>
-      <div>
-        <button onClick={getAll}>Get All</button>
+      <div className={styles.admin_links}>
+        <button onClick={getAll}>GET All</button>
+        <button onClick={foldAll}>FOLD ALL</button>
+        <button onClick={unfoldAll}>UNFOLD ALL</button>
+        <input
+          type="text"
+          placeholder="Type User ID to filter"
+          onChange={(e) => setSearchByUserID(e.target.value)}
+        />
         <h5>
-          Overall TOTAL:{" "}
+          OVERALL TOTAL:{" "}
           {allPendingBannerAds.length +
             allApprovedBannerAds.length +
             allArchivedBannerAds.length +
@@ -164,7 +210,7 @@ function GetAds() {
       </button>
       {showApprovedBanners && (
         <ApprAndArchivedAds
-          ads={allApprovedBannerAds}
+          ads={filterAll(allApprovedBannerAds)}
           banner={true}
           approved={true}
           getAll={getAll}
@@ -181,7 +227,7 @@ function GetAds() {
       </button>
       {showArchivedBanners && (
         <ApprAndArchivedAds
-          ads={allArchivedBannerAds}
+          ads={filterAll(allArchivedBannerAds)}
           banner={true}
           archived={true}
           getAll={getAll}
@@ -198,7 +244,7 @@ function GetAds() {
       </button>
       {showApprovedSides && (
         <ApprAndArchivedAds
-          ads={allApprovedSide}
+          ads={filterAll(allApprovedSide)}
           side={true}
           approved={true}
           getAll={getAll}
@@ -215,7 +261,7 @@ function GetAds() {
       </button>
       {showArchivedSides && (
         <ApprAndArchivedAds
-          ads={allArchivedSide}
+          ads={filterAll(allArchivedSide)}
           side={true}
           archived={true}
           getAll={getAll}
@@ -232,7 +278,7 @@ function GetAds() {
       </button>
       {showApprovedVideos && (
         <ApprAndArchivedAds
-          ads={allApprovedVideo}
+          ads={filterAll(allApprovedVideo)}
           video={true}
           approved={true}
           getAll={getAll}
@@ -249,7 +295,7 @@ function GetAds() {
       </button>
       {showArchivedVideos && (
         <ApprAndArchivedAds
-          ads={allArchivedVideo}
+          ads={filterAll(allArchivedVideo)}
           video={true}
           archived={true}
           getAll={getAll}
@@ -266,7 +312,7 @@ function GetAds() {
       </button>
       {showApprovedRunning && (
         <ApprAndArchivedAds
-          ads={allApprovedRunning}
+          ads={filterAll(allApprovedRunning)}
           running={true}
           approved={true}
           getAll={getAll}
@@ -283,7 +329,7 @@ function GetAds() {
       </button>
       {showArchivedRunning && (
         <ApprAndArchivedAds
-          ads={allArchivedRunning}
+          ads={filterAll(allArchivedRunning)}
           running={true}
           archived={true}
           getAll={getAll}

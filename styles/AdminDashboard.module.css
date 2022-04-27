@@ -7,10 +7,14 @@
 
 .admin_links {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 5px;
 }
 .admin_links > button {
+  padding: 3px;
+}
+.admin_links > input {
   padding: 3px;
 }
 
@@ -40,9 +44,9 @@
 }
 .table_rows > td {
   border-bottom: 1px solid purple;
-  padding-top: 10px;
+  padding-top: 5px;
   text-align: center;
-  min-width: 150px;
+  min-width: 90px;
 }
 
 /* pricing and job categories */
@@ -76,6 +80,7 @@
   justify-content: space-between;
   padding: 10px;
   overflow-x: scroll;
+  gap: 20px;
 }
 
 .admin_pending_container_item_left {

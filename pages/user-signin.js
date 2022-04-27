@@ -50,7 +50,7 @@ function UserSignIn() {
           sessionStorage.setItem("access_token", data.userData[0].access_token);
           setData(defaultState);
           setTimeout(async () => {
-            await router.push("/");
+            await router.push("/user-dashboard");
             window.location.reload();
           }, 800);
         }
