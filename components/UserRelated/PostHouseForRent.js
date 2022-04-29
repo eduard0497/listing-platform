@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/Components/GeneralForm.module.css";
 import RingLoader from "react-spinners/RingLoader";
 import Popup from "../Reusable/Popup";
@@ -27,6 +27,23 @@ function PostHouseForRent() {
   const [loading, setLoading] = useState(false);
   const [infoForUser, setInfoForUser] = useState("");
   const [showInfoForUser, setShowInfoForUser] = useState(false);
+  const [houseTypes, setHouseTypes] = useState([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-house-types`)
+      .then((response) => response.json())
+      .then((info) => {
+        if (info.msg) {
+          console.log(info.msg);
+        } else if (isMounted) {
+          setHouseTypes(info.allHouseTypes);
+        }
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const checkSubmission = () => {
     if (
@@ -135,12 +152,12 @@ function PostHouseForRent() {
             }
             value={data.type}
           >
-            <option value="">Choose Building Type</option>
-            <option value="House">House</option>
-            <option value="Guest House">Guest House</option>
-            <option value="Apartment">Apartment</option>
-            <option value="Townhouse">Townhouse</option>
-            <option value="Condo">Condo</option>
+            <option value="">Select House Type</option>
+            {houseTypes.map((type) => (
+              <option key={type.id} value={type.type}>
+                {type.type}
+              </option>
+            ))}
           </select>
           <input
             onChange={(e) =>

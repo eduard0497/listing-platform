@@ -8,7 +8,7 @@ import { RiUserSettingsLine } from "react-icons/ri";
 import { GoSignOut } from "react-icons/go";
 import { BiSupport } from "react-icons/bi";
 
-function Navbar() {
+function Navbar({ showBuyLinks, setShowBuyLinks }) {
   const iconSize = "20px";
   const router = useRouter();
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -65,9 +65,14 @@ function Navbar() {
           <Link href="/">
             <a onClick={closeBurger}>jobs</a>
           </Link>
-          <Link href="/">
-            <a onClick={closeBurger}>buy</a>
-          </Link>
+          <button
+            onClick={() => {
+              closeBurger();
+              setShowBuyLinks(!showBuyLinks);
+            }}
+          >
+            buy
+          </button>
           <Link href="/">
             <a onClick={closeBurger}>rent</a>
           </Link>

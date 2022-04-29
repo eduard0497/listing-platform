@@ -17,6 +17,7 @@ function UserDashboard() {
   const [userFName, setUserFName] = useState("");
   const [userLName, setUserLName] = useState("");
   useEffect(() => {
+    let isMounted = true;
     if (
       !sessionStorage.getItem("user_id") ||
       !sessionStorage.getItem("access_token")
@@ -25,6 +26,8 @@ function UserDashboard() {
     } else {
       setUserExists(true);
     }
+
+
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-get-personal-info`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -37,13 +40,16 @@ function UserDashboard() {
       .then((info) => {
         if (info.msg) {
           console.log(info.msg);
-        } else {
+        } else if (isMounted) {
           setUserID(info.userInfo[0].user_id);
           setUserEmail(info.userInfo[0].email);
           setUserFName(info.userInfo[0].first_name);
           setUserLName(info.userInfo[0].last_name);
         }
       });
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const [picked, setPicked] = useState("");

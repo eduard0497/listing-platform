@@ -8,6 +8,7 @@ import ScrollingText from "../ScrollingText";
 import TopAds from "../TopAds";
 import SideAds from "../SideAds";
 import { FaSuitcase } from "react-icons/fa";
+import Link from "next/link";
 
 function Layout({ children }) {
   const [loading, setLoading] = useState(false);
@@ -65,6 +66,8 @@ function Layout({ children }) {
     setLoading(false);
   }, []);
 
+  const [showBuyLinks, setShowBuyLinks] = useState(false);
+
   //
   return (
     <>
@@ -82,7 +85,12 @@ function Layout({ children }) {
             </div>
           ) : (
             <div className={styles.layout_container}>
-              <Navbar />
+              <Navbar
+                showBuyLinks={showBuyLinks}
+                setShowBuyLinks={setShowBuyLinks}
+              />
+              {showBuyLinks && BuyLinks()}
+
               <div className={styles.navbar_bottom_border}>
                 <span className={styles.suitcase_icon}>
                   <FaSuitcase
@@ -119,6 +127,19 @@ function Layout({ children }) {
 }
 
 export default Layout;
+
+const BuyLinks = () => {
+  return (
+    <div className={styles.navbar_sublinks_container}>
+      <Link href="/">
+        <a>HOUSES</a>
+      </Link>
+      <Link href="/">
+        <a>VEHICLES</a>
+      </Link>
+    </div>
+  );
+};
 
 // es meky nayem!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TOP ADS-um el
 // await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-top-banner-video`)
