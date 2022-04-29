@@ -32,11 +32,11 @@ function DisplayListings({
   };
 
   return (
-    <div className={styles.home_special_listings_container}>
-      <div className={styles.home_special_listings_container_title}>
+    <div className={styles.listings_container}>
+      <div className={styles.listings_container_title}>
         <h1>{containerTitle}</h1>
       </div>
-      <div className={styles.home_special_listings_container_cards_container}>
+      <div className={styles.listings_container_cards_container}>
         {/* esia dynamically render anelu */}
         {itemsToDisplay
           .slice(pagesVisited, pagesVisited + itemsPerPage)
@@ -44,26 +44,24 @@ function DisplayListings({
             return (
               <div
                 key={item.title}
-                className={
-                  styles.home_special_listings_container_cards_container_card
-                }
+                className={styles.listings_container_cards_container_card}
               >
                 <div
                   className={
-                    styles.home_special_listings_container_cards_container_card_image
+                    styles.listings_container_cards_container_card_image
                   }
                 >
                   <ImageSlider images={item.images} />
                 </div>
                 <div
                   className={
-                    styles.home_special_listings_container_cards_container_card_info
+                    styles.listings_container_cards_container_card_info
                   }
                 >
                   <h3>{item.title}</h3>
                   <div
                     className={
-                      styles.home_special_listings_container_cards_container_card_info_date_location
+                      styles.listings_container_cards_container_card_info_date_location
                     }
                   >
                     {item.city ? (
@@ -87,7 +85,7 @@ function DisplayListings({
       </div>
 
       {itemsToDisplay.length < itemsPerPage ? null : (
-        <div className={styles.home_special_listings_container_pagination}>
+        <div className={styles.listings_container_pagination}>
           <ReactPaginate
             previousLabel={<FaArrowLeft />}
             nextLabel={<FaArrowRight />}

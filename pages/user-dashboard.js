@@ -12,6 +12,10 @@ import AllUserPosted from "../components/UserRelated/AllUserPosted/AllUserPosted
 
 function UserDashboard() {
   const [userExists, setUserExists] = useState(false);
+  const [userID, setUserID] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userFName, setUserFName] = useState("");
+  const [userLName, setUserLName] = useState("");
   useEffect(() => {
     if (
       !sessionStorage.getItem("user_id") ||
@@ -21,6 +25,25 @@ function UserDashboard() {
     } else {
       setUserExists(true);
     }
+    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-get-personal-info`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: sessionStorage.getItem("user_id"),
+        access_token: sessionStorage.getItem("access_token"),
+      }),
+    })
+      .then((res) => res.json())
+      .then((info) => {
+        if (info.msg) {
+          console.log(info.msg);
+        } else {
+          setUserID(info.userInfo[0].user_id);
+          setUserEmail(info.userInfo[0].email);
+          setUserFName(info.userInfo[0].first_name);
+          setUserLName(info.userInfo[0].last_name);
+        }
+      });
   }, []);
 
   const [picked, setPicked] = useState("");
@@ -31,7 +54,9 @@ function UserDashboard() {
   return (
     <div className={styles.user_dashboard_container}>
       <div className={styles.user_dashboard_container_inner_box}>
-        <h2>I want to...</h2>
+        <h4>Welcome {userFName + " " + userLName}!</h4>
+        <h4>Your user ID is {userID}</h4>
+        <h2>Select below</h2>
         <select
           name="userSelection"
           id="userSelection"

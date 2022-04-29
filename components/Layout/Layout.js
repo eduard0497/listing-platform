@@ -29,7 +29,8 @@ function Layout({ children }) {
       route.pathname === "/admin-login" ||
       route.pathname === "/admin-register" ||
       route.pathname === "/forgot-password" ||
-      route.pathname === "/contact-us"
+      route.pathname === "/contact-us" ||
+      route.pathname === "/prices"
     ) {
       setShowContent(false);
     } else {

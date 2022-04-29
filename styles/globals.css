@@ -37,9 +37,11 @@
 
   /* footer */
   --footer_min_height: 70px;
-  --footer_background_color: #006a82;
-  --footer_top_radius: 20px;
   --footer_padding: 15px;
+  --footer_text_color: #006a82;
+  --footer_border_top_width: 3px;
+  --footer_border_top_color: #006a82;
+
   /* children and right ads */
   --content_and_right_ads_container_margin_top_and_bottom: 50px 0px;
   --content_and_right_ads_container_min_height: 80vh;
@@ -78,27 +80,28 @@
 
   /* HOMEPAGE */
   --homepage_content_gap: 50px;
-  /* homepage special listings */
-  --homepage_special_listings_container_title_bottom_margin: 20px;
-  --homepage_special_listings_container_inner_gap: 15px;
-  --homepage_special_listings_container_gap_between_cards: 10px;
-  --homepage_special_listings_container_card_colors: #006a82;
-  --homepage_special_listings_container_card_height: 315px;
-  --homepage_special_listings_container_card_width: 22%;
-  --homepage_special_listings_container_card_width_1650: 35%;
-  --homepage_special_listings_container_card_width_1600: 30%;
-  --homepage_special_listings_container_card_width_826: 37%;
-  --homepage_special_listings_container_card_width_786: 32%;
-  --homepage_special_listings_container_card_width_700: 45%;
-  --homepage_special_listings_container_card_width_614: 100%;
-  --homepage_special_listings_container_card_padding: 5px;
-  --homepage_special_listings_container_card_gap_between_infos: 7px;
-  --homepage_special_listings_container_card_background: white;
-  --homepage_special_listings_container_card_image_height: 230px;
-  --homepage_special_listings_container_card_image_slide_left_button_gap: 3px;
-  --homepage_special_listings_container_card_image_slide_left_button_color: #006a82;
-  --homepage_special_listings_container_card_image_slide_right_button_gap: 3px;
-  --homepage_special_listings_container_card_image_slide_right_button_color: #006a82;
+
+  /* general listings */
+  --listings_container_title_bottom_margin: 20px;
+  --listings_container_inner_gap: 15px;
+  --listings_container_gap_between_cards: 10px;
+  --listings_container_card_colors: #006a82;
+  --listings_container_card_height: 315px;
+  --listings_container_card_width: 22%;
+  --listings_container_card_width_1650: 35%;
+  --listings_container_card_width_1600: 30%;
+  --listings_container_card_width_826: 37%;
+  --listings_container_card_width_786: 32%;
+  --listings_container_card_width_700: 45%;
+  --listings_container_card_width_614: 100%;
+  --listings_container_card_padding: 5px;
+  --listings_container_card_gap_between_infos: 7px;
+  --listings_container_card_background: white;
+  --listings_container_card_image_height: 230px;
+  --listings_container_card_image_slide_left_button_gap: 3px;
+  --listings_container_card_image_slide_left_button_color: #006a82;
+  --listings_container_card_image_slide_right_button_gap: 3px;
+  --listings_container_card_image_slide_right_button_color: #006a82;
 
   /* GENERAL FORM */
   --general_form_anim_duration: 1s;
@@ -196,6 +199,14 @@
   --paginate_button_padding_active: 7px;
   --paginate_button_border_width: 2px;
   --paginate_button_border_color: #006a82;
+
+  /* Prices */
+  --table_colors: #006a82;
+  --prices_margin_top: 15px;
+  --prices_cell_padding: 5px;
+  --prices_cell_border_width: 1.5px;
+  --prices_cell_border_color: #006a82;
+  --prices_cell_border_radius: 3px;
 }
 
 html,

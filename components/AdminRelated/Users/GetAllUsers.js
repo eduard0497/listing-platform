@@ -59,9 +59,12 @@ function GetAllUsers() {
       });
   };
 
-  const filterByEmail = (text) => {
-    return allUsers.filter((item) =>
-      item.email.toLowerCase().includes(text.toLowerCase())
+  const generalFilter = (text) => {
+    return allUsers.filter(
+      (item) =>
+        item.email.toLowerCase().includes(text.toLowerCase()) ||
+        item.first_name.toLowerCase().includes(text.toLowerCase()) ||
+        item.last_name.toLowerCase().includes(text.toLowerCase())
     );
   };
 
@@ -73,7 +76,7 @@ function GetAllUsers() {
         </button>
         <input
           type="text"
-          placeholder="Search by email"
+          placeholder="Search..."
           onChange={(e) => setEmailToSearch(e.target.value)}
         />
       </div>
@@ -93,7 +96,7 @@ function GetAllUsers() {
             </tr>
           </thead>
           <tbody>
-            {filterByEmail(emailToSearch).map((user) => (
+            {generalFilter(emailToSearch).map((user) => (
               <tr key={user.user_id} className={styles.table_rows}>
                 <td>{user.user_id}</td>
                 <td>{user.first_name}</td>

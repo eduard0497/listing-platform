@@ -73,115 +73,119 @@ function ApprAndArchivedAds({
   if (!running) {
     return (
       <div className={styles.table_outer_for_scroll}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>User Posted</th>
-              {video ? null : <th>Redirect Link</th>}
-              {video ? <th>Video Link</th> : <th>Image Link</th>}
-              <th>Date Added</th>
-              <th>Expires</th>
-              <th>Control</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ads.map((item) => {
-              return (
-                <tr key={item.id} className={styles.table_rows}>
-                  <td>{item.id}</td>
-                  <td>{item.user_added}</td>
-                  {video ? null : <td>{item.redirect_link}</td>}
-                  <td>
-                    {video ? (
-                      <a href={item.video_link}>Image</a>
-                    ) : (
-                      <a href={item.ad_link}>Image</a>
-                    )}
-                  </td>
-                  <td>{new Date(item.timestamp).toLocaleString()}</td>
-                  <td>{new Date(item.expires).toLocaleString()}</td>
+        {ads.length ? (
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>User Posted</th>
+                {video ? null : <th>Redirect Link</th>}
+                {video ? <th>Video Link</th> : <th>Image Link</th>}
+                <th>Date Added</th>
+                <th>Expires</th>
+                <th>Control</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ads.map((item) => {
+                return (
+                  <tr key={item.id} className={styles.table_rows}>
+                    <td>{item.id}</td>
+                    <td>{item.user_added}</td>
+                    {video ? null : <td>{item.redirect_link}</td>}
+                    <td>
+                      {video ? (
+                        <a href={item.video_link}>Image</a>
+                      ) : (
+                        <a href={item.ad_link}>Image</a>
+                      )}
+                    </td>
+                    <td>{new Date(item.timestamp).toLocaleString()}</td>
+                    <td>{new Date(item.expires).toLocaleString()}</td>
 
-                  {approved && (
-                    <td>
-                      <button
-                        value={item.id}
-                        className={styles.admin_delete_button}
-                        onClick={(e) => archive(e.target.value)}
-                      >
-                        ARCHIVE
-                      </button>
-                    </td>
-                  )}
-                  {archived && (
-                    <td>
-                      <button
-                        value={item.id}
-                        className={styles.admin_delete_button}
-                        onClick={(e) => deleteAd(e.target.value)}
-                      >
-                        DELETE
-                      </button>
-                    </td>
-                  )}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    {approved && (
+                      <td>
+                        <button
+                          value={item.id}
+                          className={styles.admin_delete_button}
+                          onClick={(e) => archive(e.target.value)}
+                        >
+                          ARCHIVE
+                        </button>
+                      </td>
+                    )}
+                    {archived && (
+                      <td>
+                        <button
+                          value={item.id}
+                          className={styles.admin_delete_button}
+                          onClick={(e) => deleteAd(e.target.value)}
+                        >
+                          DELETE
+                        </button>
+                      </td>
+                    )}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : null}
       </div>
     );
   } else {
     return (
       <div className={styles.table_outer_for_scroll}>
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>User Posted</th>
-              <th>Text</th>
-              <th>Date Added</th>
-              <th>Expires</th>
-              <th>Control</th>
-            </tr>
-          </thead>
-          <tbody>
-            {ads.map((item) => {
-              return (
-                <tr key={item.id} className={styles.table_rows}>
-                  <td>{item.id}</td>
-                  <td>{item.user_added}</td>
-                  <td>{item.text}</td>
-                  <td>{new Date(item.timestamp).toLocaleString()}</td>
-                  <td>{new Date(item.expires).toLocaleString()}</td>
+        {ads.length ? (
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>User Posted</th>
+                <th>Text</th>
+                <th>Date Added</th>
+                <th>Expires</th>
+                <th>Control</th>
+              </tr>
+            </thead>
+            <tbody>
+              {ads.map((item) => {
+                return (
+                  <tr key={item.id} className={styles.table_rows}>
+                    <td>{item.id}</td>
+                    <td>{item.user_added}</td>
+                    <td>{item.text}</td>
+                    <td>{new Date(item.timestamp).toLocaleString()}</td>
+                    <td>{new Date(item.expires).toLocaleString()}</td>
 
-                  {approved && (
-                    <td>
-                      <button
-                        value={item.id}
-                        className={styles.admin_delete_button}
-                        onClick={(e) => archive(e.target.value)}
-                      >
-                        ARCHIVE
-                      </button>
-                    </td>
-                  )}
-                  {archived && (
-                    <td>
-                      <button
-                        value={item.id}
-                        className={styles.admin_delete_button}
-                        onClick={(e) => deleteAd(e.target.value)}
-                      >
-                        DELETE
-                      </button>
-                    </td>
-                  )}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                    {approved && (
+                      <td>
+                        <button
+                          value={item.id}
+                          className={styles.admin_delete_button}
+                          onClick={(e) => archive(e.target.value)}
+                        >
+                          ARCHIVE
+                        </button>
+                      </td>
+                    )}
+                    {archived && (
+                      <td>
+                        <button
+                          value={item.id}
+                          className={styles.admin_delete_button}
+                          onClick={(e) => deleteAd(e.target.value)}
+                        >
+                          DELETE
+                        </button>
+                      </td>
+                    )}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        ) : null}
       </div>
     );
   }

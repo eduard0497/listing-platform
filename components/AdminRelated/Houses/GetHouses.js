@@ -18,7 +18,7 @@ function GetHouses() {
   const [showArchivedForSale, setShowArchivedForSale] = useState(false);
   const [showArchivedForRent, setShowArchivedForRent] = useState(false);
 
-  const [searchByUserID, setSearchByUserID] = useState("");
+  const [userIdOrListingID, setUserIdOrListingID] = useState("");
 
   const getAll = () => {
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-get-houses`, {
@@ -66,8 +66,11 @@ function GetHouses() {
   };
 
   const filterAll = (array) => {
-    if (searchByUserID) {
-      return array.filter((item) => item.user_posted == searchByUserID);
+    if (userIdOrListingID) {
+      return array.filter(
+        (item) =>
+          item.user_posted == userIdOrListingID || item.id == userIdOrListingID
+      );
     } else {
       return array;
     }
@@ -81,8 +84,8 @@ function GetHouses() {
         <button onClick={unfoldAll}>UNFOLD ALL</button>
         <input
           type="text"
-          placeholder="Type User ID to filter"
-          onChange={(e) => setSearchByUserID(e.target.value)}
+          placeholder="Type User ID or Listing ID..."
+          onChange={(e) => setUserIdOrListingID(e.target.value)}
         />
       </div>
 

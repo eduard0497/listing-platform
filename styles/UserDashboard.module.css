@@ -27,6 +27,9 @@
 .user_dashboard_container_inner_box > h2 {
   color: var(--user_dashboard_selector_box_title_color);
 }
+.user_dashboard_container_inner_box > h4 {
+  color: var(--user_dashboard_selector_box_title_color);
+}
 
 .user_dashboard_container_inner_box > select {
   padding: var(--user_dashboard_selector_box_select_padding);

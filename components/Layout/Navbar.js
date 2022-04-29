@@ -69,7 +69,7 @@ function Navbar() {
             <a onClick={closeBurger}>buy</a>
           </Link>
           <Link href="/">
-            <a onClick={closeBurger}>sell</a>
+            <a onClick={closeBurger}>rent</a>
           </Link>
           <Link href="/">
             <a onClick={closeBurger}>home made food</a>
