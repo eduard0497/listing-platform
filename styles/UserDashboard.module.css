@@ -73,6 +73,7 @@
   background: var(--general_form_background);
   box-shadow: var(--box_shadow);
   transition: all var(--transition_time) var(--transition_function);
+  overflow: hidden;
 }
 .user_dashboard_container_display_posted_ads_container_cards_card:hover {
   box-shadow: var(--box_shadow_hover);
