@@ -112,34 +112,35 @@
   box-shadow: var(--box_shadow_hover);
 }
 
-.user_dashboard_posted_houses_container {
-  color: var(--user_dashboard_posted_houses_container_color);
+.user_dashboard_table_container {
+  color: var(--user_dashboard_table_container_color);
   padding-bottom: 5px;
 }
 
-.user_dashboard_posted_houses_container_table_outer {
+.user_dashboard_table_container_table_outer {
   overflow-x: scroll;
+  padding-bottom: 20px;
 }
 
-.user_dashboard_posted_houses_container_table {
+.user_dashboard_table_container_table {
   border-radius: var(--border_radius);
-  margin-top: var(--user_dashboard_posted_houses_container_title_table_gap);
+  margin-top: var(--user_dashboard_table_container_title_table_gap);
   text-align: center;
   background: var(--general_form_background);
   box-shadow: var(--box_shadow);
   transition: all var(--transition_time) var(--transition_function);
   padding: 5px;
 }
-.user_dashboard_posted_houses_container_table:hover {
+.user_dashboard_table_container_table:hover {
   box-shadow: var(--box_shadow_hover);
 }
-.user_dashboard_posted_houses_container_table > thead > tr > th {
-  padding: var(--user_dashboard_posted_houses_container_table_item_padding);
+.user_dashboard_table_container_table > thead > tr > th {
+  padding: var(--user_dashboard_table_container_table_item_padding);
 }
-.user_dashboard_posted_houses_container_table > tbody > tr > td {
-  padding: var(--user_dashboard_posted_houses_container_table_item_padding);
-  border: var(--user_dashboard_posted_houses_container_table_item_border_width)
-    solid var(--user_dashboard_posted_houses_container_table_item_border_color);
+.user_dashboard_table_container_table > tbody > tr > td {
+  padding: var(--user_dashboard_table_container_table_item_padding);
+  border: var(--user_dashboard_table_container_table_item_border_width) solid
+    var(--user_dashboard_table_container_table_item_border_color);
 }
 
 @media screen and (max-width: 1200px) {

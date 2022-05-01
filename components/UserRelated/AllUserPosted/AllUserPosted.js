@@ -6,12 +6,7 @@ import styles from "../../../styles/UserDashboard.module.css";
 import styles_loading from "../../../styles/Components/Layout.module.css";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import DisplayPostedHousesForUser from "./DisplayPostedHousesForUser";
-
-// sra mej senc kanem
-// amen mi variable-y map kanem
-// u henc asenq individual listingneri ejy patrast klini
-// stexic linqov ktani ed individual ej
-// arden user-y ira qcacy ktena
+import DisplayPostedJobsForUser from "./DisplayPostedJobsForUser";
 
 function AllUserPosted() {
   const [infoForUser, setInfoForUser] = useState("");
@@ -26,6 +21,9 @@ function AllUserPosted() {
   const [sideAdsPending, setSideAdsPending] = useState([]);
   const [videoAdsPosted, setVideoAdsPosted] = useState([]);
   const [videoAdsPending, setVideoAdsPending] = useState([]);
+  //
+  const [jobsPosted, setJobsPosted] = useState([]);
+  const [jobsPending, setJobsPending] = useState([]);
   //
   const [postedHousesForSale, setPostedHousesForSale] = useState([]);
   const [pendingHousesForSale, setPendingHousesForSale] = useState([]);
@@ -85,6 +83,28 @@ function AllUserPosted() {
           setPendingHousesForRent(data.pendingHousesForRent);
         }
       });
+
+    await fetch(
+      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-get-all-added-jobs`,
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: sessionStorage.getItem("user_id"),
+          access_token: sessionStorage.getItem("access_token"),
+        }),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg) {
+          setInfoForUser(data.msg);
+          setShowInfoForUser(true);
+        } else {
+          setJobsPending(data.userPostedPendingJobs);
+          setJobsPosted(data.userPostedApprovedJobs);
+        }
+      });
     setLoading(false);
   }, []);
 
@@ -136,24 +156,24 @@ function AllUserPosted() {
             data={runningAdsPending}
             title="Pending Running Ads"
           />
-          <div>
-            <DisplayPostedHousesForUser
-              data={postedHousesForSale}
-              title="Posted Houses For Sale"
-            />
-            <DisplayPostedHousesForUser
-              data={pendingHousesForSale}
-              title="Pending Houses For Sale"
-            />
-            <DisplayPostedHousesForUser
-              data={postedHousesForRent}
-              title="Posted Houses For Sale"
-            />
-            <DisplayPostedHousesForUser
-              data={pendingHousesForRent}
-              title="Pending Houses For Rent"
-            />
-          </div>
+          <DisplayPostedHousesForUser
+            data={postedHousesForSale}
+            title="Posted Houses For Sale"
+          />
+          <DisplayPostedHousesForUser
+            data={pendingHousesForSale}
+            title="Pending Houses For Sale"
+          />
+          <DisplayPostedHousesForUser
+            data={postedHousesForRent}
+            title="Posted Houses For Sale"
+          />
+          <DisplayPostedHousesForUser
+            data={pendingHousesForRent}
+            title="Pending Houses For Rent"
+          />
+          <DisplayPostedJobsForUser data={jobsPending} title="Pending Jobs" />
+          <DisplayPostedJobsForUser data={jobsPosted} title="Posted Jobs" />
         </div>
       )}
     </>

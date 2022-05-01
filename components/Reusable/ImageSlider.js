@@ -14,14 +14,18 @@ function ImageSlider({ images }) {
     setCurrent(current === 0 ? images.length - 1 : current - 1);
   };
 
-  return (
-    <>
-      <FaArrowLeft onClick={previousImage} className={styles.button_left} />
-      <FaArrowRight onClick={nextImage} className={styles.button_right} />
+  if (!images) {
+    return <img src="https://via.placeholder.com/400" alt="default" />;
+  } else {
+    return (
+      <>
+        <FaArrowLeft onClick={previousImage} className={styles.button_left} />
+        <FaArrowRight onClick={nextImage} className={styles.button_right} />
 
-      <img src={images[current]} alt="Special" />
-    </>
-  );
+        <img src={images[current]} alt="Special" />
+      </>
+    );
+  }
 }
 
 export default ImageSlider;

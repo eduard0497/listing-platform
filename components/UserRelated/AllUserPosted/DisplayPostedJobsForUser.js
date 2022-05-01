@@ -1,27 +1,30 @@
 import React from "react";
 import styles from "../../../styles/UserDashboard.module.css";
 import { shortenText } from "../../UsefulFunctions/helperFunctions";
-// heto anem -> id-i vra ktcnen tani ed unique ejy
 
-function DisplayPostedHousesForUser({ data, title }) {
+function DisplayPostedJobsForUser({ data, title }) {
   if (!data.length) {
     return null;
   } else {
     return (
       <div className={styles.user_dashboard_table_container}>
         <h1>{title}</h1>
+
         <div className={styles.user_dashboard_table_container_table_outer}>
           <table className={styles.user_dashboard_table_container_table}>
             <thead>
               <tr>
                 <th>Listing ID</th>
                 <th>Title</th>
-                <th>Details</th>
-                <th>Price</th>
-                {data[0].frequency ? <th>Frequency</th> : null}
-                <th>Location</th>
+                <th>Type</th>
+                <th>Overview</th>
+                <th>Requirements</th>
+                <th>Salary</th>
                 <th>Name</th>
+                <th>Email</th>
                 <th>Phone</th>
+                <th>Address</th>
+                <th>City, State ZIP</th>
                 <th>Listing Type</th>
                 <th>Date Posted</th>
                 {data[0].expires ? <th>Expires</th> : null}
@@ -33,16 +36,17 @@ function DisplayPostedHousesForUser({ data, title }) {
                   <tr key={item.id}>
                     <td>{item.id}</td>
                     <td>{shortenText(item.title, 50)}</td>
-                    <td>
-                      <pre>{shortenText(item.details, 20)}</pre>
-                    </td>
-                    <td>${item.price}</td>
-                    {item.frequency ? <td>{item.frequency} </td> : null}
+                    <td>{item.type}</td>
+                    <td>{shortenText(item.overview, 50)}</td>
+                    <td>{shortenText(item.requirements, 50)}</td>
+                    <td>{item.salary}</td>
+                    <td>{item.name}</td>
+                    <td>{item.email}</td>
+                    <td>{item.phone}</td>
+                    <td>{item.address}</td>
                     <td>
                       {item.city}, {item.state} {item.zip}
                     </td>
-                    <td>{item.name}</td>
-                    <td>{item.phone}</td>
                     <td>{item.is_special ? "SPECIAL" : "REGULAR"}</td>
                     <td>{new Date(item.timestamp).toLocaleDateString()}</td>
                     {item.expires ? (
@@ -59,4 +63,4 @@ function DisplayPostedHousesForUser({ data, title }) {
   }
 }
 
-export default DisplayPostedHousesForUser;
+export default DisplayPostedJobsForUser;

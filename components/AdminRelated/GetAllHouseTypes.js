@@ -93,48 +93,50 @@ function GetAllHouseTypes() {
           <button onClick={allowToMakeChanges}>Allow Changes</button>
         </div>
 
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Type</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allTypes.map((item) => (
-              <tr key={item.id} className={styles.table_rows}>
-                <td>{item.id}</td>
-                <td>
-                  <input
-                    type="text"
-                    id={item.id + "_type"}
-                    defaultValue={item.type}
-                    readOnly={allowToChangeInputs}
-                  />
-                </td>
-
-                <td>
-                  <button
-                    value={item.id}
-                    onClick={handleUpdate}
-                    className={styles.admin_update_button}
-                  >
-                    UPDATE
-                  </button>
-                </td>
-                <td>
-                  <button
-                    value={item.id}
-                    onClick={handleDelete}
-                    className={styles.admin_delete_button}
-                  >
-                    DELETE
-                  </button>
-                </td>
+        <div className={styles.table_outer_for_scroll}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {allTypes.map((item) => (
+                <tr key={item.id} className={styles.table_rows}>
+                  <td>{item.id}</td>
+                  <td>
+                    <input
+                      type="text"
+                      id={item.id + "_type"}
+                      defaultValue={item.type}
+                      readOnly={allowToChangeInputs}
+                    />
+                  </td>
+
+                  <td>
+                    <button
+                      value={item.id}
+                      onClick={handleUpdate}
+                      className={styles.admin_update_button}
+                    >
+                      UPDATE
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      value={item.id}
+                      onClick={handleDelete}
+                      className={styles.admin_delete_button}
+                    >
+                      DELETE
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <form

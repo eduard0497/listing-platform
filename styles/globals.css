@@ -37,7 +37,7 @@
 
   /* footer */
   --footer_min_height: 70px;
-  --footer_padding: 15px;
+  --footer_padding: 15px 15px 35px 15px;
   --footer_text_color: #006a82;
   --footer_border_top_width: 3px;
   --footer_border_top_color: #006a82;
@@ -188,11 +188,12 @@
   --user_dashboard_container_display_running_ad_container_ad_padding: 5px;
   --user_dashboard_container_display_running_ad_container_ad_inner_gap: 5px;
   --user_dashboard_container_display_running_ad_container_ad_text_color: #006a82;
-  --user_dashboard_posted_houses_container_color: #006a82;
-  --user_dashboard_posted_houses_container_title_table_gap: 15px;
-  --user_dashboard_posted_houses_container_table_item_padding: 5px;
-  --user_dashboard_posted_houses_container_table_item_border_width: 1px;
-  --user_dashboard_posted_houses_container_table_item_border_color: #006a82;
+
+  --user_dashboard_table_container_color: #006a82;
+  --user_dashboard_table_container_title_table_gap: 15px;
+  --user_dashboard_table_container_table_item_padding: 5px;
+  --user_dashboard_table_container_table_item_border_width: 1px;
+  --user_dashboard_table_container_table_item_border_color: #006a82;
 
   /* REACT PAGINATE */
   --paginate_button_padding: 5px;

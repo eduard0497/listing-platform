@@ -91,53 +91,55 @@ function GetAllJobCategories() {
   return (
     <div className={styles.price_and_categories_container}>
       <div className={styles.categories}>
-        <div  className={styles.admin_links}>
+        <div className={styles.admin_links}>
           <button onClick={getCategoriesInfo}>Get All Categories</button>
           <button onClick={allowToMakeChanges}>Allow Changes</button>
         </div>
 
-        <table className={styles.table}>
-          <thead>
-            <tr>
-              <th>Category ID</th>
-              <th>Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allCategories.map((item) => (
-              <tr key={item.id} className={styles.table_rows}>
-                <td>{item.id}</td>
-                <td>
-                  <input
-                    type="text"
-                    id={item.id + "_name"}
-                    defaultValue={item.name}
-                    readOnly={allowToChangeInputs}
-                  />
-                </td>
-
-                <td>
-                  <button
-                    value={item.id}
-                    onClick={handleUpdate}
-                    className={styles.admin_update_button}
-                  >
-                    UPDATE
-                  </button>
-                </td>
-                <td>
-                  <button
-                    value={item.id}
-                    onClick={handleDelete}
-                    className={styles.admin_delete_button}
-                  >
-                    DELETE
-                  </button>
-                </td>
+        <div className={styles.table_outer_for_scroll}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Category ID</th>
+                <th>Name</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {allCategories.map((item) => (
+                <tr key={item.id} className={styles.table_rows}>
+                  <td>{item.id}</td>
+                  <td>
+                    <input
+                      type="text"
+                      id={item.id + "_name"}
+                      defaultValue={item.name}
+                      readOnly={allowToChangeInputs}
+                    />
+                  </td>
+
+                  <td>
+                    <button
+                      value={item.id}
+                      onClick={handleUpdate}
+                      className={styles.admin_update_button}
+                    >
+                      UPDATE
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      value={item.id}
+                      onClick={handleDelete}
+                      className={styles.admin_delete_button}
+                    >
+                      DELETE
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       <form

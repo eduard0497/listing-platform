@@ -1,38 +1,35 @@
 import React from "react";
 import styles from "../../../styles/AdminDashboard.module.css";
+import { shortenText } from "../../UsefulFunctions/helperFunctions";
 
-function ApprAndArchHouses({
-  listings,
-  sale,
-  rent,
-  approved,
-  archived,
-  getAll,
-}) {
-  //
+function ApprAndArchJobs({ listings, approved, archived, getAll }) {
   const archive = (id) => {
-    if (sale) {
-      customArchive(id, "admin-archive-house-for-sale");
-    } else if (rent) {
-      customArchive(id, "admin-archive-house-for-rent");
-    }
+    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-archive-job`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        admin_id: sessionStorage.getItem("admin_id"),
+        access_token: sessionStorage.getItem("access_token"),
+        //
+        id: id,
+      }),
+    })
+      .then((res) => res.json())
+      .then((info) => {
+        getAll();
+        console.log(info.msg);
+      });
   };
+
   const deleteListing = (id) => {
-    if (sale) {
-      customDeleteListing(id, "admin-delete-house-for-sale");
-    } else if (rent) {
-      customDeleteListing(id, "admin-delete-house-for-rent");
-    }
-  };
-  const customArchive = (listingID, endpoint) => {
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/${endpoint}`, {
+    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-delete-job`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         admin_id: sessionStorage.getItem("admin_id"),
         access_token: sessionStorage.getItem("access_token"),
         //
-        id: listingID,
+        id: id,
       }),
     })
       .then((res) => res.json())
@@ -41,24 +38,6 @@ function ApprAndArchHouses({
         console.log(info.msg);
       });
   };
-  const customDeleteListing = (listingID, endpoint) => {
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/${endpoint}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        admin_id: sessionStorage.getItem("admin_id"),
-        access_token: sessionStorage.getItem("access_token"),
-        //
-        id: listingID,
-      }),
-    })
-      .then((res) => res.json())
-      .then((info) => {
-        getAll();
-        console.log(info.msg);
-      });
-  };
-  //
 
   return (
     <div className={styles.table_outer_for_scroll}>
@@ -69,17 +48,16 @@ function ApprAndArchHouses({
             <tr>
               <th>ID</th>
               <th>User Posted</th>
-              <th>Type</th>
               <th>Title</th>
-              <th>Beds</th>
-              <th>Baths</th>
-              <th>Total Area</th>
-              <th>Price</th>
-              <th>Details</th>
-              <th>Address</th>
+              <th>Type</th>
+              <th>Overview</th>
+              <th>Requirements</th>
+              <th>Salary</th>
               <th>Name</th>
+              <th>Email</th>
               <th>Phone</th>
-              <th>Images</th>
+              <th>Address</th>
+              <th>City, State, ZIP</th>
               <th>Expires</th>
               <th>Control</th>
             </tr>
@@ -90,28 +68,21 @@ function ApprAndArchHouses({
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
                   <td>{item.user_posted}</td>
+                  <td>{shortenText(item.title, 50)}</td>
                   <td>{item.type}</td>
-                  <td>{item.title}</td>
-                  <td>{item.beds}</td>
-                  <td>{item.baths}</td>
-                  <td>{item.total_area}</td>
-                  <td>${item.price}</td>
                   <td>
-                    <pre>{item.details.slice(0, 50)}</pre>
+                    <pre>{shortenText(item.overview, 50)}</pre>
                   </td>
+                  <td>
+                    <pre>{shortenText(item.requirements, 50)}</pre>
+                  </td>
+                  <td>{item.salary}</td>
+                  <td>{item.name}</td>
+                  <td>{item.email}</td>
+                  <td>{item.phone}</td>
+                  <td>{item.address}</td>
                   <td>
                     {item.city}, {item.state} {item.zip}
-                  </td>
-                  <td>{item.name}</td>
-                  <td>{item.phone}</td>
-                  <td>
-                    {item.images.map((image, index) => {
-                      return (
-                        <a key={index} href={image}>
-                          Image{"\n"}
-                        </a>
-                      );
-                    })}
                   </td>
                   <td>{new Date(item.expires).toLocaleDateString()}</td>
                   {approved && (
@@ -148,4 +119,4 @@ function ApprAndArchHouses({
   );
 }
 
-export default ApprAndArchHouses;
+export default ApprAndArchJobs;

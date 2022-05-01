@@ -8,6 +8,7 @@ import PostRunningAd from "../components/UserRelated/PostRunningAd";
 import PostBannerAd from "../components/UserRelated/PostBannerAd";
 import PostSideAd from "../components/UserRelated/PostSmallImageAd";
 import AllUserPosted from "../components/UserRelated/AllUserPosted/AllUserPosted";
+import PostJob from "../components/UserRelated/PostJob";
 // sax optionnery stex petqa avelacnem
 
 function UserDashboard() {
@@ -26,7 +27,6 @@ function UserDashboard() {
     } else {
       setUserExists(true);
     }
-
 
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-get-personal-info`, {
       method: "POST",
@@ -61,7 +61,7 @@ function UserDashboard() {
     <div className={styles.user_dashboard_container}>
       <div className={styles.user_dashboard_container_inner_box}>
         <h4>Welcome {userFName + " " + userLName}!</h4>
-        <h4>Your user ID is {userID}</h4>
+        <h4>Your USER ID is {userID}</h4>
         <h2>Select below</h2>
         <select
           name="userSelection"
@@ -86,12 +86,13 @@ function UserDashboard() {
           <option value="Post Running Sentence Advertisement">
             Post Running Sentence Advertisement
           </option>
-
+          <option value="Post Job Listing">Post Job Listing</option>
           <option value="Post House for Sale">Post House for Sale</option>
           <option value="Post House for Rent">Post House for Rent</option>
         </select>
       </div>
       {picked === "Update Password" ? <UpdatePassword /> : null}
+      {picked === "Post Job Listing" ? <PostJob /> : null}
       {picked === "Post House for Sale" ? <PostHouseForSale /> : null}
       {picked === "Post House for Rent" ? <PostHouseForRent /> : null}
       {picked === "Post Video Advertisement" ? <PostVideoAd /> : null}
