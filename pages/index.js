@@ -8,6 +8,8 @@ export default function Home() {
   const [rentingSpecialHouses, setRentingSpecialHouses] = useState([]);
 
   const [specialJobs, setSpecialJobs] = useState([]);
+  console.log(sellingSpecialHouses);
+  console.log(specialJobs);
 
   useEffect(() => {
     let isMounted = true;
