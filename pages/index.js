@@ -17,16 +17,24 @@ export default function Home() {
     )
       .then((response) => response.json())
       .then((data) => {
-        if (isMounted) {
-          setSellingSpecialHouses(data.specialHousesForSale);
+        if (data.msg) {
+          console.log(data.msg);
+        } else {
+          if (isMounted) {
+            setSellingSpecialHouses(data.specialHousesForSale);
+          }
         }
       });
 
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-jobs?is_special=true`)
       .then((response) => response.json())
       .then((data) => {
-        if (isMounted) {
-          setSpecialJobs(data.specialJobs);
+        if (data.msg) {
+          console.log(data.msg);
+        } else {
+          if (isMounted) {
+            setSpecialJobs(data.specialJobs);
+          }
         }
       });
     return () => {
