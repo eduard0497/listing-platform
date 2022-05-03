@@ -5,6 +5,7 @@ import ImageSlider from "./ImageSlider";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { FaArrowRight, FaArrowLeft, FaCalendarPlus } from "react-icons/fa";
 import { shortenText } from "../UsefulFunctions/helperFunctions";
+import Link from "next/link";
 
 DisplayListings.defaultProps = {
   containerTitle: "Passed Title Here",
@@ -17,6 +18,7 @@ function DisplayListings({
   itemsToDisplay,
   amountOfItemsToDisplay,
   areWithoutImage,
+  linkToPushTo,
 }) {
   const [pageNumber, setPageNumber] = useState(0);
   if (!itemsToDisplay.length) {
@@ -51,7 +53,16 @@ function DisplayListings({
                   key={item.id}
                   className={styles.listings_container_row_cards_card}
                 >
-                  <h3>{shortenText(item.title, 80)}</h3>
+                  <Link href={linkToPushTo + item.id}>
+                    <a
+                      className={
+                        styles.listings_container_cards_container_card_info_title
+                      }
+                    >
+                      {item.title}
+                    </a>
+                  </Link>
+                  {/* <h3>{shortenText(item.title, 80)}</h3> */}
                   <div
                     className={
                       styles.listings_container_row_cards_card_text_box
@@ -129,7 +140,15 @@ function DisplayListings({
                       styles.listings_container_cards_container_card_info
                     }
                   >
-                    <h3>{item.title}</h3>
+                    <Link href={linkToPushTo + item.id}>
+                      <a
+                        className={
+                          styles.listings_container_cards_container_card_info_title
+                        }
+                      >
+                        {item.title}
+                      </a>
+                    </Link>
                     <div
                       className={
                         styles.listings_container_cards_container_card_info_date_location

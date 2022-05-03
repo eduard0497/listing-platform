@@ -224,6 +224,11 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  list-style: none;
+  text-decoration: none;
+}
+
 input::-moz-placeholder {
   color: var(--general_form_box_input_placeholder_color);
   opacity: 1;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import PageHeader from "../components/Reusable/PageHeader";
 import DisplayListings from "../components/Reusable/DisplayListings";
+import { sortArrayInDescendingOrder } from "../components/UsefulFunctions/helperFunctions";
 
 export default function Home() {
   const [sellingSpecialHouses, setSellingSpecialHouses] = useState([]);
@@ -10,29 +11,32 @@ export default function Home() {
   const [specialJobs, setSpecialJobs] = useState([]);
 
   useEffect(() => {
-    // let isMounted = true;
+    let isMounted = true;
     // stex fetcherna arvelu
     fetch(
       `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-houses-for-sale?is_special=true`
     )
       .then((response) => response.json())
       .then((data) => {
-        //   if (isMounted) {
-        //   }
-        setSellingSpecialHouses(data.specialHousesForSale);
+        if (isMounted) {
+          let sortedArray = sortArrayInDescendingOrder(
+            data.specialHousesForSale
+          );
+          setSellingSpecialHouses(sortedArray);
+        }
       });
 
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-jobs?is_special=true`)
       .then((response) => response.json())
       .then((data) => {
-        //   if (isMounted) {
-        //     console.log(data.specialJobs)
-        //   }
-        setSpecialJobs(data.specialJobs);
+        if (isMounted) {
+          let sortedArray = sortArrayInDescendingOrder(data.specialJobs);
+          setSpecialJobs(sortedArray);
+        }
       });
-    // return () => {
-    //   isMounted = false;
-    // };
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
@@ -49,6 +53,7 @@ export default function Home() {
           itemsToDisplay={specialJobs}
           amountOfItemsToDisplay={10}
           areWithoutImage={true}
+          linkToPushTo="/jobs/"
         />
       )}
       {sellingSpecialHouses && (
@@ -56,6 +61,7 @@ export default function Home() {
           containerTitle="Houses for Sale"
           itemsToDisplay={sellingSpecialHouses}
           amountOfItemsToDisplay={10}
+          linkToPushTo="/for-sale/"
         />
       )}
     </div>

@@ -83,6 +83,17 @@
   overflow: hidden;
 }
 
+.listings_container_cards_container_card_info_title {
+  transition: all 0.2s ease-in;
+  font-size: 19px;
+  font-weight: bolder;
+  color: #006a82;
+}
+.listings_container_cards_container_card_info_title:hover {
+  text-decoration: underline;
+  transform: translateY(-2px);
+}
+
 .listings_container_cards_container_card_info_date_location {
   display: flex;
   justify-content: space-between;
