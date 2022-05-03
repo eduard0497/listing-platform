@@ -8,45 +8,35 @@ export default function Home() {
   const [rentingSpecialHouses, setRentingSpecialHouses] = useState([]);
 
   const [specialJobs, setSpecialJobs] = useState([]);
-  console.log(sellingSpecialHouses);
-  console.log(specialJobs);
 
   useEffect(() => {
-    let isMounted = true;
+    // let isMounted = true;
     // stex fetcherna arvelu
     fetch(
       `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-houses-for-sale?is_special=true`
     )
       .then((response) => response.json())
       .then((data) => {
-        if (data.msg) {
-          console.log(data.msg);
-        } else {
-          if (isMounted) {
-            setSellingSpecialHouses(data.specialHousesForSale);
-          }
-        }
+        //   if (isMounted) {
+        //   }
+        setSellingSpecialHouses(data.specialHousesForSale);
       });
 
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-jobs?is_special=true`)
       .then((response) => response.json())
       .then((data) => {
-        if (data.msg) {
-          console.log(data.msg);
-        } else {
-          if (isMounted) {
-            setSpecialJobs(data.specialJobs);
-          }
-        }
+        //   if (isMounted) {
+        //     console.log(data.specialJobs)
+        //   }
+        setSpecialJobs(data.specialJobs);
       });
-    return () => {
-      isMounted = false;
-    };
+    // return () => {
+    //   isMounted = false;
+    // };
   }, []);
 
   return (
     <div className={styles.homepage_container}>
-      {/* to be changed later */}
       <PageHeader
         title="Home Page | Listing Website"
         description="description"
