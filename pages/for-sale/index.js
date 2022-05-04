@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AllListingsGeneral from "../../components/RoutedComponents/AllListingsGeneral";
+import Houses from "../../components/RoutedComponents/Houses";
 import styles from "../../styles/Components/ReusableSubNavigators.module.css";
 
 function GeneralForSale() {
@@ -22,7 +22,7 @@ function GeneralForSale() {
       </div>
       {/*  */}
       {pickedCategory == "houses-for-sale" ? (
-        <AllListingsGeneral
+        <Houses
           title="Houses For Sale"
           amountOfItemsToDisplay={30}
           linkToPushTo="/for-sale/"

@@ -1,14 +1,12 @@
 import React from "react";
-import AllListingsGeneral from "../../components/RoutedComponents/AllListingsGeneral";
+import Jobs from "../../components/RoutedComponents/Jobs";
 
 function GeneralForJobs() {
   return (
-    <AllListingsGeneral
+    <Jobs
       title="Job Listings"
       amountOfItemsToDisplay={30}
       linkToPushTo="/jobs/"
-      jobs={true}
-      areWithoutImage={true}
     />
   );
 }
