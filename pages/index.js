@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import PageHeader from "../components/Reusable/PageHeader";
 import DisplayListings from "../components/Reusable/DisplayListings";
-import { sortArrayInDescendingOrder } from "../components/UsefulFunctions/helperFunctions";
+import {
+  getSpecialHousesForSale,
+  getSpecialJobs,
+} from "../components/UsefulFunctions/webViewFetches";
 
 export default function Home() {
   const [sellingSpecialHouses, setSellingSpecialHouses] = useState([]);
@@ -12,28 +15,17 @@ export default function Home() {
 
   useEffect(() => {
     let isMounted = true;
-    // stex fetcherna arvelu
-    fetch(
-      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-houses-for-sale?is_special=true`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (isMounted) {
-          let sortedArray = sortArrayInDescendingOrder(
-            data.specialHousesForSale
-          );
-          setSellingSpecialHouses(sortedArray);
-        }
-      });
 
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-jobs?is_special=true`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (isMounted) {
-          let sortedArray = sortArrayInDescendingOrder(data.specialJobs);
-          setSpecialJobs(sortedArray);
-        }
-      });
+    (async () => {
+      let returnedSpecialJobs = await getSpecialJobs();
+      let returnedSpecialHousesForSale = await getSpecialHousesForSale();
+
+      if (isMounted) {
+        setSpecialJobs(returnedSpecialJobs);
+        setSellingSpecialHouses(returnedSpecialHousesForSale);
+      }
+    })();
+
     return () => {
       isMounted = false;
     };

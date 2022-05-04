@@ -3,7 +3,13 @@ import styles from "../../styles/Components/DisplayListings.module.css";
 import ReactPaginate from "react-paginate";
 import ImageSlider from "./ImageSlider";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { FaArrowRight, FaArrowLeft, FaCalendarPlus } from "react-icons/fa";
+import {
+  FaArrowRight,
+  FaArrowLeft,
+  FaCalendarPlus,
+  FaBed,
+  FaBath,
+} from "react-icons/fa";
 import { shortenText } from "../UsefulFunctions/helperFunctions";
 import Link from "next/link";
 
@@ -70,9 +76,10 @@ function DisplayListings({
                   >
                     <pre>{shortenText(item.overview, 150)}</pre>
                   </div>
+
                   <div
                     className={
-                      styles.listings_container_cards_container_card_info_date_location
+                      styles.listings_container_cards_container_card_info_seperated
                     }
                   >
                     {item.city ? (
@@ -151,7 +158,25 @@ function DisplayListings({
                     </Link>
                     <div
                       className={
-                        styles.listings_container_cards_container_card_info_date_location
+                        styles.listings_container_cards_container_card_info_seperated
+                      }
+                    >
+                      {item.price && <h5>$ {item.price}</h5>}
+
+                      {item.beds && (
+                        <h5>
+                          <FaBed /> {item.beds}
+                        </h5>
+                      )}
+                      {item.baths && (
+                        <h5>
+                          <FaBath /> {item.baths}
+                        </h5>
+                      )}
+                    </div>
+                    <div
+                      className={
+                        styles.listings_container_cards_container_card_info_seperated
                       }
                     >
                       {item.city ? (

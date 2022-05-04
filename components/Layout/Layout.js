@@ -8,7 +8,7 @@ import ScrollingText from "../ScrollingText";
 import TopAds from "../TopAds";
 import SideAds from "../SideAds";
 import { FaSuitcase } from "react-icons/fa";
-import Link from "next/link";
+import { getAllLiveAds } from "../UsefulFunctions/webViewFetches";
 
 function Layout({ children }) {
   const [loading, setLoading] = useState(false);
@@ -47,26 +47,24 @@ function Layout({ children }) {
   }, [route]);
 
   useEffect(async () => {
+    let isMounted = true;
     setLoading(true);
 
-    await fetch(
-      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-all-ads-for-web-view`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.msg) {
-          console.log(data.msg);
-        } else {
-          setVideo(data.videoAds);
-          setBannerImages(data.bannerAds);
-          setRightImages(data.sideAds);
-          setRunningSentence(data.runningAds);
-        }
-      });
-    setLoading(false);
-  }, []);
+    (async () => {
+      let returnedAds = await getAllLiveAds();
+      if (isMounted) {
+        setVideo(returnedAds.videoAds);
+        setBannerImages(returnedAds.bannerAds);
+        setRightImages(returnedAds.sideAds);
+        setRunningSentence(returnedAds.runningAds);
+      }
+    })();
 
-  const [showBuyLinks, setShowBuyLinks] = useState(false);
+    setLoading(false);
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   //
   return (
@@ -123,8 +121,6 @@ function Layout({ children }) {
 }
 
 export default Layout;
-
-
 
 // es meky nayem!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TOP ADS-um el
 // await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-top-banner-video`)

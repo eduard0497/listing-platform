@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import DisplayListings from "../Reusable/DisplayListings";
 import { connectArraysAndSortInDescending } from "../UsefulFunctions/helperFunctions";
 import styles from "../../styles/Components/ReusableSubNavigators.module.css";
+import {
+  getTypesForHouses,
+  getAllHousesForSale,
+  getTypesForJobs,
+  getAllJobs,
+} from "../UsefulFunctions/webViewFetches";
 
 function AllListingsGeneral({
   title,
@@ -16,76 +22,46 @@ function AllListingsGeneral({
   const [selectedFilter, setSelectedFilter] = useState("");
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
 
-  // all functions predefined
-  const getTypesForHouses = () => {
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-house-types`)
-      .then((response) => response.json())
-      .then((info) => {
-        if (info.msg) {
-          console.log(info.msg);
-        } else {
-          setFilters(info.allHouseTypes);
-        }
-      });
-  };
-
-  const getHousesForSale = () => {
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-houses-for-sale`)
-      .then((response) => response.json())
-      .then((info) => {
-        if (info.msg) {
-          console.log(info.msg);
-        } else {
-          let sortedArray = connectArraysAndSortInDescending(
-            info.specialHousesForSale,
-            info.regularHousesForSale
-          );
-          setItemsToDisplay(sortedArray);
-        }
-      });
-  };
-
-  const getJobTypes = () => {
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-job-categories`)
-      .then((response) => response.json())
-      .then((info) => {
-        if (info.msg) {
-          console.log(info.msg);
-        } else {
-          setFilters(info.allJobCategories);
-        }
-      });
-  };
-
-  const getJobs = () => {
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-jobs`)
-      .then((response) => response.json())
-      .then((info) => {
-        if (info.msg) {
-          console.log(info.msg);
-        } else {
-          let sortedArray = connectArraysAndSortInDescending(
-            info.specialJobs,
-            info.regularJobs
-          );
-          setItemsToDisplay(sortedArray);
-        }
-      });
-  };
-
   useEffect(() => {
+    let isMounted = true;
     setLoading(true);
 
     if (housesForSale) {
-      getTypesForHouses();
-      getHousesForSale();
+      (async () => {
+        let returnedHouseTypes = await getTypesForHouses();
+        let returnedAllHouses = await getAllHousesForSale();
+        if (isMounted) {
+          setFilters(returnedHouseTypes);
+          setItemsToDisplay(returnedAllHouses);
+        }
+      })();
     } else if (jobs) {
-      getJobTypes();
-      getJobs();
+      (async () => {
+        let returnedJobTypes = await getTypesForJobs();
+        let returnedJobs = await getAllJobs();
+        if (isMounted) {
+          setFilters(returnedJobTypes);
+          setItemsToDisplay(returnedJobs);
+        }
+      })();
     }
 
     setLoading(false);
+    return () => {
+      isMounted = false;
+    };
   }, []);
+
+  const [objectToFilterWith, setObjectToFilterWith] = useState({
+    type: "",
+    beds: "",
+    baths: "",
+    price: "",
+    total_area: "",
+    zip: "",
+  });
+
+  console.log(objectToFilterWith);
 
   const customFilter = () => {
     if (!selectedFilter) {
@@ -93,6 +69,13 @@ function AllListingsGeneral({
     } else {
       return itemsToDisplay.filter((item) => item.type == selectedFilter);
     }
+
+    /*
+
+    
+    
+    
+    */
   };
 
   return (
@@ -114,6 +97,22 @@ function AllListingsGeneral({
         </div>
         {loading && <p>Loading...</p>}
       </div>
+
+      <h2>AAAAAA</h2>
+      <input
+        type="text"
+        placeholder="type"
+        onChange={(e) =>
+          setObjectToFilterWith({ ...objectToFilterWith, type: e.target.value })
+        }
+      />
+      <input
+        type="text"
+        placeholder="beds"
+        onChange={(e) =>
+          setObjectToFilterWith({ ...objectToFilterWith, beds: e.target.value })
+        }
+      />
       <DisplayListings
         containerTitle={title}
         itemsToDisplay={customFilter(itemsToDisplay)}
@@ -126,3 +125,15 @@ function AllListingsGeneral({
 }
 
 export default AllListingsGeneral;
+
+/*
+
+replace(/,/g, '');
+if (itemsToDisplay.length != 0) {
+  console.log(itemsToDisplay[0].price.replace(/,/g, ""));
+  console.log(parseFloat(itemsToDisplay[0].price.replace(/,/g, "")));
+  console.log(parseFloat(itemsToDisplay[0].baths.replace(/,/g, "")));
+  console.log(itemsToDisplay);
+}
+
+*/

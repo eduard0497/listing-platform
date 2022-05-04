@@ -94,9 +94,15 @@
   transform: translateY(-2px);
 }
 
-.listings_container_cards_container_card_info_date_location {
+.listings_container_cards_container_card_info_seperated {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.listings_container_cards_container_card_info_seperated > h5 {
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
 .listings_container_pagination {

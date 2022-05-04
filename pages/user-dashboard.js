@@ -62,13 +62,12 @@ function UserDashboard() {
       <div className={styles.user_dashboard_container_inner_box}>
         <h4>Welcome {userFName + " " + userLName}!</h4>
         <h4>Your USER ID is {userID}</h4>
-        <h2>Select below</h2>
         <select
           name="userSelection"
           id="userSelection"
           onChange={(e) => setPicked(e.target.value)}
         >
-          <option value=""></option>
+          <option value="">Select below...</option>
 
           <option value="Update Password">Update Password</option>
           <option value="See all my listings and advertisements">
