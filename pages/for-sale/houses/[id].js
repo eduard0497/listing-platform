@@ -69,7 +69,7 @@ function Listing() {
             <h4>
               <FaDollarSign />
               {listing.price}{" "}
-              {listing.frequency && <>" " + {listing.frequency}</>}
+              {listing.frequency && `${" " + listing.frequency}`}
             </h4>
             <h4>
               <FaChartArea />
@@ -95,7 +95,7 @@ function Listing() {
             <h4>Listing ID: {listing.id}</h4>
             <h4>
               <FaCalendarPlus />
-              { new Date(listing.timestamp).toLocaleDateString() }
+              {new Date(listing.timestamp).toLocaleDateString()}
             </h4>
           </div>
         </div>
