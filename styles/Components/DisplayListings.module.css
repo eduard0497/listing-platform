@@ -63,6 +63,8 @@
   left: var(--listings_container_card_image_slide_left_button_gap);
   transform: translateY(-50%);
   color: var(--listings_container_card_image_slide_left_button_color);
+  cursor: pointer;
+  height: 100%;
 }
 .button_right {
   position: absolute;
@@ -70,6 +72,8 @@
   right: var(--listings_container_card_image_slide_right_button_gap);
   transform: translateY(-50%);
   color: var(--listings_container_card_image_slide_right_button_color);
+  cursor: pointer;
+  height: 100%;
 }
 
 /*  */

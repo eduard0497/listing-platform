@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Home.module.css";
 import PageHeader from "../components/Reusable/PageHeader";
-import DisplayListings from "../components/Reusable/DisplayListings";
+import DisplayHouses from "../components/Reusable/DisplayListings/DisplayHouses";
+import DisplayJobs from "../components/Reusable/DisplayListings/DisplayJobs";
 import {
   getSpecialHousesForSale,
   getSpecialJobs,
@@ -40,20 +41,19 @@ export default function Home() {
         iconLink="/favicon.ico"
       />
       {specialJobs && (
-        <DisplayListings
+        <DisplayJobs
           containerTitle="Boosted Jobs"
           itemsToDisplay={specialJobs}
           amountOfItemsToDisplay={10}
-          areWithoutImage={true}
           linkToPushTo="/jobs/"
         />
       )}
       {sellingSpecialHouses && (
-        <DisplayListings
+        <DisplayHouses
           containerTitle="Houses for Sale"
           itemsToDisplay={sellingSpecialHouses}
           amountOfItemsToDisplay={10}
-          linkToPushTo="/for-sale/"
+          linkToPushTo="/for-sale/houses/"
         />
       )}
     </div>

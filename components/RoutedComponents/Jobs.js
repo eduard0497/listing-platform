@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import DisplayListings from "../Reusable/DisplayListings";
+import DisplayJobs from "../Reusable/DisplayListings/DisplayJobs";
 import styles from "../../styles/Components/ReusableSubNavigators.module.css";
-// import { FaFilter } from "react-icons/fa";
 import { getTypesForJobs, getAllJobs } from "../UsefulFunctions/webViewFetches";
 
-function AllListingsGeneral({ title, amountOfItemsToDisplay, linkToPushTo }) {
+function Jobs({ title, amountOfItemsToDisplay, linkToPushTo }) {
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState([]);
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
@@ -29,9 +28,6 @@ function AllListingsGeneral({ title, amountOfItemsToDisplay, linkToPushTo }) {
   }, []);
 
   const [selectedType, setSelectedType] = useState("");
-  //   const [filterActivated, setFilterActivated] = useState(true);
-  //   const [selectedMinBeds, setSelectedMinBeds] = useState("0");
-  //   const [selectedMaxBeds, setSelectedMaxBeds] = useState("99999999");
 
   const customFilter = () => {
     if (!selectedType) {
@@ -49,12 +45,12 @@ function AllListingsGeneral({ title, amountOfItemsToDisplay, linkToPushTo }) {
           {filters.map((item) => (
             <button
               key={item.id}
-              value={item.type || item.name}
+              value={item.name}
               onClick={(e) => {
                 setSelectedType(e.target.value);
               }}
             >
-              {item.type || item.name}
+              {item.name}
             </button>
           ))}
         </div>
@@ -62,7 +58,7 @@ function AllListingsGeneral({ title, amountOfItemsToDisplay, linkToPushTo }) {
         {loading && <p>Loading...</p>}
       </div>
 
-      <DisplayListings
+      <DisplayJobs
         containerTitle={title}
         itemsToDisplay={customFilter(itemsToDisplay)}
         amountOfItemsToDisplay={amountOfItemsToDisplay}
@@ -73,16 +69,4 @@ function AllListingsGeneral({ title, amountOfItemsToDisplay, linkToPushTo }) {
   );
 }
 
-export default AllListingsGeneral;
-
-/*
-
-replace(/,/g, '');
-if (itemsToDisplay.length != 0) {
-  console.log(itemsToDisplay[0].price.replace(/,/g, ""));
-  console.log(parseFloat(itemsToDisplay[0].price.replace(/,/g, "")));
-  console.log(parseFloat(itemsToDisplay[0].baths.replace(/,/g, "")));
-  console.log(itemsToDisplay);
-}
-
-*/
+export default Jobs;

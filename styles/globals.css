@@ -43,7 +43,7 @@
   --footer_border_top_color: #006a82;
 
   /* children and right ads */
-  --content_and_right_ads_container_margin_top_and_bottom: 50px 0px;
+  --content_and_right_ads_container_margin_top_and_bottom: 50px 0px 200px 0px;
   --content_and_right_ads_container_min_height: 80vh;
   --content_and_right_ads_container_padding: 0px 10px;
   --content_and_right_ads_container_gap: 10px;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DisplayListings from "../Reusable/DisplayListings";
+import DisplayHouses from "../Reusable/DisplayListings/DisplayHouses";
 import styles from "../../styles/Components/ReusableSubNavigators.module.css";
 import { FaFilter } from "react-icons/fa";
 import {
@@ -7,11 +7,14 @@ import {
   getAllHousesForSale,
 } from "../UsefulFunctions/webViewFetches";
 
-function AllListingsGeneral({
+// stegh heto kanem housesForRent-y,,, + webViewFetches-mej el functiony avelacne
+
+function Houses({
   title,
   amountOfItemsToDisplay,
   linkToPushTo,
   housesForSale,
+  housesForRent,
 }) {
   const [loading, setLoading] = useState(false);
   const [filters, setFilters] = useState([]);
@@ -21,16 +24,17 @@ function AllListingsGeneral({
     let isMounted = true;
     setLoading(true);
 
-    if (housesForSale) {
-      (async () => {
-        let returnedHouseTypes = await getTypesForHouses();
-        let returnedAllHouses = await getAllHousesForSale();
-        if (isMounted) {
-          setFilters(returnedHouseTypes);
-          setItemsToDisplay(returnedAllHouses);
-        }
-      })();
-    }
+    (async () => {
+      let returnedHouseTypes = await getTypesForHouses();
+      let returnedAllHouses;
+      if (housesForSale) {
+        returnedAllHouses = await getAllHousesForSale();
+      }
+      if (isMounted) {
+        setFilters(returnedHouseTypes);
+        setItemsToDisplay(returnedAllHouses);
+      }
+    })();
 
     setLoading(false);
     return () => {
@@ -83,12 +87,12 @@ function AllListingsGeneral({
               {filters.map((item) => (
                 <button
                   key={item.id}
-                  value={item.type || item.name}
+                  value={item.type}
                   onClick={(e) => {
                     setSelectedType(e.target.value);
                   }}
                 >
-                  {item.type || item.name}
+                  {item.type}
                 </button>
               ))}
             </div>
@@ -145,7 +149,7 @@ function AllListingsGeneral({
         {loading && <p>Loading...</p>}
       </div>
 
-      <DisplayListings
+      <DisplayHouses
         containerTitle={title}
         itemsToDisplay={customFilter(itemsToDisplay)}
         amountOfItemsToDisplay={amountOfItemsToDisplay}
@@ -155,4 +159,4 @@ function AllListingsGeneral({
   );
 }
 
-export default AllListingsGeneral;
+export default Houses;

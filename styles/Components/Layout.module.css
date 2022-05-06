@@ -176,6 +176,7 @@
 .children_only {
   min-height: var(--children_only_min_height);
   padding: var(--general_content_padding);
+  margin-bottom: 200px;
 }
 
 /* Children and Ads container */
@@ -186,6 +187,7 @@
   justify-content: space-between;
   gap: var(--content_and_right_ads_container_gap);
   margin: var(--content_and_right_ads_container_margin_top_and_bottom);
+
 }
 
 .content_and_ads_container_children {

@@ -24,14 +24,15 @@ function Layout({ children }) {
   //
   useEffect(() => {
     if (
-      route.pathname === "/user-signin" ||
-      route.pathname === "/user-register" ||
-      route.pathname === "/user-dashboard" ||
-      route.pathname === "/admin-login" ||
-      route.pathname === "/admin-register" ||
-      route.pathname === "/forgot-password" ||
-      route.pathname === "/contact-us" ||
-      route.pathname === "/prices"
+      route.pathname == "/user-signin" ||
+      route.pathname == "/user-register" ||
+      route.pathname == "/user-dashboard" ||
+      route.pathname == "/admin-login" ||
+      route.pathname == "/admin-register" ||
+      route.pathname == "/forgot-password" ||
+      route.pathname == "/contact-us" ||
+      route.pathname == "/prices" ||
+      route.pathname.includes("/for-sale/houses/")
     ) {
       setShowContent(false);
     } else {

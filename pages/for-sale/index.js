@@ -25,7 +25,7 @@ function GeneralForSale() {
         <Houses
           title="Houses For Sale"
           amountOfItemsToDisplay={30}
-          linkToPushTo="/for-sale/"
+          linkToPushTo="/for-sale/houses/"
           housesForSale={true}
         />
       ) : null}
