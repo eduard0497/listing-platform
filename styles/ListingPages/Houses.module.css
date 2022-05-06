@@ -16,9 +16,13 @@
   box-shadow: var(--box_shadow_hover);
 }
 
+.container > pre {
+	white-space: normal;
+  }
+
 .row {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 .row > h4 {
@@ -40,9 +44,14 @@
   border-radius: var(--border_radius);
 }
 
-/* @media only screen and (max-width: 535px) {
-	.container_images {
-		width: 100%;
-		height: 60vw;
-	}
-  } */
+
+
+@media only screen and (max-width: 575px) {
+  .container {
+    gap: 15px;
+  }
+  .row {
+		flex-direction: column;
+		gap: 10px;
+	  }
+  }

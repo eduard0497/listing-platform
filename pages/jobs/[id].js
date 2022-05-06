@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../../../styles/ListingPages/Houses.module.css";
-import ImageSlider from "../../../components/Reusable/ImageSlider";
+import styles from "../../styles/ListingPages/Jobs.module.css";
 import { useRouter } from "next/router";
 import {
   FaCalendarPlus,
@@ -11,6 +10,7 @@ import {
   FaMapMarkerAlt,
   FaRegUser,
   FaPhoneAlt,
+  FaEnvelope,
 } from "react-icons/fa";
 
 function Listing() {
@@ -27,7 +27,7 @@ function Listing() {
         return;
       } else {
         fetch(
-          `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-house-for-sale?id=${listingID}`
+          `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-job?id=${listingID}`
         )
           .then((res) => res.json())
           .then((data) => {
@@ -49,53 +49,54 @@ function Listing() {
     <>
       {listing ? (
         <div className={styles.container}>
-          <div className={styles.container_images}>
-            <ImageSlider images={listing.images} />
-          </div>
           <h2>
             {listing.title}
             {" / "}
             {listing.type}
           </h2>
+
           <div className={styles.row}>
             <h4>
-              <FaBed />
-              {listing.beds}
-            </h4>
-            <h4>
-              <FaBath />
-              {listing.baths}
+              <FaMapMarkerAlt />
+              {listing.address && (
+                <>
+                  {" "}
+                  {listing.address}
+                  {","}
+                </>
+              )}{" "}
+              {listing.city}, {listing.state} {listing.zip}
             </h4>
             <h4>
               <FaDollarSign />
-              {listing.price}{" "}
-              {listing.frequency && <>" " + {listing.frequency}</>}
-            </h4>
-            <h4>
-              <FaChartArea />
-              {listing.total_area}
+              {listing.salary}
             </h4>
           </div>
           <div className={styles.row}>
             <h4>
-              <FaMapMarkerAlt />
-              {listing.city}, {listing.state} {listing.zip}
-            </h4>
-            <h4>
               <FaRegUser />
               {listing.name}
+            </h4>
+            <h4>
+              <FaEnvelope />
+              {listing.email}
             </h4>
             <h4>
               <FaPhoneAlt />
               {listing.phone}
             </h4>
           </div>
-          <pre>{listing.details}</pre>
+          {/*  */}
+
+          <pre>{listing.overview}</pre>
+          <pre>{listing.requirements}</pre>
+
+          {/*  */}
           <div className={styles.row}>
             <h4>Listing ID: {listing.id}</h4>
             <h4>
               <FaCalendarPlus />
-              { new Date(listing.timestamp).toLocaleDateString() }
+              {new Date(listing.timestamp).toLocaleDateString()}
             </h4>
           </div>
         </div>

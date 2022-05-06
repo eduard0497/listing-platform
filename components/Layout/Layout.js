@@ -32,7 +32,8 @@ function Layout({ children }) {
       route.pathname == "/forgot-password" ||
       route.pathname == "/contact-us" ||
       route.pathname == "/prices" ||
-      route.pathname.includes("/for-sale/houses/")
+      route.pathname.includes("/for-sale/houses/") ||
+      route.pathname.includes("/jobs/")
     ) {
       setShowContent(false);
     } else {
