@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
-import styles from "../../styles/ListingPages/Jobs.module.css";
-import stylesOne from "../../styles/Components/Layout.module.css";
+import styles from "../../../styles/ListingPages/Houses.module.css";
+import stylesOne from "../../../styles/Components/Layout.module.css";
+import ImageSlider from "../../../components/Reusable/ImageSlider";
 import { useRouter } from "next/router";
 import {
   FaCalendarPlus,
+  FaBed,
+  FaBath,
   FaDollarSign,
+  FaChartArea,
   FaMapMarkerAlt,
   FaRegUser,
   FaPhoneAlt,
-  FaEnvelope,
 } from "react-icons/fa";
 import PropagateLoader from "react-spinners/PropagateLoader";
 
@@ -28,7 +31,7 @@ function Listing() {
         return;
       } else {
         fetch(
-          `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-job?id=${listingID}`
+          `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-house-for-rent?id=${listingID}`
         )
           .then((res) => res.json())
           .then((data) => {
@@ -52,49 +55,48 @@ function Listing() {
     <>
       {listing ? (
         <div className={styles.container}>
+          <div className={styles.container_images}>
+            <ImageSlider images={listing.images} />
+          </div>
           <h2>
             {listing.title}
             {" / "}
             {listing.type}
           </h2>
-
           <div className={styles.row}>
             <h4>
-              <FaMapMarkerAlt />
-              {listing.address && (
-                <>
-                  {" "}
-                  {listing.address}
-                  {","}
-                </>
-              )}{" "}
-              {listing.city}, {listing.state} {listing.zip}
+              <FaBed />
+              {listing.beds}
+            </h4>
+            <h4>
+              <FaBath />
+              {listing.baths}
             </h4>
             <h4>
               <FaDollarSign />
-              {listing.salary}
+              {listing.price}{" "}
+              {listing.frequency && `${" " + listing.frequency}`}
+            </h4>
+            <h4>
+              <FaChartArea />
+              {listing.total_area}
             </h4>
           </div>
           <div className={styles.row}>
             <h4>
-              <FaRegUser />
-              {listing.name}
+              <FaMapMarkerAlt />
+              {listing.city}, {listing.state} {listing.zip}
             </h4>
             <h4>
-              <FaEnvelope />
-              {listing.email}
+              <FaRegUser />
+              {listing.name}
             </h4>
             <h4>
               <FaPhoneAlt />
               {listing.phone}
             </h4>
           </div>
-          {/*  */}
-
-          <pre>{listing.overview}</pre>
-          <pre>{listing.requirements}</pre>
-
-          {/*  */}
+          <pre>{listing.details}</pre>
           <div className={styles.row}>
             <h4>Listing ID: {listing.id}</h4>
             <h4>

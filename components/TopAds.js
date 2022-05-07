@@ -49,7 +49,7 @@ function TopAds({ video, banners }) {
           </>
         ) : (
           // default image banner image 1
-          <img src="https://via.placeholder.com/400" alt="Banner Ad" />
+          <img src="https://sites.imsa.edu/acronym/files/2019/03/advertising-777x437.png" alt="Banner Ad" />
         )}
       </div>
       <div className={styles.top_ads_container_image_two}>
@@ -69,7 +69,7 @@ function TopAds({ video, banners }) {
           </>
         ) : (
           // default image banner image 2
-          <img src="https://via.placeholder.com/400" alt="Banner Ad" />
+          <img src="https://sites.imsa.edu/acronym/files/2019/03/advertising-777x437.png" alt="Banner Ad" />
         )}
       </div>
     </div>

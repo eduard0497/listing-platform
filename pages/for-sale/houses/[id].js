@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../../styles/ListingPages/Houses.module.css";
+import stylesOne from "../../../styles/Components/Layout.module.css";
 import ImageSlider from "../../../components/Reusable/ImageSlider";
 import { useRouter } from "next/router";
 import {
@@ -12,14 +13,17 @@ import {
   FaRegUser,
   FaPhoneAlt,
 } from "react-icons/fa";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 function Listing() {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const listingID = router.query.id;
 
   const [listing, setListing] = useState(null);
 
   useEffect(() => {
+    setLoading(true);
     let isMounted = true;
 
     (async () => {
@@ -39,6 +43,8 @@ function Listing() {
           });
       }
     })();
+
+    setLoading(false);
 
     return () => {
       isMounted = false;
@@ -68,8 +74,7 @@ function Listing() {
             </h4>
             <h4>
               <FaDollarSign />
-              {listing.price}{" "}
-              {listing.frequency && `${" " + listing.frequency}`}
+              {listing.price}
             </h4>
             <h4>
               <FaChartArea />
@@ -100,7 +105,13 @@ function Listing() {
           </div>
         </div>
       ) : (
-        <div>Loading...</div>
+        <div className={stylesOne.layout_loading}>
+          <PropagateLoader
+            color={process.env.NEXT_PUBLIC_CLIP_LOADER_COLOR}
+            loading={loading}
+            size={20}
+          />
+        </div>
       )}
     </>
   );

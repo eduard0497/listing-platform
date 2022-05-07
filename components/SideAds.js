@@ -3,15 +3,15 @@ import React from "react";
 const defaultImages = [
   {
     id: 1,
-    ad_link: "https://via.placeholder.com/300x500",
+    ad_link: "https://sites.imsa.edu/acronym/files/2019/03/advertising-777x437.png",
   },
   {
     id: 2,
-    ad_link: "https://via.placeholder.com/500x200",
+    ad_link: "https://sites.imsa.edu/acronym/files/2019/03/advertising-777x437.png",
   },
   {
     id: 3,
-    ad_link: "https://via.placeholder.com/400",
+    ad_link: "https://sites.imsa.edu/acronym/files/2019/03/advertising-777x437.png",
   },
 ];
 function SideAds({ images }) {

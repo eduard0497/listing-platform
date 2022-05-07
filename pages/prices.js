@@ -1,23 +1,34 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Prices.module.css";
+import PageHeader from "../components/Reusable/PageHeader";
+import { getPrices } from "../components/UsefulFunctions/webViewFetches";
 
 function Prices() {
   const [allPrices, setAllPrices] = useState([]);
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-all-pricing-info`)
-      .then((response) => response.json())
-      .then((info) => {
-        if (info.msg) {
-          console.log(info.msg);
-        } else {
-          setAllPrices(info.allPrices);
-        }
-      });
+    let isMounted = true;
+
+    (async () => {
+      let prices = await getPrices();
+
+      if (isMounted) {
+        setAllPrices(prices);
+      }
+    })();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
-  console.log(allPrices);
 
   return (
     <div className={styles.prices_table_outer}>
+      <PageHeader
+        title="Prices | GorcKa.com"
+        description="Gorc Ka Listing Platform Homepage"
+        content="Home Page For GorcKa.com"
+        iconLink="/favicon.ico"
+      />
       <table className={styles.prices_table}>
         <thead>
           <tr>

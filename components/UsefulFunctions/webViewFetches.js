@@ -3,6 +3,22 @@ import {
   connectArraysAndSortInDescending,
 } from "./helperFunctions";
 
+export async function getPrices() {
+  let arrayToReturn = [];
+
+  await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-all-pricing-info`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.msg) {
+        console.log(data.msg);
+      } else {
+        arrayToReturn = data.allPrices;
+      }
+    });
+
+  return arrayToReturn;
+}
+
 export async function getAllLiveAds() {
   let videoAds = [];
   let bannerAds = [];
@@ -104,6 +120,36 @@ export async function getSpecialHousesForSale() {
     .then((response) => response.json())
     .then((data) => {
       sortedArray = sortArrayInDescendingOrder(data.specialHousesForSale);
+    });
+  return sortedArray;
+}
+
+export async function getAllHousesForRent() {
+  let sortedArray = [];
+
+  await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-houses-for-rent`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.msg) {
+        console.log(data.msg);
+      } else {
+        sortedArray = connectArraysAndSortInDescending(
+          data.specialHousesForRent,
+          data.regularHousesForRent
+        );
+      }
+    });
+  return sortedArray;
+}
+
+export async function getSpecialHousesForRent() {
+  let sortedArray = [];
+  await fetch(
+    `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-houses-for-rent?is_special=true`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      sortedArray = sortArrayInDescendingOrder(data.specialHousesForRent);
     });
   return sortedArray;
 }

@@ -5,6 +5,7 @@ import { FaFilter } from "react-icons/fa";
 import {
   getTypesForHouses,
   getAllHousesForSale,
+  getAllHousesForRent,
 } from "../UsefulFunctions/webViewFetches";
 
 // stegh heto kanem housesForRent-y,,, + webViewFetches-mej el functiony avelacne
@@ -26,10 +27,16 @@ function Houses({
 
     (async () => {
       let returnedHouseTypes = await getTypesForHouses();
-      let returnedAllHouses;
+      let returnedAllHouses = [];
+      if (housesForRent) {
+        console.log("houses for rent: " + housesForRent);
+        returnedAllHouses = await getAllHousesForRent();
+      }
       if (housesForSale) {
+        console.log("houses for sale: " + housesForSale);
         returnedAllHouses = await getAllHousesForSale();
       }
+
       if (isMounted) {
         setFilters(returnedHouseTypes);
         setItemsToDisplay(returnedAllHouses);

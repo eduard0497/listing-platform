@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../../styles/AdminDashboard.module.css";
+import { shortenText } from "../../UsefulFunctions/helperFunctions";
 
 function ApprAndArchHouses({
   listings,
@@ -91,13 +92,13 @@ function ApprAndArchHouses({
                   <td>{item.id}</td>
                   <td>{item.user_posted}</td>
                   <td>{item.type}</td>
-                  <td>{item.title}</td>
+                  <td>{ shortenText(item.title, 30) }</td>
                   <td>{item.beds}</td>
                   <td>{item.baths}</td>
                   <td>{item.total_area}</td>
                   <td>${item.price}</td>
                   <td>
-                    <pre>{item.details.slice(0, 50)}</pre>
+                    <pre>{ shortenText(item.details, 20)}</pre>
                   </td>
                   <td>
                     {item.city}, {item.state} {item.zip}

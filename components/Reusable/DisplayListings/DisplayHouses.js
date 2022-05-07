@@ -73,7 +73,7 @@ function DisplayHouses({
                         styles.listings_container_cards_container_card_info_title
                       }
                     >
-                      {item.title}
+                      {shortenText(item.title, 30)}
                     </a>
                   </Link>
                   <div

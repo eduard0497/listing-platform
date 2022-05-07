@@ -68,7 +68,7 @@ function Navbar() {
           <Link href="/for-sale">
             <a onClick={closeBurger}>buy</a>
           </Link>
-          <Link href="/">
+          <Link href="/for-rent">
             <a onClick={closeBurger}>rent</a>
           </Link>
           {/* <Link href="/">

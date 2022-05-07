@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Components/GeneralForm.module.css";
+import PageHeader from "../components/Reusable/PageHeader";
 import RingLoader from "react-spinners/RingLoader";
 import Popup from "../components/Reusable/Popup";
 
@@ -55,6 +56,12 @@ function ContactUs() {
 
   return (
     <div className={styles.form_parent_container}>
+      <PageHeader
+        title="Contact Us | GorcKa.com"
+        description="Gorc Ka Listing Platform Homepage"
+        content="Home Page For GorcKa.com"
+        iconLink="/favicon.ico"
+      />
       <Popup
         infoForUser={infoForUser}
         showInfoForUser={showInfoForUser}
