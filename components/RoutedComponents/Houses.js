@@ -29,11 +29,9 @@ function Houses({
       let returnedHouseTypes = await getTypesForHouses();
       let returnedAllHouses = [];
       if (housesForRent) {
-        console.log("houses for rent: " + housesForRent);
         returnedAllHouses = await getAllHousesForRent();
       }
       if (housesForSale) {
-        console.log("houses for sale: " + housesForSale);
         returnedAllHouses = await getAllHousesForSale();
       }
 

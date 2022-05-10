@@ -55,18 +55,18 @@
 }
 
 .navbar_links {
-  flex: 0.87;
+  flex: 0.80;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 30px;
 }
 
 .navbar_links_active {
-  flex: 0.87;
+  flex: 0.80;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 30px;
 }
 

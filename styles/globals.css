@@ -214,6 +214,7 @@ html,
 body {
   overflow-x: hidden;
   background-color: var(--web_background-color);
+  scroll-behavior: smooth;
 }
 
 * {

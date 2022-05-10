@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styles from "../../styles/Components/GeneralForm.module.css";
 import RingLoader from "react-spinners/RingLoader";
 import Popup from "../Reusable/Popup";
+import { getTypesForJobs } from "../UsefulFunctions/webViewFetches";
 
 const defaultState = {
   title: "",
@@ -29,15 +30,14 @@ function PostJob() {
 
   useEffect(() => {
     let isMounted = true;
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-job-categories`)
-      .then((response) => response.json())
-      .then((info) => {
-        if (info.msg) {
-          console.log(info.msg);
-        } else {
-          setJobTypes(info.allJobCategories);
-        }
-      });
+
+    (async () => {
+      let returnedTypes = await getTypesForJobs();
+      if (isMounted) {
+        setJobTypes(returnedTypes);
+      }
+    })();
+
     return () => {
       isMounted = false;
     };
@@ -50,7 +50,9 @@ function PostJob() {
       !data.city.length ||
       !data.state.length ||
       !data.zip.length ||
-      !data.name.length
+      !data.name.length ||
+      !data.phone.length ||
+      !data.is_special
     ) {
       setInfoForUser("Please fill out the form properly");
       setShowInfoForUser(true);
@@ -208,7 +210,7 @@ function PostJob() {
             onChange={(e) => customOnChange("is_special", e.target.value)}
             value={data.is_special}
           >
-            <option value="">Choose Listing Option</option>
+            <option value="">Choose Listing Option*</option>
             <option value={true}>SPECIAL</option>
             <option value={false}>Regular</option>
           </select>

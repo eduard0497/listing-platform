@@ -3,6 +3,7 @@ import styles from "../../styles/Components/GeneralForm.module.css";
 import RingLoader from "react-spinners/RingLoader";
 import Popup from "../Reusable/Popup";
 import { BsUpload } from "react-icons/bs";
+import { getTypesForHouses } from "../UsefulFunctions/webViewFetches";
 
 //
 const defaultState = {
@@ -31,15 +32,14 @@ function PostHouseForSale() {
 
   useEffect(() => {
     let isMounted = true;
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-house-types`)
-      .then((response) => response.json())
-      .then((info) => {
-        if (info.msg) {
-          console.log(info.msg);
-        } else if (isMounted) {
-          setHouseTypes(info.allHouseTypes);
-        }
-      });
+
+    (async () => {
+      let returnedTypes = await getTypesForHouses();
+      if (isMounted) {
+        setHouseTypes(returnedTypes);
+      }
+    })();
+
     return () => {
       isMounted = false;
     };
@@ -53,8 +53,9 @@ function PostHouseForSale() {
       !data.state.length ||
       !data.zip.length ||
       !data.name.length ||
+      !data.phone.length ||
       !data.images.length ||
-      !data.phone.length
+      !data.is_special
     ) {
       setInfoForUser("Please fill out the form properly");
       setShowInfoForUser(true);
@@ -129,7 +130,6 @@ function PostHouseForSale() {
       <div className={styles.form_box}>
         <h1>Post House for Sale</h1>
         <div className={styles.form_box_fields}>
-          {/*  */}
           <input
             onChange={(e) =>
               setData((prevState) => ({
@@ -138,9 +138,10 @@ function PostHouseForSale() {
               }))
             }
             type="text"
-            placeholder="Title"
+            placeholder="Title*"
             value={data.title}
           />
+          
           <select
             name="houseType"
             id="houseType"
@@ -152,7 +153,7 @@ function PostHouseForSale() {
             }
             value={data.type}
           >
-            <option value="">Select House Type</option>
+            <option value="">Select House Type*</option>
             {houseTypes.map((type) => (
               <option key={type.id} value={type.type}>
                 {type.type}
@@ -223,7 +224,7 @@ function PostHouseForSale() {
               }))
             }
             type="text"
-            placeholder="City"
+            placeholder="City*"
             value={data.city}
           />
           <input
@@ -234,7 +235,7 @@ function PostHouseForSale() {
               }))
             }
             type="text"
-            placeholder="State"
+            placeholder="State*"
             value={data.state}
           />
           <input
@@ -245,7 +246,7 @@ function PostHouseForSale() {
               }))
             }
             type="text"
-            placeholder="Zip"
+            placeholder="Zip*"
             value={data.zip}
           />
           <input
@@ -256,7 +257,7 @@ function PostHouseForSale() {
               }))
             }
             type="text"
-            placeholder="Contact Name"
+            placeholder="Contact Name*"
             value={data.name}
           />
           <input
@@ -267,14 +268,14 @@ function PostHouseForSale() {
               }))
             }
             type="text"
-            placeholder="Contact Phone"
+            placeholder="Contact Phone*"
             value={data.phone}
           />
 
           <div className={styles.image_upload_container}>
             <label htmlFor="images" className="logo_and_text_together">
               <BsUpload />{" "}
-              {`Upload up to ${process.env.NEXT_PUBLIC_MAX_ALLOWED_IMAGES_FOR_HOUSE_SELLING} images`}
+              {`Upload up to ${process.env.NEXT_PUBLIC_MAX_ALLOWED_IMAGES_FOR_HOUSE_SELLING} images*`}
             </label>
             {data.images.length != 0 ? (
               <h5>
@@ -311,7 +312,7 @@ function PostHouseForSale() {
             }
             value={data.is_special}
           >
-            <option value="">Choose Listing Option</option>
+            <option value="">Choose Listing Option*</option>
             <option value={true}>SPECIAL</option>
             <option value={false}>Regular</option>
           </select>

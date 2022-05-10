@@ -3,56 +3,51 @@ import styles from "../../styles/Components/GeneralForm.module.css";
 import RingLoader from "react-spinners/RingLoader";
 import Popup from "../Reusable/Popup";
 import { BsUpload } from "react-icons/bs";
-import { getTypesForHouses } from "../UsefulFunctions/webViewFetches";
+import {
+  vehicleMakes,
+  vehicleTypes,
+  vehicleTransmissions,
+} from "../UsefulFunctions/vehiclesInfo";
 
 const defaultState = {
   title: "",
   type: "",
-  beds: "",
-  baths: "",
-  total_area: "",
+  make: "",
+  model: "",
+  year: "",
+  color: "",
+  transmission: "",
+  milage: "",
   price: "",
-  frequency: "",
   details: ``,
+  name: "",
+  phone: "",
   city: "",
   state: "",
   zip: "",
-  name: "",
-  phone: "",
   images: [],
   is_special: "",
 };
 
-function PostHouseForRent() {
+function PostVehicleForSale() {
   const [data, setData] = useState(defaultState);
   const [loading, setLoading] = useState(false);
   const [infoForUser, setInfoForUser] = useState("");
   const [showInfoForUser, setShowInfoForUser] = useState(false);
-  const [houseTypes, setHouseTypes] = useState([]);
-
-  useEffect(() => {
-    let isMounted = true;
-    (async () => {
-      let returnedTypes = await getTypesForHouses();
-      if (isMounted) {
-        setHouseTypes(returnedTypes);
-      }
-    })();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   const checkSubmission = () => {
     if (
       !data.title.length ||
       !data.type.length ||
+      !data.make.length ||
+      !data.model.length ||
+      !data.year.length ||
+      !data.name.length ||
+      !data.phone.length ||
       !data.city.length ||
       !data.state.length ||
       !data.zip.length ||
-      !data.name.length ||
       !data.images.length ||
-      !data.phone.length ||
       !data.is_special
     ) {
       setInfoForUser("Please fill out the form properly");
@@ -63,7 +58,9 @@ function PostHouseForRent() {
     }
   };
 
-  const handlePostHouseForRent = async () => {
+  //
+
+  const handlePostVehicleForSale = async () => {
     if (!checkSubmission()) {
       return;
     }
@@ -83,7 +80,7 @@ function PostHouseForRent() {
         .then((data) => cloudinaryLinks.push(data.secure_url));
     }
     await fetch(
-      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-post-house-for-rent`,
+      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-post-vehicle-for-sale`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -92,17 +89,19 @@ function PostHouseForRent() {
           access_token: sessionStorage.getItem("access_token"),
           title: data.title,
           type: data.type,
-          beds: data.beds,
-          baths: data.baths,
-          total_area: data.total_area,
+          make: data.make,
+          model: data.model,
+          year: data.year,
+          color: data.color,
+          transmission: data.transmission,
+          milage: data.milage,
           price: data.price,
-          frequency: data.frequency,
           details: data.details,
+          name: data.name,
+          phone: data.phone,
           city: data.city,
           state: data.state,
           zip: data.zip,
-          name: data.name,
-          phone: data.phone,
           images: cloudinaryLinks,
           is_special: data.is_special,
         }),
@@ -118,6 +117,15 @@ function PostHouseForRent() {
     setLoading(false);
   };
 
+  //
+
+  const customOnChange = (itemToChange, e) => {
+    setData((prevState) => ({
+      ...prevState,
+      [itemToChange]: e.target.value,
+    }));
+  };
+
   return (
     <div className={styles.form_parent_container}>
       <Popup
@@ -125,166 +133,122 @@ function PostHouseForRent() {
         showInfoForUser={showInfoForUser}
         setShowInfoForUser={setShowInfoForUser}
       />
+
       <div className={styles.form_box}>
-        <h1>Post House for Sale</h1>
+        <h1>Post Vehicle for Sale</h1>
+
         <div className={styles.form_box_fields}>
-          {/*  */}
           <input
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                title: e.target.value,
-              }))
-            }
+            onChange={(e) => customOnChange("title", e)}
             type="text"
             placeholder="Title*"
             value={data.title}
           />
           <select
-            name="houseType"
-            id="houseType"
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                type: e.target.value,
-              }))
-            }
+            name="vehicleTypes"
+            id="vehicleTypes"
+            onChange={(e) => customOnChange("type", e)}
             value={data.type}
           >
-            <option value="">Select House Type*</option>
-            {houseTypes.map((type) => (
-              <option key={type.id} value={type.type}>
-                {type.type}
+            <option value="">Vehicle Type*</option>
+            {vehicleTypes.map((type, i) => (
+              <option key={i} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
+          <select
+            name="vehicleMakes"
+            id="vehicleMakes"
+            onChange={(e) => customOnChange("make", e)}
+            value={data.make}
+          >
+            <option value="">Vehicle Make*</option>
+            {vehicleMakes.map((make, i) => (
+              <option key={i} value={make}>
+                {make}
               </option>
             ))}
           </select>
           <input
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                beds: e.target.value,
-              }))
-            }
+            onChange={(e) => customOnChange("model", e)}
             type="text"
-            placeholder="Beds"
-            value={data.beds}
+            placeholder="Model*"
+            value={data.model}
           />
           <input
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                baths: e.target.value,
-              }))
-            }
+            onChange={(e) => customOnChange("year", e)}
             type="text"
-            placeholder="Baths"
-            value={data.baths}
+            placeholder="Year*"
+            value={data.year}
           />
           <input
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                total_area: e.target.value,
-              }))
-            }
+            onChange={(e) => customOnChange("color", e)}
             type="text"
-            placeholder="Total Area (sqft)"
-            value={data.total_area}
+            placeholder="Color"
+            value={data.color}
+          />
+          <select
+            name="vehicleTransmissions"
+            id="vehicleTransmissions"
+            onChange={(e) => customOnChange("make", e)}
+            value={data.make}
+          >
+            <option value="">Vehicle Transmission*</option>
+            {vehicleTransmissions.map((transmission, i) => (
+              <option key={i} value={transmission}>
+                {transmission}
+              </option>
+            ))}
+          </select>
+          <input
+            onChange={(e) => customOnChange("milage", e)}
+            type="text"
+            placeholder="Milage"
+            value={data.milage}
           />
           <input
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                price: e.target.value,
-              }))
-            }
+            onChange={(e) => customOnChange("price", e)}
             type="text"
             placeholder="Price"
             value={data.price}
           />
-          <select
-            name="frequency"
-            id="frequency"
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                frequency: e.target.value,
-              }))
-            }
-            value={data.frequency}
-          >
-            <option value="">Choose Frequency</option>
-            <option value="Daily">Daily</option>
-            <option value="Weekly">Weekly</option>
-            <option value="Monthly">Monthly</option>
-            <option value="Yearly">Yearly</option>
-          </select>
           <textarea
             cols="30"
             rows="10"
             placeholder="Details"
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                details: e.target.value,
-              }))
-            }
+            onChange={(e) => customOnChange("details", e)}
             value={data.details}
           ></textarea>
           <input
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                city: e.target.value,
-              }))
-            }
-            type="text"
-            placeholder="City*"
-            value={data.city}
-          />
-          <input
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                state: e.target.value,
-              }))
-            }
-            type="text"
-            placeholder="State*"
-            value={data.state}
-          />
-          <input
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                zip: e.target.value,
-              }))
-            }
-            type="text"
-            placeholder="Zip*"
-            value={data.zip}
-          />
-          <input
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                name: e.target.value,
-              }))
-            }
+            onChange={(e) => customOnChange("name", e)}
             type="text"
             placeholder="Contact Name*"
             value={data.name}
           />
           <input
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                phone: e.target.value,
-              }))
-            }
+            onChange={(e) => customOnChange("phone", e)}
             type="text"
             placeholder="Contact Phone*"
             value={data.phone}
+          />
+          <input
+            onChange={(e) => customOnChange("city", e)}
+            type="text"
+            placeholder="City*"
+            value={data.city}
+          />
+          <input
+            onChange={(e) => customOnChange("state", e)}
+            type="text"
+            placeholder="State*"
+            value={data.state}
+          />
+          <input
+            onChange={(e) => customOnChange("zip", e)}
+            type="text"
+            placeholder="Zip*"
+            value={data.zip}
           />
 
           <div className={styles.image_upload_container}>
@@ -319,12 +283,7 @@ function PostHouseForRent() {
           <select
             name="listingType"
             id="listingType"
-            onChange={(e) =>
-              setData((prevState) => ({
-                ...prevState,
-                is_special: e.target.value,
-              }))
-            }
+            onChange={(e) => customOnChange("is_special", e)}
             value={data.is_special}
           >
             <option value="">Choose Listing Option*</option>
@@ -332,7 +291,6 @@ function PostHouseForRent() {
             <option value={false}>Regular</option>
           </select>
         </div>
-
         <div className={styles.form_box_control_buttons}>
           <button
             className={styles.general_form_clear_button}
@@ -352,7 +310,7 @@ function PostHouseForRent() {
           ) : (
             <button
               className={styles.general_form_submit_button}
-              onClick={handlePostHouseForRent}
+              onClick={handlePostVehicleForSale}
             >
               SUBMIT
             </button>
@@ -363,4 +321,4 @@ function PostHouseForRent() {
   );
 }
 
-export default PostHouseForRent;
+export default PostVehicleForSale;

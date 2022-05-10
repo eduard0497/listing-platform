@@ -8,6 +8,7 @@ import {
   getSpecialHousesForSale,
   getSpecialHousesForRent,
 } from "../components/UsefulFunctions/webViewFetches";
+import Link from "next/link";
 
 export default function Home() {
   const [sellingSpecialHouses, setSellingSpecialHouses] = useState([]);

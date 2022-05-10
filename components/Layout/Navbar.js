@@ -62,18 +62,15 @@ function Navbar() {
         }
       >
         <div className={styles.navbar_links_container}>
-          <Link href="/jobs">
+          <Link href="/jobs#scrollTo">
             <a onClick={closeBurger}>jobs</a>
           </Link>
-          <Link href="/for-sale">
+          <Link href="/for-sale#scrollTo">
             <a onClick={closeBurger}>buy</a>
           </Link>
-          <Link href="/for-rent">
+          <Link href="/for-rent#scrollTo">
             <a onClick={closeBurger}>rent</a>
           </Link>
-          {/* <Link href="/">
-            <a onClick={closeBurger}>home made food</a>
-          </Link> */}
         </div>
         {userLoggedIn ? (
           <div className={styles.navbar_links_container}>

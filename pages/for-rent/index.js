@@ -14,7 +14,7 @@ function GeneralForRent() {
         content="Home Page For GorcKa.com"
         iconLink="/favicon.ico"
       />
-      <div className={styles.sublinks_container}>
+      <div id="scrollTo" className={styles.sublinks_container}>
         <div className={styles.sublinks_container_navigators}>
           <button onClick={() => setPickedCategory("houses-for-rent")}>
             Houses

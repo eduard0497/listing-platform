@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PageHeader from "../../components/Reusable/PageHeader";
 import Houses from "../../components/RoutedComponents/Houses";
 import styles from "../../styles/Components/ReusableSubNavigators.module.css";
 
 function GeneralForSale() {
   const [pickedCategory, setPickedCategory] = useState("");
+
+  // useEffect(() => {
+
+  // }, [])
 
   return (
     <div>
@@ -14,7 +18,7 @@ function GeneralForSale() {
         content="Home Page For GorcKa.com"
         iconLink="/favicon.ico"
       />
-      <div className={styles.sublinks_container}>
+      <div id="scrollTo" className={styles.sublinks_container}>
         <div className={styles.sublinks_container_navigators}>
           <button onClick={() => setPickedCategory("houses-for-sale")}>
             Houses
