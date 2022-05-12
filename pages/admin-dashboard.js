@@ -5,6 +5,7 @@ import GetAllUsers from "../components/AdminRelated/Users/GetAllUsers";
 import GetAllPrices from "../components/AdminRelated/GetAllPrices";
 import GetAllJobCategories from "../components/AdminRelated/GetAllJobCategories";
 import GetHouses from "../components/AdminRelated/Houses/GetHouses";
+import GetVehicles from "../components/AdminRelated/Vehicles/GetVehicles";
 import GetAds from "../components/AdminRelated/Ads/GetAds";
 import SearchUserByID from "../components/AdminRelated/Users/SearchUserByID";
 import GetAllHouseTypes from "../components/AdminRelated/GetAllHouseTypes";
@@ -46,6 +47,9 @@ function AdminDashboard() {
         <button onClick={(e) => setWhatToShow("all ads")}>All Ads</button>
         <button onClick={(e) => setWhatToShow("all jobs")}>All Jobs</button>
         <button onClick={(e) => setWhatToShow("all houses")}>All Houses</button>
+        <button onClick={(e) => setWhatToShow("all vehicles")}>
+          All Vehicles
+        </button>
       </div>
       <div className={styles.admin_dashboard_content}>
         {whatToShow === "all users" ? <GetAllUsers /> : null}
@@ -55,6 +59,7 @@ function AdminDashboard() {
         {whatToShow === "all ads" ? <GetAds /> : null}
         {whatToShow === "all jobs" ? <GetJobs /> : null}
         {whatToShow === "all houses" ? <GetHouses /> : null}
+        {whatToShow === "all vehicles" ? <GetVehicles /> : null}
       </div>
     </div>
   );

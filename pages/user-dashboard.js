@@ -10,6 +10,7 @@ import PostSideAd from "../components/UserRelated/PostSmallImageAd";
 import AllUserPosted from "../components/UserRelated/AllUserPosted/AllUserPosted";
 import PostJob from "../components/UserRelated/PostJob";
 import PostVehicleForSale from "../components/UserRelated/PostVehicleForSale";
+import PostVehicleForRent from "../components/UserRelated/PostVehicleForRent";
 // sax optionnery stex petqa avelacnem
 
 function UserDashboard() {
@@ -90,6 +91,7 @@ function UserDashboard() {
           <option value="Post House for Sale">Post House for Sale</option>
           <option value="Post House for Rent">Post House for Rent</option>
           <option value="Post Vehicle for Sale">Post Vehicle for Sale</option>
+          <option value="Post Vehicle for Rent">Post Vehicle for Rent</option>
         </select>
       </div>
       {picked === "Update Password" ? <UpdatePassword /> : null}
@@ -97,6 +99,7 @@ function UserDashboard() {
       {picked === "Post House for Sale" ? <PostHouseForSale /> : null}
       {picked === "Post House for Rent" ? <PostHouseForRent /> : null}
       {picked === "Post Vehicle for Sale" ? <PostVehicleForSale /> : null}
+      {picked === "Post Vehicle for Rent" ? <PostVehicleForRent /> : null}
       {picked === "Post Video Advertisement" ? <PostVideoAd /> : null}
       {picked === "Post Running Sentence Advertisement" ? (
         <PostRunningAd />

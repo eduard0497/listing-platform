@@ -7,6 +7,7 @@ import styles_loading from "../../../styles/Components/Layout.module.css";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import DisplayPostedHousesForUser from "./DisplayPostedHousesForUser";
 import DisplayPostedJobsForUser from "./DisplayPostedJobsForUser";
+import DisplayPostedVehiclesForUser from "./DisplayPostedVehiclesForUser";
 
 function AllUserPosted() {
   const [infoForUser, setInfoForUser] = useState("");
@@ -29,6 +30,11 @@ function AllUserPosted() {
   const [pendingHousesForSale, setPendingHousesForSale] = useState([]);
   const [postedHousesForRent, setPostedHousesForRent] = useState([]);
   const [pendingHousesForRent, setPendingHousesForRent] = useState([]);
+  //
+  const [postedVehiclesForSale, setPostedVehiclesForSale] = useState([]);
+  const [pendingVehiclesForSale, setPendingVehiclesForSale] = useState([]);
+  const [postedVehiclesForRent, setPostedVehiclesForRent] = useState([]);
+  const [pendingVehiclesForRent, setPendingVehiclesForRent] = useState([]);
   //
 
   useEffect(async () => {
@@ -81,6 +87,30 @@ function AllUserPosted() {
           setPendingHousesForSale(data.pendingHousesForSale);
           setPostedHousesForRent(data.postedHousesForRent);
           setPendingHousesForRent(data.pendingHousesForRent);
+        }
+      });
+
+    await fetch(
+      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-get-all-posted-or-pending-vehicles`,
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: sessionStorage.getItem("user_id"),
+          access_token: sessionStorage.getItem("access_token"),
+        }),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg) {
+          setInfoForUser(data.msg);
+          setShowInfoForUser(true);
+        } else {
+          setPostedVehiclesForSale(data.postedVehiclesForSale);
+          setPendingVehiclesForSale(data.pendingVehiclesForSale);
+          setPostedVehiclesForRent(data.postedVehiclesForRent);
+          setPendingVehiclesForRent(data.pendingVehiclesForRent);
         }
       });
 
@@ -172,6 +202,15 @@ function AllUserPosted() {
             data={pendingHousesForRent}
             title="Pending Houses For Rent"
           />
+          <DisplayPostedVehiclesForUser
+            data={pendingVehiclesForSale}
+            title="Pending Vehicles For Sale"
+          />
+          <DisplayPostedVehiclesForUser
+            data={pendingVehiclesForRent}
+            title="Pending Vehicles For Rent"
+          />
+
           <DisplayPostedJobsForUser data={jobsPending} title="Pending Jobs" />
           <DisplayPostedJobsForUser data={jobsPosted} title="Posted Jobs" />
         </div>

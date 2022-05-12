@@ -19,6 +19,7 @@ const defaultState = {
   transmission: "",
   mileage: "",
   price: "",
+  frequency: "",
   details: ``,
   name: "",
   phone: "",
@@ -29,7 +30,7 @@ const defaultState = {
   is_special: "",
 };
 
-function PostVehicleForSale() {
+function PostVehicleForRent() {
   const [data, setData] = useState(defaultState);
   const [loading, setLoading] = useState(false);
   const [infoForUser, setInfoForUser] = useState("");
@@ -96,6 +97,7 @@ function PostVehicleForSale() {
           transmission: data.transmission,
           mileage: data.mileage,
           price: data.price,
+          frequency: data.frequency,
           details: data.details,
           name: data.name,
           phone: data.phone,
@@ -213,6 +215,23 @@ function PostVehicleForSale() {
             placeholder="Price"
             value={data.price}
           />
+          <select
+            name="frequency"
+            id="frequency"
+            onChange={(e) =>
+              setData((prevState) => ({
+                ...prevState,
+                frequency: e.target.value,
+              }))
+            }
+            value={data.frequency}
+          >
+            <option value="">Choose Frequency</option>
+            <option value="Daily">Daily</option>
+            <option value="Weekly">Weekly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Yearly">Yearly</option>
+          </select>
           <textarea
             cols="30"
             rows="10"
@@ -321,4 +340,4 @@ function PostVehicleForSale() {
   );
 }
 
-export default PostVehicleForSale;
+export default PostVehicleForRent;
