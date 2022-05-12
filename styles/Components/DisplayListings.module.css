@@ -149,6 +149,16 @@
     width: var(--listings_container_card_width_1600);
   }
 }
+@media only screen and (max-width: 1522px) {
+  .listings_container_cards_container_card {
+    width: 30%;
+  }
+}
+@media only screen and (max-width: 1106px) {
+  .listings_container_cards_container_card {
+    width: 35%;
+  }
+}
 @media only screen and (max-width: 826px) {
   .listings_container_cards_container_card {
     width: var(--listings_container_card_width_826);
