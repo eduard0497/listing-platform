@@ -34,7 +34,9 @@ function Layout({ children }) {
       route.pathname == "/prices" ||
       route.pathname.includes("/jobs/") ||
       route.pathname.includes("/for-sale/houses/") ||
-      route.pathname.includes("/for-rent/houses/")
+      route.pathname.includes("/for-rent/houses/") ||
+      route.pathname.includes("/for-sale/vehicles/") ||
+      route.pathname.includes("/for-rent/vehicles/")
     ) {
       setShowContent(false);
     } else {

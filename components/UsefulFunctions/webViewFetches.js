@@ -153,3 +153,65 @@ export async function getSpecialHousesForRent() {
     });
   return sortedArray;
 }
+
+//
+
+export async function getAllVehiclesForSale() {
+  let sortedArray = [];
+
+  await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-vehicles-for-sale`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.msg) {
+        console.log(data.msg);
+      } else {
+        sortedArray = connectArraysAndSortInDescending(
+          data.specialVehiclesForSale,
+          data.regularVehiclesForSale
+        );
+      }
+    });
+  return sortedArray;
+}
+
+export async function getSpecialVehiclesForSale() {
+  let sortedArray = [];
+  await fetch(
+    `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-vehicles-for-sale?is_special=true`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      sortedArray = sortArrayInDescendingOrder(data.specialVehiclesForSale);
+    });
+  return sortedArray;
+}
+
+export async function getAllVehiclesForRent() {
+  let sortedArray = [];
+
+  await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-vehicles-for-rent`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.msg) {
+        console.log(data.msg);
+      } else {
+        sortedArray = connectArraysAndSortInDescending(
+          data.specialVehiclesForRent,
+          data.regularVehiclesForRent
+        );
+      }
+    });
+  return sortedArray;
+}
+
+export async function getSpecialVehiclesForRent() {
+  let sortedArray = [];
+  await fetch(
+    `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-vehicles-for-rent?is_special=true`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      sortedArray = sortArrayInDescendingOrder(data.specialVehiclesForRent);
+    });
+  return sortedArray;
+}

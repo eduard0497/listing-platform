@@ -71,6 +71,18 @@
   width: 100px;
   text-align: center;
 }
+.sublinks_container select {
+  font-size: var(--navbar_links_link_font_size);
+  font-weight: bold;
+  padding: var(--navbar_links_link_padding);
+  color: #006a82;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #006a82;
+  background: none;
+  width: 150px;
+  text-align: center;
+}
 .sublinks_container input:focus {
   outline: none;
 }

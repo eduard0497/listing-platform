@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PageHeader from "../../components/Reusable/PageHeader";
 import Houses from "../../components/RoutedComponents/Houses";
+import Vehicles from "../../components/RoutedComponents/Vehicles";
 import styles from "../../styles/Components/ReusableSubNavigators.module.css";
 
 function GeneralForSale() {
@@ -38,6 +39,14 @@ function GeneralForSale() {
           amountOfItemsToDisplay={30}
           linkToPushTo="/for-sale/houses/"
           housesForSale={true}
+        />
+      ) : null}
+      {pickedCategory == "vehicles-for-sale" ? (
+        <Vehicles
+          title="Vehicles For Sale"
+          amountOfItemsToDisplay={30}
+          linkToPushTo="/for-sale/vehicles/"
+          vehiclesForSale={true}
         />
       ) : null}
     </div>
