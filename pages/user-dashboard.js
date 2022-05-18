@@ -43,7 +43,6 @@ function UserDashboard() {
         if (info.msg) {
           console.log(info.msg);
         } else if (isMounted) {
-          setUserID(info.userInfo[0].user_id);
           setUserEmail(info.userInfo[0].email);
           setUserFName(info.userInfo[0].first_name);
           setUserLName(info.userInfo[0].last_name);
@@ -63,7 +62,6 @@ function UserDashboard() {
     <div className={styles.user_dashboard_container}>
       <div className={styles.user_dashboard_container_inner_box}>
         <h4>Welcome {userFName + " " + userLName}!</h4>
-        <h4>Your USER ID is {userID}</h4>
         <select
           name="userSelection"
           id="userSelection"

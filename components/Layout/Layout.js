@@ -62,10 +62,10 @@ function Layout({ children }) {
         setBannerImages(returnedAds.bannerAds);
         setRightImages(returnedAds.sideAds);
         setRunningSentence(returnedAds.runningAds);
+        setLoading(false);
       }
     })();
 
-    setLoading(false);
     return () => {
       isMounted = false;
     };

@@ -49,9 +49,11 @@ function UserRegister() {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        first_name: data.firstName,
-        last_name: data.lastName,
-        email: data.email,
+        first_name:
+          data.firstName.charAt(0).toUpperCase() + data.firstName.slice(1),
+        last_name:
+          data.lastName.charAt(0).toUpperCase() + data.lastName.slice(1),
+        email: data.email.toLowerCase(),
         password: data.password,
       }),
     })
