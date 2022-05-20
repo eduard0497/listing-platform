@@ -62,6 +62,7 @@ function DisplayHouses({
                 >
                   <ImageSlider images={item.images} />
                 </div>
+
                 <div
                   className={
                     styles.listings_container_cards_container_card_info

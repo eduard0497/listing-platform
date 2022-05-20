@@ -43,7 +43,7 @@
 }
 .listings_container_cards_container_card:hover {
   box-shadow: var(--box_shadow_hover);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .listings_container_cards_container_card_image {
@@ -59,22 +59,47 @@
 
 .button_left {
   position: absolute;
-  top: 50%;
+  top: 40%;
+  height: 20px;
+  width: 20px;
+  transition: 0.15s ease-in;
   left: var(--listings_container_card_image_slide_left_button_gap);
-  transform: translateY(-50%);
-  color: var(--listings_container_card_image_slide_left_button_color);
+}
+.button_left:hover {
+  transform: scale(1.2);
   cursor: pointer;
-  height: 100%;
 }
 
 .button_right {
   position: absolute;
-  top: 50%;
+  top: 40%;
+  height: 20px;
+  width: 20px;
+  transition: 0.15s ease-in;
   right: var(--listings_container_card_image_slide_right_button_gap);
-  transform: translateY(-50%);
-  color: var(--listings_container_card_image_slide_right_button_color);
+}
+
+.button_right:hover {
+  transform: scale(1.2);
   cursor: pointer;
-  height: 100%;
+}
+
+.image_carousel {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.image_carousel > img {
+  height: 50px;
+  width: 50px;
+  transition: all 0.1s ease-in;
+  border-radius: 3px;
+}
+.image_carousel > img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 /*  */

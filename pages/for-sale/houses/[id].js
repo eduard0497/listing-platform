@@ -14,6 +14,8 @@ import {
   FaPhoneAlt,
 } from "react-icons/fa";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import PageHeader from "../../../components/Reusable/PageHeader";
+
 
 function Listing() {
   const [loading, setLoading] = useState(false);
@@ -56,7 +58,7 @@ function Listing() {
       {listing ? (
         <div className={styles.container}>
           <div className={styles.container_images}>
-            <ImageSlider images={listing.images} />
+            <ImageSlider images={listing.images} displayCarousel={true} />
           </div>
           <h2>
             {listing.title}
