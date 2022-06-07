@@ -141,7 +141,7 @@ function PostHouseForSale() {
             placeholder="Title*"
             value={data.title}
           />
-          
+
           <select
             name="houseType"
             id="houseType"

@@ -215,3 +215,35 @@ export async function getSpecialVehiclesForRent() {
     });
   return sortedArray;
 }
+
+//
+export async function getAllServices() {
+  let sortedArray = [];
+
+  await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-services`)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.msg) {
+        console.log(data.msg);
+      } else {
+        sortedArray = connectArraysAndSortInDescending(
+          data.specialServices,
+          data.regularServices
+        );
+      }
+    });
+
+  return sortedArray;
+}
+
+export async function getSpecialServices() {
+  let sortedArray = [];
+  await fetch(
+    `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-services?is_special=true`
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      sortedArray = sortArrayInDescendingOrder(data.specialServices);
+    });
+  return sortedArray;
+}

@@ -7,6 +7,7 @@ import { GiArchiveRegister } from "react-icons/gi";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { GoSignOut } from "react-icons/go";
 import { BiSupport } from "react-icons/bi";
+import Image from "next/image";
 
 function Navbar() {
   const iconSize = "20px";
@@ -40,6 +41,8 @@ function Navbar() {
     }, 800);
   };
 
+  // /GorcKaLogo.png
+
   return (
     <div className={styles.navbar_container}>
       <div
@@ -51,8 +54,11 @@ function Navbar() {
         <div className={styles.line3}></div>
       </div>
       <div className={styles.navbar_links_container}>
+        {/* <Image src="/GorcKaLogo.png" alt="logo" width="180" height="50" /> */}
         <Link href="/">
-          <a onClick={closeBurger}>LOGO</a>
+          <a onClick={closeBurger}>
+            <Image src="/GorcKaLogo.png" alt="logo" width="180" height="50" />
+          </a>
         </Link>
       </div>
 
@@ -70,6 +76,9 @@ function Navbar() {
           </Link>
           <Link href="/for-rent#scrollTo">
             <a onClick={closeBurger}>rent</a>
+          </Link>
+          <Link href="/services#scrollTo">
+            <a onClick={closeBurger}>services</a>
           </Link>
         </div>
         {userLoggedIn ? (

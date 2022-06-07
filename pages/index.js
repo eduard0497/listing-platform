@@ -4,12 +4,14 @@ import PageHeader from "../components/Reusable/PageHeader";
 import DisplayHouses from "../components/Reusable/DisplayListings/DisplayHouses";
 import DisplayVehicles from "../components/Reusable/DisplayListings/DisplayVehicles";
 import DisplayJobs from "../components/Reusable/DisplayListings/DisplayJobs";
+import DisplayServices from "../components/Reusable/DisplayListings/DisplayServices";
 import {
   getSpecialJobs,
   getSpecialHousesForSale,
   getSpecialHousesForRent,
   getSpecialVehiclesForSale,
   getSpecialVehiclesForRent,
+  getSpecialServices,
 } from "../components/UsefulFunctions/webViewFetches";
 
 export default function Home() {
@@ -19,12 +21,14 @@ export default function Home() {
   const [rentingSpecialVehicles, setRentingSpecialVehicles] = useState([]);
 
   const [specialJobs, setSpecialJobs] = useState([]);
+  const [specialServices, setSpecialServices] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
 
     (async () => {
       let returnedSpecialJobs = await getSpecialJobs();
+      let returnedSpecialServices = await getSpecialServices();
       let returnedSpecialHousesForSale = await getSpecialHousesForSale();
       let returnedSpecialHousesForRent = await getSpecialHousesForRent();
       let returnedSpecialVehiclesForSale = await getSpecialVehiclesForSale();
@@ -32,6 +36,7 @@ export default function Home() {
 
       if (isMounted) {
         setSpecialJobs(returnedSpecialJobs);
+        setSpecialServices(returnedSpecialServices);
         setSellingSpecialHouses(returnedSpecialHousesForSale);
         setRentingSpecialHouses(returnedSpecialHousesForRent);
         setSellingSpecialVehicles(returnedSpecialVehiclesForSale);
@@ -90,6 +95,14 @@ export default function Home() {
           itemsToDisplay={rentingSpecialVehicles}
           amountOfItemsToDisplay={10}
           linkToPushTo="/for-rent/vehicles/"
+        />
+      )}
+      {specialServices && (
+        <DisplayServices
+          containerTitle="Boosted Services"
+          itemsToDisplay={specialServices}
+          amountOfItemsToDisplay={10}
+          linkToPushTo="/services/"
         />
       )}
     </div>

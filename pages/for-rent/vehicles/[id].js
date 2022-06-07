@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "../../../styles/ListingPages/Houses.module.css";
+import styles from "../../../styles/ListingPages/SingleListing.module.css";
 import stylesOne from "../../../styles/Components/Layout.module.css";
 import ImageSlider from "../../../components/Reusable/ImageSlider";
 import { useRouter } from "next/router";
