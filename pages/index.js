@@ -28,7 +28,6 @@ export default function Home() {
 
     (async () => {
       let returnedSpecialJobs = await getSpecialJobs();
-      let returnedSpecialServices = await getSpecialServices();
       let returnedSpecialHousesForSale = await getSpecialHousesForSale();
       let returnedSpecialHousesForRent = await getSpecialHousesForRent();
       let returnedSpecialVehiclesForSale = await getSpecialVehiclesForSale();
@@ -36,7 +35,7 @@ export default function Home() {
 
       if (isMounted) {
         setSpecialJobs(returnedSpecialJobs);
-        setSpecialServices(returnedSpecialServices);
+        
         setSellingSpecialHouses(returnedSpecialHousesForSale);
         setRentingSpecialHouses(returnedSpecialHousesForRent);
         setSellingSpecialVehicles(returnedSpecialVehiclesForSale);
@@ -97,14 +96,7 @@ export default function Home() {
           linkToPushTo="/for-rent/vehicles/"
         />
       )}
-      {specialServices && (
-        <DisplayServices
-          containerTitle="Boosted Services"
-          itemsToDisplay={specialServices}
-          amountOfItemsToDisplay={10}
-          linkToPushTo="/services/"
-        />
-      )}
+      
     </div>
   );
 }
