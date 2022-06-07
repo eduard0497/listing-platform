@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/ListingPages/Jobs.module.css";
 import stylesOne from "../../styles/Components/Layout.module.css";
-import ImageSlider from "../../../components/Reusable/ImageSlider";
+import ImageSlider from "../../components/Reusable/ImageSlider";
 import { useRouter } from "next/router";
 import {
   FaCalendarPlus,
