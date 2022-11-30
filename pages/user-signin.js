@@ -66,7 +66,7 @@ function UserSignIn() {
         title="Sign In | GorcKa.com"
         description="Gorc Ka Listing Platform Sign In"
         content="Sign In For GorcKa.com"
-        iconLink="/favicon.ico"
+        iconLink="/logo/gorcka_logo.jpeg"
       />
       <Popup
         infoForUser={infoForUser}

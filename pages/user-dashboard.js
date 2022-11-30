@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PageHeader from "../components/Reusable/PageHeader";
 import PostHouseForSale from "../components/UserRelated/PostHouseForSale";
 import PostHouseForRent from "../components/UserRelated/PostHouseForRent";
 import UpdatePassword from "../components/UserRelated/UpdatePassword";
@@ -60,6 +61,12 @@ function UserDashboard() {
   }
   return (
     <div className={styles.user_dashboard_container}>
+      <PageHeader
+        title="404 | GorcKa.com"
+        description="Gorc Ka Listing Platform Homepage"
+        content="Home Page For GorcKa.com"
+        iconLink="/logo/gorcka_logo.jpeg"
+      />
       <div className={styles.user_dashboard_container_inner_box}>
         <h4>Welcome {userFName + " " + userLName}!</h4>
         <select

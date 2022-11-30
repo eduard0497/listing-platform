@@ -17,7 +17,6 @@ import { RiDashboard3Line } from "react-icons/ri";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import PageHeader from "../../../components/Reusable/PageHeader";
 
-
 function Listing() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -58,10 +57,16 @@ function Listing() {
 
   return (
     <>
+      <PageHeader
+        title="Jobs | GorcKa.com"
+        description="Gorc Ka Listing Platform Homepage"
+        content="Home Page For GorcKa.com"
+        iconLink="/logo/gorcka_logo.jpeg"
+      />
       {listing ? (
         <div className={styles.container}>
           <div className={styles.container_images}>
-            <ImageSlider images={listing.images}  displayCarousel={true} />
+            <ImageSlider images={listing.images} displayCarousel={true} />
           </div>
           <h2>
             {listing.title}

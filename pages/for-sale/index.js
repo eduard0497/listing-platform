@@ -17,7 +17,7 @@ function GeneralForSale() {
         title="For Sale | GorcKa.com"
         description="Gorc Ka Listing Platform Homepage"
         content="Home Page For GorcKa.com"
-        iconLink="/favicon.ico"
+        iconLink="/logo/gorcka_logo.jpeg"
       />
       <div id="scrollTo" className={styles.sublinks_container}>
         <div className={styles.sublinks_container_navigators}>

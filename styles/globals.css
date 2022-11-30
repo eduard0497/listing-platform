@@ -33,7 +33,7 @@
   --navbar_links_color: #eeeeee;
   --navbar_links_transition_time: 0.1s;
   /* navbar links mobile */
-  --navbar_links_mobile_padding: 20px 25px 50px 25px;
+  --navbar_links_mobile_padding: 20px 25px 80px 25px;
 
   /* footer */
   --footer_min_height: 70px;

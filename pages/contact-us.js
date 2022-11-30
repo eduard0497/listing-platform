@@ -60,7 +60,7 @@ function ContactUs() {
         title="Contact Us | GorcKa.com"
         description="Gorc Ka Listing Platform Homepage"
         content="Home Page For GorcKa.com"
-        iconLink="/favicon.ico"
+        iconLink="/logo/gorcka_logo.jpeg"
       />
       <Popup
         infoForUser={infoForUser}

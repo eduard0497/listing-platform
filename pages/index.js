@@ -55,7 +55,7 @@ export default function Home() {
         title="Home Page | GorcKa.com"
         description="Gorc Ka Listing Platform Homepage"
         content="Home Page For GorcKa.com"
-        iconLink="/favicon.ico"
+        iconLink="/logo/gorcka_logo.jpeg"
       />
       {specialJobs && (
         <DisplayJobs

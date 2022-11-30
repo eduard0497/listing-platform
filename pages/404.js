@@ -8,7 +8,7 @@ function ErrorPage() {
         title="404 | GorcKa.com"
         description="Gorc Ka Listing Platform Homepage"
         content="Home Page For GorcKa.com"
-        iconLink="/favicon.ico"
+        iconLink="/logo/gorcka_logo.jpeg"
       />
       <h1>Ooops...</h1>
     </div>

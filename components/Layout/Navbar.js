@@ -53,11 +53,15 @@ function Navbar() {
         <div className={styles.line2}></div>
         <div className={styles.line3}></div>
       </div>
-      <div className={styles.navbar_links_container}>
-        {/* <Image src="/GorcKaLogo.png" alt="logo" width="180" height="50" /> */}
+      <div className={styles.logo}>
         <Link href="/">
           <a onClick={closeBurger}>
-            <Image src="/GorcKaLogo.png" alt="logo" width="180" height="50" />
+            <Image
+              src="/logo/gorcka_logo.jpeg"
+              alt="logo"
+              width="70"
+              height="70"
+            />
           </a>
         </Link>
       </div>
