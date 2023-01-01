@@ -8,6 +8,7 @@ import GetAds from "../components/AdminRelated/Ads/GetAds";
 import SearchUserByID from "../components/AdminRelated/Users/SearchUserByID";
 import SearchListingByID from "../components/AdminRelated/SearchListingByID";
 import GetJobs from "../components/AdminRelated/Jobs/GetJobs";
+import GetServices from "../components/AdminRelated/Services/GetServices";
 
 function AdminDashboard() {
   const [whatToShow, setWhatToShow] = useState("");
@@ -38,6 +39,9 @@ function AdminDashboard() {
         <button onClick={(e) => setWhatToShow("all users")}>All Users</button>
         <button onClick={(e) => setWhatToShow("all ads")}>All Ads</button>
         <button onClick={(e) => setWhatToShow("all jobs")}>All Jobs</button>
+        <button onClick={(e) => setWhatToShow("all services")}>
+          All Services
+        </button>
         <button onClick={(e) => setWhatToShow("all houses")}>All Houses</button>
         <button onClick={(e) => setWhatToShow("all vehicles")}>
           All Vehicles
@@ -47,6 +51,7 @@ function AdminDashboard() {
         {whatToShow === "all users" ? <GetAllUsers /> : null}
         {whatToShow === "all ads" ? <GetAds /> : null}
         {whatToShow === "all jobs" ? <GetJobs /> : null}
+        {whatToShow === "all services" ? <GetServices /> : null}
         {whatToShow === "all houses" ? <GetHouses /> : null}
         {whatToShow === "all vehicles" ? <GetVehicles /> : null}
       </div>

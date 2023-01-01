@@ -243,7 +243,6 @@ function AllUserPosted() {
             data={servicesPending}
             title="Pending Services"
           />
-          <h1>_______________________________________________</h1>
 
           {/* --------------------------------------------- */}
 

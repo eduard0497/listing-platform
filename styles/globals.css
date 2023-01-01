@@ -86,7 +86,7 @@
   --listings_container_inner_gap: 15px;
   --listings_container_gap_between_cards: 10px;
   --listings_container_card_colors: #006a82;
-  --listings_container_card_height: 330px;
+  --listings_container_card_height: 360px;
   --listings_container_card_width: 22%;
   --listings_container_card_width_1650: 35%;
   --listings_container_card_width_1600: 20%;
@@ -94,7 +94,7 @@
   --listings_container_card_width_786: 32%;
   --listings_container_card_width_700: 45%;
   --listings_container_card_width_614: 100%;
-  --listings_container_card_padding: 5px;
+  --listings_container_card_padding: 5px 5px 10px 5px;
   --listings_container_card_gap_between_infos: 7px;
   --listings_container_card_background: white;
   --listings_container_card_image_height: 230px;

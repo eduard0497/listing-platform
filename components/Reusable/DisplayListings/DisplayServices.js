@@ -86,7 +86,12 @@ function DisplayServices({
                         <FaRegUser /> {item.name}
                       </h5>
                     )}
-
+                  </div>
+                  <div
+                    className={
+                      styles.listings_container_cards_container_card_info_seperated
+                    }
+                  >
                     {item.email && (
                       <h5>
                         <FaEnvelope /> {item.email}
