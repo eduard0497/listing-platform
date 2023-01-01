@@ -13,35 +13,10 @@ import PostJob from "../components/UserRelated/PostJob";
 import PostVehicleForSale from "../components/UserRelated/PostVehicleForSale";
 import PostVehicleForRent from "../components/UserRelated/PostVehicleForRent";
 import PostService from "../components/UserRelated/PostService";
-import { useRouter } from "next/router";
 
 // sax optionnery stex petqa avelacnem
 
 function UserDashboard() {
-  const router = useRouter();
-  const { session_id } = router.query;
-  const updatePaymentInAllListings = () => {
-    if (session_id) {
-      fetch(
-        `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-update-stripe-payment-id-after-checkout`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            user_id: sessionStorage.getItem("user_id"),
-            access_token: sessionStorage.getItem("access_token"),
-            stripe_session_id: session_id,
-          }),
-        }
-      )
-        .then((res) => res.json())
-        .then((info) => {
-          console.log(info.msg);
-        });
-    } else {
-      return null;
-    }
-  };
   //
   const [userExists, setUserExists] = useState(false);
   const [userID, setUserID] = useState("");
@@ -58,8 +33,6 @@ function UserDashboard() {
     } else {
       setUserExists(true);
     }
-
-    updatePaymentInAllListings();
 
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-get-personal-info`, {
       method: "POST",
