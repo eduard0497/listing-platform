@@ -178,7 +178,7 @@
   --user_dashboard_container_display_posted_vertical_inner_ads_gap: 10px;
   --user_dashboard_container_display_posted_card_width: 300px;
   --user_dashboard_container_display_posted_card_height: 350px;
-  --user_dashboard_container_display_posted_card_padding: 5px;
+  --user_dashboard_container_display_posted_card_padding: 5px 5px 15px 5px;
   --user_dashboard_container_display_posted_card_gap_inside: 5px;
   --user_dashboard_container_display_posted_card_gap_between_cards: 10px;
   --user_dashboard_container_border_width: 2px;
@@ -314,4 +314,8 @@ textarea {
 .pagination_disabled_button a {
   background-color: var(--web_background-color);
   user-select: none;
+}
+
+button:hover {
+  cursor: pointer;
 }

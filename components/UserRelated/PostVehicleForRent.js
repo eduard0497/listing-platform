@@ -81,7 +81,7 @@ function PostVehicleForRent() {
         .then((data) => cloudinaryLinks.push(data.secure_url));
     }
     await fetch(
-      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-post-vehicle-for-sale`,
+      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-post-vehicle-for-rent`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

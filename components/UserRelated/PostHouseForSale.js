@@ -3,7 +3,7 @@ import styles from "../../styles/Components/GeneralForm.module.css";
 import RingLoader from "react-spinners/RingLoader";
 import Popup from "../Reusable/Popup";
 import { BsUpload } from "react-icons/bs";
-import { getTypesForHouses } from "../UsefulFunctions/webViewFetches";
+import { houseTypes } from "../UsefulFunctions/houseTypes";
 
 //
 const defaultState = {
@@ -28,22 +28,6 @@ function PostHouseForSale() {
   const [loading, setLoading] = useState(false);
   const [infoForUser, setInfoForUser] = useState("");
   const [showInfoForUser, setShowInfoForUser] = useState(false);
-  const [houseTypes, setHouseTypes] = useState([]);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    (async () => {
-      let returnedTypes = await getTypesForHouses();
-      if (isMounted) {
-        setHouseTypes(returnedTypes);
-      }
-    })();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   const checkSubmission = () => {
     if (

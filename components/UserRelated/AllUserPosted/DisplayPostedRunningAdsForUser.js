@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../../../styles/UserDashboard.module.css";
+import UserPayButton from "../../Reusable/UserPayButton";
+import { allPrices } from "../../UsefulFunctions/prices";
 
 function DisplayPostedRunningAdsForUser({ data, title }) {
   if (!data.length) {
@@ -22,6 +24,7 @@ function DisplayPostedRunningAdsForUser({ data, title }) {
               {item.expires ? (
                 <h4>Expires: {new Date(item.expires).toLocaleDateString()}</h4>
               ) : null}
+              <UserPayButton status={item.status} listingID={item.id} stripeLink={allPrices[3].stripe_link} />
             </div>
           );
         })}

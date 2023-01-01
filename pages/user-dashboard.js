@@ -12,6 +12,7 @@ import AllUserPosted from "../components/UserRelated/AllUserPosted/AllUserPosted
 import PostJob from "../components/UserRelated/PostJob";
 import PostVehicleForSale from "../components/UserRelated/PostVehicleForSale";
 import PostVehicleForRent from "../components/UserRelated/PostVehicleForRent";
+import PostService from "../components/UserRelated/PostService";
 // sax optionnery stex petqa avelacnem
 
 function UserDashboard() {
@@ -54,7 +55,9 @@ function UserDashboard() {
     };
   }, []);
 
-  const [picked, setPicked] = useState("");
+  const [picked, setPicked] = useState(
+    "See all my listings and advertisements"
+  );
 
   if (!userExists) {
     return null;
@@ -62,24 +65,23 @@ function UserDashboard() {
   return (
     <div className={styles.user_dashboard_container}>
       <PageHeader
-        title="404 | GorcKa.com"
+        title="User Dashboard | GorcKa.com"
         description="Gorc Ka Listing Platform Homepage"
         content="Home Page For GorcKa.com"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       <div className={styles.user_dashboard_container_inner_box}>
         <h4>Welcome {userFName + " " + userLName}!</h4>
+        <h4>You may select below</h4>
         <select
           name="userSelection"
           id="userSelection"
           onChange={(e) => setPicked(e.target.value)}
         >
-          <option value="">Select below...</option>
-
-          <option value="Update Password">Update Password</option>
           <option value="See all my listings and advertisements">
             See all my listings and advertisements
           </option>
+
           <option value="Post Video Advertisement">
             Post Video Advertisement
           </option>
@@ -93,14 +95,17 @@ function UserDashboard() {
             Post Running Sentence Advertisement
           </option>
           <option value="Post Job Listing">Post Job Listing</option>
+          <option value="Post Service">Post Service</option>
           <option value="Post House for Sale">Post House for Sale</option>
           <option value="Post House for Rent">Post House for Rent</option>
           <option value="Post Vehicle for Sale">Post Vehicle for Sale</option>
           <option value="Post Vehicle for Rent">Post Vehicle for Rent</option>
+          <option value="Update Password">Update Password</option>
         </select>
       </div>
       {picked === "Update Password" ? <UpdatePassword /> : null}
       {picked === "Post Job Listing" ? <PostJob /> : null}
+      {picked === "Post Service" ? <PostService /> : null}
       {picked === "Post House for Sale" ? <PostHouseForSale /> : null}
       {picked === "Post House for Rent" ? <PostHouseForRent /> : null}
       {picked === "Post Vehicle for Sale" ? <PostVehicleForSale /> : null}

@@ -1,26 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "../styles/Prices.module.css";
 import PageHeader from "../components/Reusable/PageHeader";
-import { getPrices } from "../components/UsefulFunctions/webViewFetches";
+import { allPrices } from "../components/UsefulFunctions/prices";
 
 function Prices() {
-  const [allPrices, setAllPrices] = useState([]);
-  useEffect(() => {
-    let isMounted = true;
-
-    (async () => {
-      let prices = await getPrices();
-
-      if (isMounted) {
-        setAllPrices(prices);
-      }
-    })();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
   return (
     <div className={styles.prices_table_outer}>
       <PageHeader

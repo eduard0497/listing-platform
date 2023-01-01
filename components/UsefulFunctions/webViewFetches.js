@@ -3,21 +3,21 @@ import {
   connectArraysAndSortInDescending,
 } from "./helperFunctions";
 
-export async function getPrices() {
-  let arrayToReturn = [];
+// export async function getPrices() {
+//   let arrayToReturn = [];
 
-  await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-all-pricing-info`)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.msg) {
-        console.log(data.msg);
-      } else {
-        arrayToReturn = data.allPrices;
-      }
-    });
+//   await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-all-pricing-info`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       if (data.msg) {
+//         console.log(data.msg);
+//       } else {
+//         arrayToReturn = data.allPrices;
+//       }
+//     });
 
-  return arrayToReturn;
-}
+//   return arrayToReturn;
+// }
 
 export async function getAllLiveAds() {
   let videoAds = [];
@@ -43,25 +43,25 @@ export async function getAllLiveAds() {
   return { videoAds, bannerAds, sideAds, runningAds };
 }
 
-export async function getTypesForHouses() {
-  let arrayToReturn = [];
-  await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-house-types`)
-    .then((response) => response.json())
-    .then((data) => {
-      arrayToReturn = data.allHouseTypes;
-    });
-  return arrayToReturn;
-}
+// export async function getTypesForHouses() {
+//   let arrayToReturn = [];
+//   await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-house-types`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       arrayToReturn = data.allHouseTypes;
+//     });
+//   return arrayToReturn;
+// }
 
-export async function getTypesForJobs() {
-  let arrayToReturn = [];
-  await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-job-categories`)
-    .then((response) => response.json())
-    .then((data) => {
-      arrayToReturn = data.allJobCategories;
-    });
-  return arrayToReturn;
-}
+// export async function getTypesForJobs() {
+//   let arrayToReturn = [];
+//   await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-job-categories`)
+//     .then((response) => response.json())
+//     .then((data) => {
+//       arrayToReturn = data.allJobCategories;
+//     });
+//   return arrayToReturn;
+// }
 
 export async function getAllJobs() {
   let sortedArray = [];

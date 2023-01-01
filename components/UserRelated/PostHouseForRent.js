@@ -3,7 +3,7 @@ import styles from "../../styles/Components/GeneralForm.module.css";
 import RingLoader from "react-spinners/RingLoader";
 import Popup from "../Reusable/Popup";
 import { BsUpload } from "react-icons/bs";
-import { getTypesForHouses } from "../UsefulFunctions/webViewFetches";
+import { houseTypes } from "../UsefulFunctions/houseTypes";
 
 const defaultState = {
   title: "",
@@ -28,20 +28,6 @@ function PostHouseForRent() {
   const [loading, setLoading] = useState(false);
   const [infoForUser, setInfoForUser] = useState("");
   const [showInfoForUser, setShowInfoForUser] = useState(false);
-  const [houseTypes, setHouseTypes] = useState([]);
-
-  useEffect(() => {
-    let isMounted = true;
-    (async () => {
-      let returnedTypes = await getTypesForHouses();
-      if (isMounted) {
-        setHouseTypes(returnedTypes);
-      }
-    })();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   const checkSubmission = () => {
     if (
@@ -126,7 +112,7 @@ function PostHouseForRent() {
         setShowInfoForUser={setShowInfoForUser}
       />
       <div className={styles.form_box}>
-        <h1>Post House for Sale</h1>
+        <h1>Post House for Rent</h1>
         <div className={styles.form_box_fields}>
           {/*  */}
           <input

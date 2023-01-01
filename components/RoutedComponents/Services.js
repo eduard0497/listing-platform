@@ -45,7 +45,7 @@ function Services({ title, amountOfItemsToDisplay, linkToPushTo }) {
               id="serviceTypes"
               onChange={(e) => setSelectedType(e.target.value)}
             >
-              <option value="">ALL Makes</option>
+              <option value="">ALL Services</option>
               {serviceTypes.map((item, index) => (
                 <option key={index} value={item}>
                   {item}

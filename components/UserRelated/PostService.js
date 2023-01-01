@@ -2,25 +2,25 @@ import React, { useState, useEffect } from "react";
 import styles from "../../styles/Components/GeneralForm.module.css";
 import RingLoader from "react-spinners/RingLoader";
 import Popup from "../Reusable/Popup";
-import { jobCategories } from "../UsefulFunctions/jobCategories";
+import { serviceTypes } from "../UsefulFunctions/serviceTypes";
+import { BsUpload } from "react-icons/bs";
 
+//
 const defaultState = {
   title: "",
   type: "",
-  overview: ``,
-  requirements: ``,
-  salary: "",
+  details: ``,
   name: "",
   email: "",
   phone: "",
-  address: "",
   city: "",
   state: "",
   zip: "",
+  images: [],
   is_special: "",
 };
 
-function PostJob() {
+function PostService() {
   const [loading, setLoading] = useState(false);
   const [infoForUser, setInfoForUser] = useState("");
   const [showInfoForUser, setShowInfoForUser] = useState(false);
@@ -35,7 +35,6 @@ function PostJob() {
       !data.state.length ||
       !data.zip.length ||
       !data.name.length ||
-      !data.phone.length ||
       !data.is_special
     ) {
       setInfoForUser("Please fill out the form properly");
@@ -56,7 +55,21 @@ function PostJob() {
     setLoading(true);
     //
 
-    await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-post-job`, {
+    let cloudinaryLinks = [];
+
+    for (let i = 0; i < data.images.length; i++) {
+      let imageForm = new FormData();
+      imageForm.append("file", data.images[i]);
+      imageForm.append("upload_preset", "gorckaimages");
+      await fetch("https://api.cloudinary.com/v1_1/gorcka-com/image/upload", {
+        method: "POST",
+        body: imageForm,
+      })
+        .then((res) => res.json())
+        .then((data) => cloudinaryLinks.push(data.secure_url));
+    }
+
+    await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-post-service`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -64,16 +77,14 @@ function PostJob() {
         access_token: sessionStorage.getItem("access_token"),
         title: data.title,
         type: data.type,
-        overview: data.overview,
-        requirements: data.requirements,
-        salary: data.salary,
+        details: data.details,
         name: data.name,
         email: data.email,
         phone: data.phone,
-        address: data.address,
         city: data.city,
         state: data.state,
         zip: data.zip,
+        images: cloudinaryLinks,
         is_special: data.is_special,
       }),
     })
@@ -103,7 +114,7 @@ function PostJob() {
       />
 
       <div className={styles.form_box}>
-        <h1>Post Job Listing</h1>
+        <h1>Post Service</h1>
         <div className={styles.form_box_fields}>
           <input
             onChange={(e) => customOnChange("title", e.target.value)}
@@ -113,15 +124,15 @@ function PostJob() {
           />
 
           <select
-            name="jobCategories"
-            id="jobCategories"
+            name="serviceTypes"
+            id="serviceTypes"
             onChange={(e) => customOnChange("type", e.target.value)}
             value={data.type}
           >
-            <option value="">Select Job Type*</option>
-            {jobCategories.map((type) => (
-              <option key={type.id} value={type.name}>
-                {type.name}
+            <option value="">Select Service Type*</option>
+            {serviceTypes.map((type, index) => (
+              <option key={index} value={type}>
+                {type}
               </option>
             ))}
           </select>
@@ -129,24 +140,11 @@ function PostJob() {
           <textarea
             cols="30"
             rows="10"
-            placeholder="Overview"
-            onChange={(e) => customOnChange("overview", e.target.value)}
-            value={data.overview}
-          ></textarea>
-          <textarea
-            cols="30"
-            rows="10"
-            placeholder="Requirements"
-            onChange={(e) => customOnChange("requirements", e.target.value)}
-            value={data.requirements}
+            placeholder="Details"
+            onChange={(e) => customOnChange("details", e.target.value)}
+            value={data.details}
           ></textarea>
 
-          <input
-            onChange={(e) => customOnChange("salary", e.target.value)}
-            type="text"
-            placeholder="Salary"
-            value={data.salary}
-          />
           <input
             onChange={(e) => customOnChange("name", e.target.value)}
             type="text"
@@ -166,12 +164,6 @@ function PostJob() {
             value={data.phone}
           />
           <input
-            onChange={(e) => customOnChange("address", e.target.value)}
-            type="text"
-            placeholder="Address"
-            value={data.address}
-          />
-          <input
             onChange={(e) => customOnChange("city", e.target.value)}
             type="text"
             placeholder="City*"
@@ -189,6 +181,36 @@ function PostJob() {
             placeholder="ZIP*"
             value={data.zip}
           />
+
+          <div className={styles.image_upload_container}>
+            <label htmlFor="images" className="logo_and_text_together">
+              <BsUpload />{" "}
+              {`Upload up to ${process.env.NEXT_PUBLIC_MAX_ALLOWED_IMAGES_FOR_HOUSE_SELLING} images*`}
+            </label>
+            {data.images.length != 0 ? (
+              <h5>
+                Files selected:{" "}
+                {data.images.length >
+                parseInt(
+                  process.env.NEXT_PUBLIC_MAX_ALLOWED_IMAGES_FOR_HOUSE_SELLING
+                )
+                  ? "Exceeds the limit"
+                  : data.images.length}
+              </h5>
+            ) : null}
+            <input
+              type="file"
+              id="images"
+              onChange={(e) =>
+                setData((prevState) => ({
+                  ...prevState,
+                  images: e.target.files,
+                }))
+              }
+              multiple
+              accept="image/*"
+            />
+          </div>
 
           <select
             onChange={(e) => customOnChange("is_special", e.target.value)}
@@ -229,4 +251,4 @@ function PostJob() {
   );
 }
 
-export default PostJob;
+export default PostService;

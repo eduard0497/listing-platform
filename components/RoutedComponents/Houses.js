@@ -3,12 +3,10 @@ import DisplayHouses from "../Reusable/DisplayListings/DisplayHouses";
 import styles from "../../styles/Components/ReusableSubNavigators.module.css";
 import { FaFilter } from "react-icons/fa";
 import {
-  getTypesForHouses,
   getAllHousesForSale,
   getAllHousesForRent,
 } from "../UsefulFunctions/webViewFetches";
-
-// stegh heto kanem housesForRent-y,,, + webViewFetches-mej el functiony avelacne
+import { houseTypes } from "../UsefulFunctions/houseTypes";
 
 function Houses({
   title,
@@ -18,7 +16,6 @@ function Houses({
   housesForRent,
 }) {
   const [loading, setLoading] = useState(false);
-  const [filters, setFilters] = useState([]);
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
 
   useEffect(() => {
@@ -26,7 +23,6 @@ function Houses({
     setLoading(true);
 
     (async () => {
-      let returnedHouseTypes = await getTypesForHouses();
       let returnedAllHouses = [];
       if (housesForRent) {
         returnedAllHouses = await getAllHousesForRent();
@@ -36,7 +32,6 @@ function Houses({
       }
 
       if (isMounted) {
-        setFilters(returnedHouseTypes);
         setItemsToDisplay(returnedAllHouses);
       }
     })();
@@ -89,7 +84,7 @@ function Houses({
           <div className={styles.sublinks_container_filters}>
             <div className={styles.sublinks_container_row}>
               <button onClick={() => setSelectedType("")}>ALL</button>
-              {filters.map((item) => (
+              {houseTypes.map((item) => (
                 <button
                   key={item.id}
                   value={item.type}

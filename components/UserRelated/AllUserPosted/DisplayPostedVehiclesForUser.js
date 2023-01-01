@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../../../styles/UserDashboard.module.css";
 import { shortenText } from "../../UsefulFunctions/helperFunctions";
+import UserPayButton from "../../Reusable/UserPayButton";
+import { allPrices } from "../../UsefulFunctions/prices";
 
 function DisplayPostedVehiclesForUser({ data, title }) {
   if (!data.length) {
@@ -47,6 +49,23 @@ function DisplayPostedVehiclesForUser({ data, title }) {
                     {item.expires ? (
                       <td>{new Date(item.expires).toLocaleDateString()} </td>
                     ) : null}
+                    {item.is_special ? (
+                      <td>
+                        <UserPayButton
+                          status={item.status}
+                          listingID={item.id}
+                          stripeLink={allPrices[4].stripe_link}
+                        />
+                      </td>
+                    ) : (
+                      <td>
+                        <UserPayButton
+                          status={item.status}
+                          listingID={item.id}
+                          stripeLink={allPrices[5].stripe_link}
+                        />
+                      </td>
+                    )}
                   </tr>
                 );
               })}

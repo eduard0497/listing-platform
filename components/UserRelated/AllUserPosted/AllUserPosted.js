@@ -8,6 +8,7 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import DisplayPostedHousesForUser from "./DisplayPostedHousesForUser";
 import DisplayPostedJobsForUser from "./DisplayPostedJobsForUser";
 import DisplayPostedVehiclesForUser from "./DisplayPostedVehiclesForUser";
+import DisplayPostedServicesForUser from "./DisplayPostedServicesForUser";
 
 function AllUserPosted() {
   const [infoForUser, setInfoForUser] = useState("");
@@ -26,6 +27,9 @@ function AllUserPosted() {
   const [jobsPosted, setJobsPosted] = useState([]);
   const [jobsPending, setJobsPending] = useState([]);
   //
+  const [servicesPosted, setServicesPosted] = useState([]);
+  const [servicesPending, setServicesPending] = useState([]);
+  //
   const [postedHousesForSale, setPostedHousesForSale] = useState([]);
   const [pendingHousesForSale, setPendingHousesForSale] = useState([]);
   const [postedHousesForRent, setPostedHousesForRent] = useState([]);
@@ -39,6 +43,31 @@ function AllUserPosted() {
 
   useEffect(async () => {
     setLoading(true);
+    //
+    await fetch(
+      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-get-all-paid-listing-ids`,
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: sessionStorage.getItem("user_id"),
+          access_token: sessionStorage.getItem("access_token"),
+        }),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg) {
+          setInfoForUser(data.msg);
+          setShowInfoForUser(true);
+        } else {
+          sessionStorage.setItem(
+            "paid_listings",
+            JSON.stringify(data.allReturnedPaidIDs)
+          );
+        }
+      });
+    //
     await fetch(
       `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-get-all-added-ads`,
       {
@@ -135,6 +164,28 @@ function AllUserPosted() {
           setJobsPosted(data.userPostedApprovedJobs);
         }
       });
+
+    await fetch(
+      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-get-all-posted-or-pending-services`,
+      {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          user_id: sessionStorage.getItem("user_id"),
+          access_token: sessionStorage.getItem("access_token"),
+        }),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.msg) {
+          setInfoForUser(data.msg);
+          setShowInfoForUser(true);
+        } else {
+          setServicesPending(data.pendingServices);
+          setServicesPosted(data.postedServices);
+        }
+      });
     setLoading(false);
   }, []);
 
@@ -155,48 +206,25 @@ function AllUserPosted() {
             showInfoForUser={showInfoForUser}
             setShowInfoForUser={setShowInfoForUser}
           />
-
-          <DisplayPostedAdsForUser
-            data={bannerAdsPosted}
-            title="Live Banner Ads"
-          />
           <DisplayPostedAdsForUser
             data={bannerAdsPending}
             title="Pending Banner Ads"
           />
-          <DisplayPostedAdsForUser data={sideAdsPosted} title="Live Side Ads" />
           <DisplayPostedAdsForUser
             data={sideAdsPending}
             title="Pending Side Ads"
           />
           <DisplayPostedAdsForUser
-            data={videoAdsPosted}
-            title="Live Video Ads"
-          />
-          <DisplayPostedAdsForUser
             data={videoAdsPending}
             title="Pending Video Ads"
-          />
-
-          <DisplayPostedRunningAdsForUser
-            data={runningAdsPosted}
-            title="Live Running Ad"
           />
           <DisplayPostedRunningAdsForUser
             data={runningAdsPending}
             title="Pending Running Ads"
           />
           <DisplayPostedHousesForUser
-            data={postedHousesForSale}
-            title="Posted Houses For Sale"
-          />
-          <DisplayPostedHousesForUser
             data={pendingHousesForSale}
             title="Pending Houses For Sale"
-          />
-          <DisplayPostedHousesForUser
-            data={postedHousesForRent}
-            title="Posted Houses For Sale"
           />
           <DisplayPostedHousesForUser
             data={pendingHousesForRent}
@@ -210,9 +238,49 @@ function AllUserPosted() {
             data={pendingVehiclesForRent}
             title="Pending Vehicles For Rent"
           />
-
           <DisplayPostedJobsForUser data={jobsPending} title="Pending Jobs" />
+          <DisplayPostedServicesForUser
+            data={servicesPending}
+            title="Pending Services"
+          />
+          <h1>_______________________________________________</h1>
+
+          {/* --------------------------------------------- */}
+
+          <DisplayPostedAdsForUser
+            data={bannerAdsPosted}
+            title="Live Banner Ads"
+          />
+          <DisplayPostedAdsForUser data={sideAdsPosted} title="Live Side Ads" />
+          <DisplayPostedAdsForUser
+            data={videoAdsPosted}
+            title="Live Video Ads"
+          />
+          <DisplayPostedRunningAdsForUser
+            data={runningAdsPosted}
+            title="Live Running Ad"
+          />
+          <DisplayPostedHousesForUser
+            data={postedHousesForSale}
+            title="Posted Houses For Sale"
+          />
+          <DisplayPostedHousesForUser
+            data={postedHousesForRent}
+            title="Posted Houses For Sale"
+          />
+          <DisplayPostedVehiclesForUser
+            data={postedVehiclesForSale}
+            title="Posted Vehicles For Sale"
+          />
+          <DisplayPostedVehiclesForUser
+            data={postedVehiclesForRent}
+            title="Posted Vehicles For Rent"
+          />
           <DisplayPostedJobsForUser data={jobsPosted} title="Posted Jobs" />
+          <DisplayPostedServicesForUser
+            data={servicesPosted}
+            title="Posted Services"
+          />
         </div>
       )}
     </>

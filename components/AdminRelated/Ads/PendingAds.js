@@ -7,8 +7,19 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
   const ID = ad.id;
   const userPosted = ad.user_added;
   const [expires, setExpires] = useState("");
-  const [stripeLink, setStripeLink] = useState("");
+  // const [stripeLink, setStripeLink] = useState("");
   //
+  const wait = () => {
+    if (banner) {
+      customWait("admin-wait-banner-ad");
+    } else if (side) {
+      customWait("admin-wait-side-ad");
+    } else if (video) {
+      customWait("admin-wait-video-ad");
+    } else if (running) {
+      customWait("admin-wait-running-ad");
+    }
+  };
   const approve = () => {
     if (banner) {
       customApprove("admin-approve-banner-ad");
@@ -31,6 +42,23 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
       customReject("admin-reject-running-ad");
     }
   };
+  const customWait = (endpoint) => {
+    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/${endpoint}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        admin_id: sessionStorage.getItem("admin_id"),
+        access_token: sessionStorage.getItem("access_token"),
+        id: ID,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        getAll();
+        console.log(data.msg);
+      });
+  };
+  
   const customApprove = (endpoint) => {
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/${endpoint}`, {
       method: "PUT",
@@ -64,26 +92,27 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
         console.log(data.msg);
       });
   };
-  const sendLinkToPay = async () => {
-    await fetch(
-      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-send-stripe-link`,
-      {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          admin_id: sessionStorage.getItem("admin_id"),
-          access_token: sessionStorage.getItem("access_token"),
-          user_id_to_send_email: userPosted,
-          stripe_link: stripeLink,
-        }),
-      }
-    )
-      .then((res) => res.json())
-      .then((info) => {
-        console.log(info.msg);
-      });
-  };
-  //
+
+  // const sendLinkToPay = async () => {
+  //   await fetch(
+  //     `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-send-stripe-link`,
+  //     {
+  //       method: "post",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         admin_id: sessionStorage.getItem("admin_id"),
+  //         access_token: sessionStorage.getItem("access_token"),
+  //         user_id_to_send_email: userPosted,
+  //         stripe_link: stripeLink,
+  //       }),
+  //     }
+  //   )
+  //     .then((res) => res.json())
+  //     .then((info) => {
+  //       console.log(info.msg);
+  //     });
+  // };
+
   if (banner || side || video) {
     return (
       <div className={styles.admin_pending_container_item}>
@@ -128,14 +157,18 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
         </div>
 
         <div className={styles.admin_pending_container_item_right}>
-          <div>
+          {/* <div>
             <input
               type="text"
               placeholder="Stripe Link"
               onChange={(e) => setStripeLink(e.target.value)}
             />
             <button onClick={sendLinkToPay}>Send Email to User</button>
-          </div>
+          </div> */}
+          <h2>Status: {ad.status}</h2>
+          <button className={styles.admin_update_button} onClick={wait}>
+            Tell the customer to pay
+          </button>
           <input
             type="text"
             placeholder="Expires in..."
@@ -171,14 +204,18 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
         </div>
 
         <div className={styles.admin_pending_container_item_right}>
-          <div>
+          {/* <div>
             <input
               type="text"
               placeholder="Stripe Link"
               onChange={(e) => setStripeLink(e.target.value)}
             />
             <button onClick={sendLinkToPay}>Send Email to User</button>
-          </div>
+          </div> */}
+          <h2>Status: {ad.status}</h2>
+          <button className={styles.admin_update_button} onClick={wait}>
+            Tell the customer to pay
+          </button>
           <input
             type="text"
             placeholder="Expires in..."

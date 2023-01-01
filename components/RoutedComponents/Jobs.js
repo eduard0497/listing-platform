@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import DisplayJobs from "../Reusable/DisplayListings/DisplayJobs";
 import styles from "../../styles/Components/ReusableSubNavigators.module.css";
-import { getTypesForJobs, getAllJobs } from "../UsefulFunctions/webViewFetches";
+import { getAllJobs } from "../UsefulFunctions/webViewFetches";
+import { jobCategories } from "../UsefulFunctions/jobCategories";
 
 function Jobs({ title, amountOfItemsToDisplay, linkToPushTo }) {
   const [loading, setLoading] = useState(false);
-  const [filters, setFilters] = useState([]);
   const [itemsToDisplay, setItemsToDisplay] = useState([]);
 
   useEffect(() => {
@@ -13,10 +13,8 @@ function Jobs({ title, amountOfItemsToDisplay, linkToPushTo }) {
     setLoading(true);
 
     (async () => {
-      let returnedJobTypes = await getTypesForJobs();
       let returnedJobs = await getAllJobs();
       if (isMounted) {
-        setFilters(returnedJobTypes);
         setItemsToDisplay(returnedJobs);
       }
     })();
@@ -42,7 +40,7 @@ function Jobs({ title, amountOfItemsToDisplay, linkToPushTo }) {
       <div className={styles.sublinks_container}>
         <div className={styles.sublinks_container_row}>
           <button onClick={() => setSelectedType("")}>ALL</button>
-          {filters.map((item) => (
+          {jobCategories.map((item) => (
             <button
               key={item.id}
               value={item.name}

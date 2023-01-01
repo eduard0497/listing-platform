@@ -21,9 +21,26 @@ function PendingJobs({ listing, getAll }) {
   const [zip, setZip] = useState(listing.zip);
   //
   const [duration, setDuration] = useState("");
-  const [stripeLink, setStripeLink] = useState("");
+  // const [stripeLink, setStripeLink] = useState("");
 
   //   status
+
+  const wait = async () => {
+    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-wait-job`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        admin_id: sessionStorage.getItem("admin_id"),
+        access_token: sessionStorage.getItem("access_token"),
+        id: ID,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        getAll();
+        console.log(data.msg);
+      });
+  };
 
   const approve = async () => {
     await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-approve-job`, {
@@ -73,25 +90,25 @@ function PendingJobs({ listing, getAll }) {
       });
   };
 
-  const sendLinkToPay = async () => {
-    await fetch(
-      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-send-stripe-link`,
-      {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          admin_id: sessionStorage.getItem("admin_id"),
-          access_token: sessionStorage.getItem("access_token"),
-          user_id_to_send_email: userPosted,
-          stripe_link: stripeLink,
-        }),
-      }
-    )
-      .then((res) => res.json())
-      .then((info) => {
-        console.log(info.msg);
-      });
-  };
+  // const sendLinkToPay = async () => {
+  //   await fetch(
+  //     `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-send-stripe-link`,
+  //     {
+  //       method: "post",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({
+  //         admin_id: sessionStorage.getItem("admin_id"),
+  //         access_token: sessionStorage.getItem("access_token"),
+  //         user_id_to_send_email: userPosted,
+  //         stripe_link: stripeLink,
+  //       }),
+  //     }
+  //   )
+  //     .then((res) => res.json())
+  //     .then((info) => {
+  //       console.log(info.msg);
+  //     });
+  // };
 
   return (
     <div className={styles.admin_pending_container_item}>
@@ -205,7 +222,7 @@ function PendingJobs({ listing, getAll }) {
         </div>
       </div>
       <div className={styles.admin_pending_container_item_right}>
-        {listing.is_special ? (
+        {/* {listing.is_special ? (
           <div>
             <input
               type="text"
@@ -214,7 +231,11 @@ function PendingJobs({ listing, getAll }) {
             />
             <button onClick={sendLinkToPay}>Send Email to User</button>
           </div>
-        ) : null}
+        ) : null} */}
+        <h2>Status: {listing.status}</h2>
+        <button className={styles.admin_update_button} onClick={wait}>
+          Tell the customer to pay
+        </button>
         <input
           type="text"
           placeholder="Expires in..."

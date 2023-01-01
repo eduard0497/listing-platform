@@ -32,9 +32,9 @@ function ContactUs() {
     return null;
   }
 
-  const submitForm = () => {
+  const submitForm = async () => {
     setLoading(true);
-    fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/contact-us`, {
+    await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/contact-us`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

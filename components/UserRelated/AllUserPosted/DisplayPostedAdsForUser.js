@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "../../../styles/UserDashboard.module.css";
 import ReactPlayer from "react-player";
+import UserPayButton from "../../Reusable/UserPayButton";
+import { allPrices } from "../../UsefulFunctions/prices";
 
 function DisplayPostedAdsForUser({ data, title }) {
   if (!data.length) {
@@ -40,6 +42,11 @@ function DisplayPostedAdsForUser({ data, title }) {
                     Expires: {new Date(item.expires).toLocaleDateString()}
                   </h4>
                 ) : null}
+                <UserPayButton
+                  status={item.status}
+                  listingID={item.id}
+                  stripeLink={allPrices[0].stripe_link}
+                />
               </div>
             );
           })}
@@ -77,6 +84,19 @@ function DisplayPostedAdsForUser({ data, title }) {
                     Expires: {new Date(item.expires).toLocaleDateString()}
                   </h4>
                 ) : null}
+                {title == "Pending Banner Ads" ? (
+                  <UserPayButton
+                    status={item.status}
+                    listingID={item.id}
+                    stripeLink={allPrices[1].stripe_link}
+                  />
+                ) : (
+                  <UserPayButton
+                    status={item.status}
+                    listingID={item.id}
+                    stripeLink={allPrices[2].stripe_link}
+                  />
+                )}
               </div>
             );
           })}
