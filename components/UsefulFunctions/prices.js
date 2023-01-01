@@ -4,7 +4,7 @@ export const allPrices = [
     name: "Video Advertisement",
     price: "120",
     expires: "30",
-    stripe_link: "https://buy.stripe.com/test_14k15l2bx1FLgV2289",
+    stripe_link: "https://buy.stripe.com/bIYbMA6l3bpq2YwaEF",
   },
   {
     id: 2,
