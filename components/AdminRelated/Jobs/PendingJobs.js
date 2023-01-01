@@ -232,7 +232,7 @@ function PendingJobs({ listing, getAll }) {
             <button onClick={sendLinkToPay}>Send Email to User</button>
           </div>
         ) : null} */}
-        <h2>Status: {listing.status}</h2>
+        <h3>Status: {listing.status}</h3>
         <button className={styles.admin_update_button} onClick={wait}>
           Tell the customer to pay
         </button>

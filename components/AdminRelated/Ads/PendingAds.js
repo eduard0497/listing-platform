@@ -58,7 +58,7 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
         console.log(data.msg);
       });
   };
-  
+
   const customApprove = (endpoint) => {
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/${endpoint}`, {
       method: "PUT",
@@ -165,7 +165,7 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
             />
             <button onClick={sendLinkToPay}>Send Email to User</button>
           </div> */}
-          <h2>Status: {ad.status}</h2>
+          <h3>Status: {ad.status}</h3>
           <button className={styles.admin_update_button} onClick={wait}>
             Tell the customer to pay
           </button>
@@ -212,7 +212,7 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
             />
             <button onClick={sendLinkToPay}>Send Email to User</button>
           </div> */}
-          <h2>Status: {ad.status}</h2>
+          <h3>Status: {ad.status}</h3>
           <button className={styles.admin_update_button} onClick={wait}>
             Tell the customer to pay
           </button>
