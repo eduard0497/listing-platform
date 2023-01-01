@@ -5,6 +5,7 @@ export const allPrices = [
     price: "120",
     expires: "30",
     stripe_link: "https://buy.stripe.com/bIYbMA6l3bpq2YwaEF",
+    // esi live productica u testic chi es linky
   },
   {
     id: 2,
