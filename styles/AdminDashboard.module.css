@@ -24,8 +24,19 @@
 }
 
 .admin_update_button {
-  background-color: lightblue;
+  background-color: rgb(46, 203, 255);
   padding: 5px;
+  font-weight: bolder;
+}
+.admin_approve_button {
+  background-color: rgb(105, 218, 0);
+  padding: 5px;
+  font-weight: bolder;
+}
+.admin_ready_button {
+  background-color: rgb(255, 236, 67);
+  padding: 5px;
+  font-weight: bolder;
 }
 
 .admin_delete_button {

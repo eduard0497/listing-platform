@@ -22,6 +22,35 @@ function PendingServices({ listing, getAll }) {
   // const [stripeLink, setStripeLink] = useState("");
 
   //   status
+  const updateListing = async () => {
+    await fetch(
+      `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-update-service`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          admin_id: sessionStorage.getItem("admin_id"),
+          access_token: sessionStorage.getItem("access_token"),
+          //
+          id: ID,
+          title: title,
+          type: type,
+          details: details,
+          name: name,
+          email: email,
+          phone: phone,
+          city: city,
+          state: state,
+          zip: zip,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((info) => {
+        getAll();
+        alert(info.msg);
+      });
+  };
 
   const wait = async () => {
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-wait-service`, {
@@ -36,7 +65,7 @@ function PendingServices({ listing, getAll }) {
       .then((res) => res.json())
       .then((data) => {
         getAll();
-        console.log(data.msg);
+        alert(data.msg);
       });
   };
 
@@ -67,7 +96,7 @@ function PendingServices({ listing, getAll }) {
       .then((res) => res.json())
       .then((info) => {
         getAll();
-        console.log(info.msg);
+        alert(info.msg);
       });
   };
 
@@ -84,7 +113,7 @@ function PendingServices({ listing, getAll }) {
       .then((res) => res.json())
       .then((info) => {
         getAll();
-        console.log(info.msg);
+        alert(info.msg);
       });
   };
 
@@ -104,7 +133,7 @@ function PendingServices({ listing, getAll }) {
   //   )
   //     .then((res) => res.json())
   //     .then((info) => {
-  //       console.log(info.msg);
+  //       alert(info.msg);
   //     });
   // };
 
@@ -216,16 +245,19 @@ function PendingServices({ listing, getAll }) {
             <button onClick={sendLinkToPay}>Send Email to User</button>
           </div>
         ) : null} */}
-        <h3>Status: {listing.status}</h3>
-        <button className={styles.admin_update_button} onClick={wait}>
+        <button className={styles.admin_update_button} onClick={updateListing}>
+          Update Listing
+        </button>
+        <button className={styles.admin_ready_button} onClick={wait}>
           Tell the customer to pay
         </button>
+        <h3>Status: {listing.status}</h3>
         <input
           type="text"
           placeholder="Expires in..."
           onChange={(e) => setDuration(e.target.value)}
         />
-        <button className={styles.admin_update_button} onClick={approve}>
+        <button className={styles.admin_approve_button} onClick={approve}>
           Approve
         </button>
         <button className={styles.admin_delete_button} onClick={reject}>

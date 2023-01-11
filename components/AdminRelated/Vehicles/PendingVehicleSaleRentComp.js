@@ -27,7 +27,82 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
   //
   const [duration, setDuration] = useState("");
   // const [stripeLink, setStripeLink] = useState("");
-  //
+  
+
+  const updateListing = async () => {
+    if (sale) {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-update-vehicle-for-sale`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            admin_id: sessionStorage.getItem("admin_id"),
+            access_token: sessionStorage.getItem("access_token"),
+            //
+            id: ID,
+            title: title,
+            type: type,
+            make: make,
+            model: model,
+            year: year,
+            color: color,
+            transmission: transmission,
+            mileage: mileage,
+            details: details,
+            price: price,
+            name: name,
+            phone: phone,
+            city: city,
+            state: state,
+            zip: zip,
+          }),
+        }
+      )
+        .then((res) => res.json())
+        .then((info) => {
+          getAll();
+          alert(info.msg);
+        });
+    } else if (rent) {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-update-vehicle-for-rent`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            admin_id: sessionStorage.getItem("admin_id"),
+            access_token: sessionStorage.getItem("access_token"),
+            //
+            id: ID,
+            title: title,
+            type: type,
+            make: make,
+            model: model,
+            year: year,
+            color: color,
+            transmission: transmission,
+            mileage: mileage,
+            details: details,
+            price: price,
+            frequency: listing.frequency,
+            name: name,
+            phone: phone,
+            city: city,
+            state: state,
+            zip: zip,
+          }),
+        }
+      )
+        .then((res) => res.json())
+        .then((info) => {
+          getAll();
+          alert(info.msg);
+        });
+    }
+  };
+
+
   const wait = async () => {
     if (sale) {
       fetch(
@@ -45,7 +120,7 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
         .then((res) => res.json())
         .then((data) => {
           getAll();
-          console.log(data.msg);
+          alert(data.msg);
         });
     } else if (rent) {
       fetch(
@@ -63,7 +138,7 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
         .then((res) => res.json())
         .then((data) => {
           getAll();
-          console.log(data.msg);
+          alert(data.msg);
         });
     }
   };
@@ -102,7 +177,7 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
         .then((res) => res.json())
         .then((info) => {
           getAll();
-          console.log(info.msg);
+          alert(info.msg);
         });
     } else if (rent) {
       await fetch(
@@ -138,7 +213,7 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
         .then((res) => res.json())
         .then((info) => {
           getAll();
-          console.log(info.msg);
+          alert(info.msg);
         });
     }
   };
@@ -163,7 +238,7 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
       .then((res) => res.json())
       .then((info) => {
         getAll();
-        console.log(info.msg);
+        alert(info.msg);
       });
   };
 
@@ -183,7 +258,7 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
   //   )
   //     .then((res) => res.json())
   //     .then((info) => {
-  //       console.log(info.msg);
+  //       alert(info.msg);
   //     });
   // };
 
@@ -346,16 +421,19 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
             <button onClick={sendLinkToPay}>Send Email to User</button>
           </div>
         ) : null} */}
-        <h3>Status: {listing.status}</h3>
-        <button className={styles.admin_update_button} onClick={wait}>
+        <button className={styles.admin_update_button} onClick={updateListing}>
+          Update Listing
+        </button>
+        <button className={styles.admin_ready_button} onClick={wait}>
           Tell the customer to pay
         </button>
+        <h3>Status: {listing.status}</h3>
         <input
           type="text"
           placeholder="Expires in..."
           onChange={(e) => setDuration(e.target.value)}
         />
-        <button className={styles.admin_update_button} onClick={approve}>
+        <button className={styles.admin_approve_button} onClick={approve}>
           Approve
         </button>
         <button className={styles.admin_delete_button} onClick={reject}>

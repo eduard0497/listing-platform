@@ -37,7 +37,7 @@ function UserSignIn() {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        email: data.email,
+        email: data.email.toLowerCase(),
         password: data.password,
       }),
     })

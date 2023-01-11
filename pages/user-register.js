@@ -34,6 +34,7 @@ function UserRegister() {
     } else if (data.password.length < 8) {
       setInfoForUser("Password must be greater than 8 chracters");
       setShowInfoForUser(true);
+      return false;
     } else {
       return true;
     }
@@ -61,6 +62,7 @@ function UserRegister() {
       .then((data) => {
         setInfoForUser(data.msg);
         setShowInfoForUser(true);
+        setData(defaultState);
       });
     //
     setLoading(false);

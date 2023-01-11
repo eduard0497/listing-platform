@@ -25,6 +25,72 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
   const [duration, setDuration] = useState("");
   // const [stripeLink, setStripeLink] = useState("");
   //
+
+  const updateListing = async () => {
+    if (sale) {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-update-house-for-sale`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            admin_id: sessionStorage.getItem("admin_id"),
+            access_token: sessionStorage.getItem("access_token"),
+            //
+            id: ID,
+            title: title,
+            beds: beds,
+            baths: baths,
+            total_area: total_area,
+            price: price,
+            details: details,
+            city: city,
+            state: state,
+            zip: zip,
+            name: name,
+            phone: phone,
+          }),
+        }
+      )
+        .then((res) => res.json())
+        .then((info) => {
+          getAll();
+          alert(info.msg);
+        });
+    } else if (rent) {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-update-house-for-rent`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            admin_id: sessionStorage.getItem("admin_id"),
+            access_token: sessionStorage.getItem("access_token"),
+            //
+            id: ID,
+            title: title,
+            beds: beds,
+            baths: baths,
+            total_area: total_area,
+            price: price,
+            frequency: listing.frequency,
+            details: details,
+            city: city,
+            state: state,
+            zip: zip,
+            name: name,
+            phone: phone,
+          }),
+        }
+      )
+        .then((res) => res.json())
+        .then((info) => {
+          getAll();
+          alert(info.msg);
+        });
+    }
+  };
+
   const wait = async () => {
     if (sale) {
       fetch(
@@ -42,7 +108,7 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
         .then((res) => res.json())
         .then((data) => {
           getAll();
-          console.log(data.msg);
+          alert(data.msg);
         });
     } else if (rent) {
       fetch(
@@ -60,7 +126,7 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
         .then((res) => res.json())
         .then((data) => {
           getAll();
-          console.log(data.msg);
+          alert(data.msg);
         });
     }
   };
@@ -95,7 +161,7 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
         .then((res) => res.json())
         .then((info) => {
           getAll();
-          console.log(info.msg);
+          alert(info.msg);
         });
     } else if (rent) {
       await fetch(
@@ -127,7 +193,7 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
         .then((res) => res.json())
         .then((info) => {
           getAll();
-          console.log(info.msg);
+          alert(info.msg);
         });
     }
   };
@@ -152,7 +218,7 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
       .then((res) => res.json())
       .then((info) => {
         getAll();
-        console.log(info.msg);
+        alert(info.msg);
       });
   };
 
@@ -172,7 +238,7 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
   //   )
   //     .then((res) => res.json())
   //     .then((info) => {
-  //       console.log(info.msg);
+  //       alert(info.msg);
   //     });
   // };
   //
@@ -311,16 +377,19 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
             <button onClick={sendLinkToPay}>Send Email to User</button>
           </div>
         ) : null} */}
-        <h3>Status: {listing.status}</h3>
-        <button className={styles.admin_update_button} onClick={wait}>
+        <button className={styles.admin_update_button} onClick={updateListing}>
+          Update Listing
+        </button>
+        <button className={styles.admin_ready_button} onClick={wait}>
           Tell the customer to pay
         </button>
+        <h3>Status: {listing.status}</h3>
         <input
           type="text"
           placeholder="Expires in..."
           onChange={(e) => setDuration(e.target.value)}
         />
-        <button className={styles.admin_update_button} onClick={approve}>
+        <button className={styles.admin_approve_button} onClick={approve}>
           Approve
         </button>
         <button className={styles.admin_delete_button} onClick={reject}>

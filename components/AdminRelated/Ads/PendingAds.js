@@ -55,7 +55,7 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
       .then((res) => res.json())
       .then((data) => {
         getAll();
-        console.log(data.msg);
+        alert(data.msg);
       });
   };
 
@@ -73,7 +73,7 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
       .then((res) => res.json())
       .then((data) => {
         getAll();
-        console.log(data.msg);
+        alert(data.msg);
       });
   };
   const customReject = (endpoint) => {
@@ -89,7 +89,7 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
       .then((res) => res.json())
       .then((data) => {
         getAll();
-        console.log(data.msg);
+        alert(data.msg);
       });
   };
 
@@ -109,7 +109,7 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
   //   )
   //     .then((res) => res.json())
   //     .then((info) => {
-  //       console.log(info.msg);
+  //       alert(info.msg);
   //     });
   // };
 
@@ -165,16 +165,16 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
             />
             <button onClick={sendLinkToPay}>Send Email to User</button>
           </div> */}
-          <h3>Status: {ad.status}</h3>
-          <button className={styles.admin_update_button} onClick={wait}>
+          <button className={styles.admin_ready_button} onClick={wait}>
             Tell the customer to pay
           </button>
+          <h3>Status: {ad.status}</h3>
           <input
             type="text"
             placeholder="Expires in..."
             onChange={(e) => setExpires(e.target.value)}
           />
-          <button className={styles.admin_update_button} onClick={approve}>
+          <button className={styles.admin_approve_button} onClick={approve}>
             Approve
           </button>
           <button className={styles.admin_delete_button} onClick={reject}>
@@ -212,16 +212,16 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
             />
             <button onClick={sendLinkToPay}>Send Email to User</button>
           </div> */}
-          <h3>Status: {ad.status}</h3>
-          <button className={styles.admin_update_button} onClick={wait}>
+          <button className={styles.admin_ready_button} onClick={wait}>
             Tell the customer to pay
           </button>
+          <h3>Status: {ad.status}</h3>
           <input
             type="text"
             placeholder="Expires in..."
             onChange={(e) => setExpires(e.target.value)}
           />
-          <button className={styles.admin_update_button} onClick={approve}>
+          <button className={styles.admin_approve_button} onClick={approve}>
             Approve
           </button>
           <button className={styles.admin_delete_button} onClick={reject}>
