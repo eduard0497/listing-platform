@@ -78,7 +78,7 @@ function GetAds() {
       .then((response) => response.json())
       .then((data) => {
         if (data.msg) {
-          console.log(data.msg);
+          alert(data.msg);
         } else {
           setPendingBannerAds(data.pendingBannerAds);
           setApprovedBannerAds(data.approvedBannerAds);

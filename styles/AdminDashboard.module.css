@@ -57,7 +57,13 @@
   border-bottom: 1px solid purple;
   padding-top: 5px;
   text-align: center;
-  min-width: 90px;
+  min-width: 10px;
+}
+
+.table_title_of_the_row {
+  font-size: 20px;
+  color: blue;
+  font-weight: bolder;
 }
 
 /* pricing and job categories */

@@ -39,7 +39,7 @@ function ApprAndArchHouses({
       .then((res) => res.json())
       .then((info) => {
         getAll();
-        console.log(info.msg);
+        alert(info.msg);
       });
   };
   const customDeleteListing = (listingID, endpoint) => {
@@ -56,7 +56,7 @@ function ApprAndArchHouses({
       .then((res) => res.json())
       .then((info) => {
         getAll();
-        console.log(info.msg);
+        alert(info.msg);
       });
   };
   //

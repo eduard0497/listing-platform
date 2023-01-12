@@ -32,7 +32,7 @@ function GetHouses() {
       .then((response) => response.json())
       .then((data) => {
         if (data.msg) {
-          console.log(data.msg);
+          alert(data.msg);
         } else {
           setPendingHousesForSale(data.pendingHousesForSale);
           setPendingHousesForRent(data.pendingHousesForRent);

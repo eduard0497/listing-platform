@@ -48,7 +48,7 @@ function ApprAndArchivedAds({
       .then((res) => res.json())
       .then((info) => {
         getAll();
-        console.log(info.msg);
+        alert(info.msg);
       });
   };
 
@@ -66,7 +66,7 @@ function ApprAndArchivedAds({
       .then((res) => res.json())
       .then((info) => {
         getAll();
-        console.log(info.msg);
+        alert(info.msg);
       });
   };
 

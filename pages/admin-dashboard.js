@@ -35,15 +35,15 @@ function AdminDashboard() {
       <SearchUserByID />
       <SearchListingByID />
       <div className={styles.admin_links}>
-        <button onClick={(e) => setWhatToShow("")}>CLEAR</button>
-        <button onClick={(e) => setWhatToShow("all users")}>All Users</button>
-        <button onClick={(e) => setWhatToShow("all ads")}>All Ads</button>
-        <button onClick={(e) => setWhatToShow("all jobs")}>All Jobs</button>
-        <button onClick={(e) => setWhatToShow("all services")}>
+        <button className={styles.admin_delete_button} onClick={(e) => setWhatToShow("")}>CLEAR</button>
+        <button className={styles.admin_update_button} onClick={(e) => setWhatToShow("all users")}>All Users</button>
+        <button className={styles.admin_update_button} onClick={(e) => setWhatToShow("all ads")}>All Ads</button>
+        <button className={styles.admin_update_button} onClick={(e) => setWhatToShow("all jobs")}>All Jobs</button>
+        <button className={styles.admin_update_button} onClick={(e) => setWhatToShow("all services")}>
           All Services
         </button>
-        <button onClick={(e) => setWhatToShow("all houses")}>All Houses</button>
-        <button onClick={(e) => setWhatToShow("all vehicles")}>
+        <button className={styles.admin_update_button} onClick={(e) => setWhatToShow("all houses")}>All Houses</button>
+        <button className={styles.admin_update_button} onClick={(e) => setWhatToShow("all vehicles")}>
           All Vehicles
         </button>
       </div>

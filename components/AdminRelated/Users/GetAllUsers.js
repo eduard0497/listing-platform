@@ -18,7 +18,7 @@ function GetAllUsers() {
       .then((response) => response.json())
       .then((data) => {
         if (data.msg) {
-          console.log(data.msg);
+          alert(data.msg);
         } else {
           setAllUsers(data.allUsers);
         }

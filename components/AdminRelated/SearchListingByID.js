@@ -24,7 +24,7 @@ function SearchListingByID() {
       .then((response) => response.json())
       .then((data) => {
         if (data.msg) {
-          console.log(data.msg);
+          alert(data.msg);
         } else {
           setListing(data.listing);
         }
@@ -33,18 +33,24 @@ function SearchListingByID() {
 
   const clearSearch = () => {
     setListing([]);
+    setListingIDToSearch("");
   };
 
   return (
     <div>
       <div className={styles.admin_links}>
         <input
-          type="text"
-          placeholder="Search Listing By ID and Update"
+          type="number"
+          placeholder="Search Listing By ID"
+          value={listingIDToSearch}
           onChange={(e) => setListingIDToSearch(e.target.value)}
         />
-        <button onClick={getListing}>SEARCH</button>
-        <button onClick={clearSearch}>CLEAR</button>
+        <button className={styles.admin_update_button} onClick={getListing}>
+          SEARCH
+        </button>
+        <button className={styles.admin_delete_button} onClick={clearSearch}>
+          CLEAR
+        </button>
       </div>
 
       {listing.length != 0 ? (
@@ -55,7 +61,7 @@ function SearchListingByID() {
                 <th>Listing ID</th>
                 <th>User Added</th>
                 <th>Stripe Session</th>
-                <th>Update Button</th>
+                <th>Payment Intent</th>
               </tr>
             </thead>
 

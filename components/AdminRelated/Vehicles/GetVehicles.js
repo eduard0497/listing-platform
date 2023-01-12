@@ -40,7 +40,7 @@ function GetVehicles() {
       .then((response) => response.json())
       .then((data) => {
         if (data.msg) {
-          console.log(data.msg);
+          alert(data.msg);
         } else {
           setPendingVehiclesForSale(data.pendingVehiclesForSale);
           setPendingVehiclesForRent(data.pendingVehiclesForRent);

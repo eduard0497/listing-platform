@@ -68,13 +68,13 @@ function ApprAndArchJobs({ listings, approved, archived, getAll }) {
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
                   <td>{item.user_posted}</td>
-                  <td>{shortenText(item.title, 50)}</td>
+                  <td>{shortenText(item.title, 10)}</td>
                   <td>{item.type}</td>
                   <td>
-                    <pre>{shortenText(item.overview, 50)}</pre>
+                    <pre>{shortenText(item.overview, 10)}</pre>
                   </td>
                   <td>
-                    <pre>{shortenText(item.requirements, 50)}</pre>
+                    <pre>{shortenText(item.requirements, 10)}</pre>
                   </td>
                   <td>{item.salary}</td>
                   <td>{item.name}</td>

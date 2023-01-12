@@ -52,9 +52,9 @@ function Listing() {
   return (
     <>
       <PageHeader
-        title="Jobs | GorcKa.com"
+        title="Jobs | GorcKa.us"
         description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.com"
+        content="Home Page For GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       {listing ? (
