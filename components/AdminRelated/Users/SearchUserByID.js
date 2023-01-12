@@ -214,7 +214,11 @@ const UserVideoAds = ({ arrayToDisplay }) => {
               {arrayToDisplay.map((item) => (
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
-                  <td>{item.video_link}</td>
+                  <td>
+                    <a key={index} href={video_link}>
+                      Video{"\n"}
+                    </a>
+                  </td>
                   <td>{item.status}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
                   <td>{new Date(item.expires).toLocaleDateString()}</td>
@@ -256,7 +260,11 @@ const UserBannerAds = ({ arrayToDisplay }) => {
               {arrayToDisplay.map((item) => (
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
-                  <td>{item.ad_link}</td>
+                  <td>
+                    <a key={index} href={ad_link}>
+                      Image{"\n"}
+                    </a>
+                  </td>
                   <td>{item.status}</td>
                   <td>{item.redirect_link}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
@@ -299,7 +307,11 @@ const UserSideAds = ({ arrayToDisplay }) => {
               {arrayToDisplay.map((item) => (
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
-                  <td>{item.ad_link}</td>
+                  <td>
+                    <a key={index} href={ad_link}>
+                      Image{"\n"}
+                    </a>
+                  </td>
                   <td>{item.status}</td>
                   <td>{item.redirect_link}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
