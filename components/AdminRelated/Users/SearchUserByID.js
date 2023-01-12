@@ -215,9 +215,7 @@ const UserVideoAds = ({ arrayToDisplay }) => {
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
                   <td>
-                    <a href={video_link}>
-                      Video{"\n"}
-                    </a>
+                    <a href={item.video_link}>Video{"\n"}</a>
                   </td>
                   <td>{item.status}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
@@ -261,9 +259,7 @@ const UserBannerAds = ({ arrayToDisplay }) => {
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
                   <td>
-                    <a href={item.ad_link}>
-                      Image{"\n"}
-                    </a>
+                    <a href={item.ad_link}>Image{"\n"}</a>
                   </td>
                   <td>{item.status}</td>
                   <td>{item.redirect_link}</td>
@@ -308,9 +304,7 @@ const UserSideAds = ({ arrayToDisplay }) => {
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
                   <td>
-                    <a href={item.ad_link}>
-                      Image{"\n"}
-                    </a>
+                    <a href={item.ad_link}>Image{"\n"}</a>
                   </td>
                   <td>{item.status}</td>
                   <td>{item.redirect_link}</td>
