@@ -215,7 +215,7 @@ const UserVideoAds = ({ arrayToDisplay }) => {
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
                   <td>
-                    <a key={index} href={video_link}>
+                    <a href={video_link}>
                       Video{"\n"}
                     </a>
                   </td>
@@ -261,7 +261,7 @@ const UserBannerAds = ({ arrayToDisplay }) => {
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
                   <td>
-                    <a key={index} href={item.ad_link}>
+                    <a href={item.ad_link}>
                       Image{"\n"}
                     </a>
                   </td>
@@ -308,7 +308,7 @@ const UserSideAds = ({ arrayToDisplay }) => {
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
                   <td>
-                    <a key={index} href={item.ad_link}>
+                    <a href={item.ad_link}>
                       Image{"\n"}
                     </a>
                   </td>
