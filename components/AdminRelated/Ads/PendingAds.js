@@ -6,7 +6,6 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
   //
   const ID = ad.id;
   const userPosted = ad.user_added;
-  const [expires, setExpires] = useState("");
   // const [stripeLink, setStripeLink] = useState("");
   //
   const wait = () => {
@@ -67,7 +66,6 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
         admin_id: sessionStorage.getItem("admin_id"),
         access_token: sessionStorage.getItem("access_token"),
         id: ID,
-        duration: expires,
       }),
     })
       .then((res) => res.json())
@@ -169,11 +167,6 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
             Tell the customer to pay
           </button>
           <h3>Status: {ad.status}</h3>
-          <input
-            type="text"
-            placeholder="Expires in..."
-            onChange={(e) => setExpires(e.target.value)}
-          />
           <button className={styles.admin_approve_button} onClick={approve}>
             Approve
           </button>
@@ -216,11 +209,6 @@ function PendingAds({ ad, banner, side, video, running, getAll }) {
             Tell the customer to pay
           </button>
           <h3>Status: {ad.status}</h3>
-          <input
-            type="text"
-            placeholder="Expires in..."
-            onChange={(e) => setExpires(e.target.value)}
-          />
           <button className={styles.admin_approve_button} onClick={approve}>
             Approve
           </button>

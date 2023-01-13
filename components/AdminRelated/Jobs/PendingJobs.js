@@ -20,7 +20,6 @@ function PendingJobs({ listing, getAll }) {
   const [state, setState] = useState(listing.state);
   const [zip, setZip] = useState(listing.zip);
   //
-  const [duration, setDuration] = useState("");
   // const [stripeLink, setStripeLink] = useState("");
 
   //   status
@@ -93,7 +92,6 @@ function PendingJobs({ listing, getAll }) {
         city: city,
         state: state,
         zip: zip,
-        duration: duration,
       }),
     })
       .then((res) => res.json())
@@ -269,11 +267,6 @@ function PendingJobs({ listing, getAll }) {
           Tell the customer to pay
         </button>
         <h3>Status: {listing.status}</h3>
-        <input
-          type="text"
-          placeholder="Expires in..."
-          onChange={(e) => setDuration(e.target.value)}
-        />
         <button className={styles.admin_approve_button} onClick={approve}>
           Approve
         </button>

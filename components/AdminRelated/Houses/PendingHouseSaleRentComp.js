@@ -154,7 +154,6 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
             zip: zip,
             name: name,
             phone: phone,
-            duration: duration,
           }),
         }
       )
@@ -186,7 +185,6 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
             zip: zip,
             name: name,
             phone: phone,
-            duration: duration,
           }),
         }
       )
@@ -384,11 +382,6 @@ function PendingHouseSaleRentComp({ listing, sale, rent, getAll }) {
           Tell the customer to pay
         </button>
         <h3>Status: {listing.status}</h3>
-        <input
-          type="text"
-          placeholder="Expires in..."
-          onChange={(e) => setDuration(e.target.value)}
-        />
         <button className={styles.admin_approve_button} onClick={approve}>
           Approve
         </button>

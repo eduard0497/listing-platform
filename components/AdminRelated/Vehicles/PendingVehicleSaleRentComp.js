@@ -25,9 +25,7 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
   const [zip, setZip] = useState(listing.zip);
 
   //
-  const [duration, setDuration] = useState("");
   // const [stripeLink, setStripeLink] = useState("");
-  
 
   const updateListing = async () => {
     if (sale) {
@@ -102,7 +100,6 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
     }
   };
 
-
   const wait = async () => {
     if (sale) {
       fetch(
@@ -170,7 +167,6 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
             city: city,
             state: state,
             zip: zip,
-            duration: duration,
           }),
         }
       )
@@ -206,7 +202,6 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
             city: city,
             state: state,
             zip: zip,
-            duration: duration,
           }),
         }
       )
@@ -428,11 +423,6 @@ function PendingVehicleSaleRentComp({ listing, sale, rent, getAll }) {
           Tell the customer to pay
         </button>
         <h3>Status: {listing.status}</h3>
-        <input
-          type="text"
-          placeholder="Expires in..."
-          onChange={(e) => setDuration(e.target.value)}
-        />
         <button className={styles.admin_approve_button} onClick={approve}>
           Approve
         </button>
