@@ -13,6 +13,10 @@ const defaultImages = [
     id: 3,
     ad_link: "https://sites.imsa.edu/acronym/files/2019/03/advertising-777x437.png",
   },
+  {
+    id: 4,
+    ad_link: "https://sites.imsa.edu/acronym/files/2019/03/advertising-777x437.png",
+  },
 ];
 function SideAds({ images }) {
   return (

@@ -53,8 +53,10 @@ function PostHouseForSale() {
     if (!checkSubmission()) {
       return;
     }
+
     setLoading(true);
-    //
+ 
+
     let cloudinaryLinks = [];
 
     for (let i = 0; i < data.images.length; i++) {
@@ -68,6 +70,7 @@ function PostHouseForSale() {
         .then((res) => res.json())
         .then((data) => cloudinaryLinks.push(data.secure_url));
     }
+
     await fetch(
       `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-post-house-for-sale`,
       {
@@ -76,6 +79,27 @@ function PostHouseForSale() {
         body: JSON.stringify({
           user_id: sessionStorage.getItem("user_id"),
           access_token: sessionStorage.getItem("access_token"),
+
+          // 
+
+        //   title: "Two story stone house on Haghtanaki 1 street in Malatia-Sebastia, 184 sq.m., 2 bathrooms",
+        //   type: "House",
+        //   beds: "4",
+        //   baths: "2",
+        //   total_area: "7,000",
+        //   price: "150,000",
+        //   details: "The house is located at the beginning of Haghtanak district, uninhabited, newly built with high-quality building materials.",
+        //   city: "Glendale",
+        // state: "CA",
+        // zip: "91205",
+        // name: "Khoren",
+        // phone: "818-747-4109",
+        //   images: ["https://res.cloudinary.com/gorcka-com/image/upload/v1673432375/gorckaimages/wvhjw0vyadmtfdtkyf2l.jpg", "https://res.cloudinary.com/gorcka-com/image/upload/v1673432376/gorckaimages/ny5qhzxqzpevts8kxy6b.jpg", "https://res.cloudinary.com/gorcka-com/image/upload/v1673432377/gorckaimages/hsxoblm05oodwzaidku4.jpg"],
+        //   is_special: true,
+
+          //
+
+
           title: data.title,
           type: data.type,
           beds: data.beds,

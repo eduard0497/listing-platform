@@ -65,8 +65,11 @@ function PostVehicleForRent() {
     if (!checkSubmission()) {
       return;
     }
+
+
+
     setLoading(true);
-    //
+
     let cloudinaryLinks = [];
 
     for (let i = 0; i < data.images.length; i++) {
@@ -80,6 +83,8 @@ function PostVehicleForRent() {
         .then((res) => res.json())
         .then((data) => cloudinaryLinks.push(data.secure_url));
     }
+
+
     await fetch(
       `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-post-vehicle-for-rent`,
       {
@@ -88,6 +93,31 @@ function PostVehicleForRent() {
         body: JSON.stringify({
           user_id: sessionStorage.getItem("user_id"),
           access_token: sessionStorage.getItem("access_token"),
+
+          // 
+
+        //   title: "2022 Fiat Doblo, 1.6L",
+        //   type: "Sedan",
+        //   make: "BMW",
+        //   model: "530e",
+        //   year: "2023",
+        //   color: "Black",
+        //   transmission: "Automatic",
+        //   mileage: "135,000",
+        //   price: "75,000",
+        //   frequency: "Monthly",
+        //   details: "ABS, ESP, On-board computer, Heated mirrors, Electric mirrors, Central locking, Parktronic, Steering wheel adjustment, Fog lights, New tires, CD/MP3, Purchased from a car dealership, Airbags, Air conditioning, Power steering, Power steering, Power windows, Sound insulation.",
+        //   name: "Khoren",
+        // phone: "818-747-4109",
+        //   city: "Glendale",
+        // state: "CA",
+        // zip: "91205",
+        //   images: ["https://res.cloudinary.com/gorcka-com/image/upload/v1673432555/gorckaimages/lu2cwc8wlq0b1bx7hhcn.jpg", "https://res.cloudinary.com/gorcka-com/image/upload/v1673432555/gorckaimages/k07dpmmcuim06n3pd7lh.jpg", "https://res.cloudinary.com/gorcka-com/image/upload/v1673432556/gorckaimages/eqjavusjlxd4rga91a0j.jpg"],
+        //   is_special: true,
+
+         //
+
+
           title: data.title,
           type: data.type,
           make: data.make,
@@ -137,7 +167,7 @@ function PostVehicleForRent() {
       />
 
       <div className={styles.form_box}>
-        <h1>Post Vehicle for Sale</h1>
+        <h1>Post Vehicle for Rent</h1>
 
         <div className={styles.form_box_fields}>
           <input

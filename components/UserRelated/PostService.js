@@ -53,7 +53,6 @@ function PostService() {
       return;
     }
     setLoading(true);
-    //
 
     let cloudinaryLinks = [];
 
@@ -75,6 +74,24 @@ function PostService() {
       body: JSON.stringify({
         user_id: sessionStorage.getItem("user_id"),
         access_token: sessionStorage.getItem("access_token"),
+
+        // 
+
+        // title: "Եռակցող բարձր որակ և մատչելի сварщик сварка svarshik սվարչիկ սվարշիկ զոդող զոդման",
+        // type: "Construction",
+        // details: "Դարպաս դարբաս ճաղավանդակ ճաղեր դարբին դարբնի գործ դարբնի գործեր պատվերով երկաթա դուռ երկաթյա երկաթ, եռակցում սվառկա պերիլա նավես կռիշ կրիշ կազիռոկ կազիրոկ ժոլոբ տանիք տանիքի ծածկ ջրահեռացում ջրահեռացման խողովակ լուսամուտ վանդակ սվառկի գոռծ սվարկի գօրծ շինարարություն ֆլանեց",
+        // name: "Khoren",
+        // email: "khorhov@gmail.com",
+        // phone: "818-747-4109",
+        // city: "Glendale",
+        // state: "CA",
+        // zip: "91205",
+        // images: ["https://res.cloudinary.com/gorcka-com/image/upload/v1673432295/gorckaimages/r5z5y37oi7pi5jfkcuiv.jpg", "https://res.cloudinary.com/gorcka-com/image/upload/v1673259019/gorckaimages/lbi9jvmmkdqejg9kafxx.jpg"],
+        // is_special: true,
+
+        //
+
+
         title: data.title,
         type: data.type,
         details: data.details,

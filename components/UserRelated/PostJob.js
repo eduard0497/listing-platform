@@ -53,8 +53,8 @@ function PostJob() {
     if (!checkSubmission()) {
       return;
     }
+
     setLoading(true);
-    //
 
     await fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/user-post-job`, {
       method: "POST",
@@ -62,6 +62,25 @@ function PostJob() {
       body: JSON.stringify({
         user_id: sessionStorage.getItem("user_id"),
         access_token: sessionStorage.getItem("access_token"),
+
+        // 
+
+        // title: "RECEPTIONIST NEEDED - Պահանջվում է Ընդունարանի Աշխատակից",
+        // type: "Admin/Office",
+        // overview: "An Accounting office in Glendale is hiring for a receptionist position. Position is full-time and minimum 2 year prior experience is a must.",
+        // requirements: "Skills and responsibilities: Communication skills in person and via telephone, multitasking in a busy office environment. The candidate must be highly organized and responsible. Language: The candidate MUST be fluent in English and Armenian. Please email your resume to: carine@glendaleagi.com",
+        // salary: "15000",
+        // name: "Khoren",
+        // email: "khorhov@gmail.com",
+        // phone: "818-747-4109",
+        // address: "416 Porter St",
+        // city: "Glendale",
+        // state: "CA",
+        // zip: "91205",
+        // is_special: true,
+
+        // 
+
         title: data.title,
         type: data.type,
         overview: data.overview,
