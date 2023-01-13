@@ -23,6 +23,7 @@ function ApprAndArchivedAds({
       customArchive(id, "admin-archive-running-ad");
     }
   };
+
   const deleteAd = (id) => {
     if (banner) {
       customDeleteAd(id, "admin-delete-banner-ad");
@@ -34,6 +35,7 @@ function ApprAndArchivedAds({
       customDeleteAd(id, "admin-delete-running-ad");
     }
   };
+  
   const customArchive = (adID, endpoint) => {
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/${endpoint}`, {
       method: "PUT",

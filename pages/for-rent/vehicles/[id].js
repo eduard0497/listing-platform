@@ -30,10 +30,11 @@ function Listing() {
 
     (async () => {
       if (!listingID) {
+        console.log("adasdasd")
         return;
       } else {
         fetch(
-          `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-vehicle-for-sale?id=${listingID}`
+          `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/get-vehicle-for-rent?id=${listingID}`
         )
           .then((res) => res.json())
           .then((data) => {
@@ -53,7 +54,6 @@ function Listing() {
     };
   }, [listingID]);
 
-  console.log(listing);
 
   return (
     <>

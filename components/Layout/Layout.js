@@ -34,6 +34,7 @@ function Layout({ children }) {
       route.pathname == "/prices" ||
       route.pathname == "/payment-confirmation" ||
       route.pathname.includes("/jobs/") ||
+      route.pathname.includes("/services/") ||
       route.pathname.includes("/for-sale/houses/") ||
       route.pathname.includes("/for-rent/houses/") ||
       route.pathname.includes("/for-sale/vehicles/") ||

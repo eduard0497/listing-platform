@@ -4,7 +4,7 @@ import { shortenText } from "../../UsefulFunctions/helperFunctions";
 import UserPayButton from "../../Reusable/UserPayButton";
 import { allPrices } from "../../UsefulFunctions/prices";
 
-function DisplayPostedJobsForUser({ data, title }) {
+function DisplayPostedJobsForUser({ data, canRedirect, title }) {
   if (!data.length) {
     return null;
   } else {
@@ -36,7 +36,20 @@ function DisplayPostedJobsForUser({ data, title }) {
               {data.map((item) => {
                 return (
                   <tr key={item.id}>
-                    <td>{item.id}</td>
+                    {canRedirect ? (
+                      <td>
+                        {
+                          <a
+                            href={`${process.env.NEXT_PUBLIC_WEBSITE_LINK}/jobs/${item.id}`}
+                          >
+                            {item.id}
+                          </a>
+                        }
+                      </td>
+                    ) : (
+                      <td>{item.id}</td>
+                    )}
+
                     <td>{shortenText(item.title, 20)}</td>
                     <td>{item.type}</td>
                     <td>{shortenText(item.overview, 20)}</td>
@@ -55,14 +68,16 @@ function DisplayPostedJobsForUser({ data, title }) {
                       <td>{new Date(item.expires).toLocaleDateString()} </td>
                     ) : null}
                     {item.is_special ? (
-                      <td>
-                        <UserPayButton
-                          status={item.status}
-                          listingID={item.id}
-                          stripeLink={allPrices[4].stripe_link}
-                        />
-                      </td>
-                    ) : (
+                      item.status == "approved" ? null : (
+                        <td>
+                          <UserPayButton
+                            status={item.status}
+                            listingID={item.id}
+                            stripeLink={allPrices[4].stripe_link}
+                          />
+                        </td>
+                      )
+                    ) : item.status == "approved" ? null : (
                       <td>
                         <UserPayButton
                           status={item.status}

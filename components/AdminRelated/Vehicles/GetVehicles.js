@@ -87,9 +87,9 @@ function GetVehicles() {
   return (
     <div className={styles.admin_pending_container}>
       <div className={styles.admin_links}>
-        <button onClick={getAll}>GET All</button>
-        <button onClick={foldAll}>FOLD ALL</button>
-        <button onClick={unfoldAll}>UNFOLD ALL</button>
+      <button onClick={getAll}  className={styles.admin_approve_button}>GET All</button>
+        <button onClick={foldAll}  className={styles.admin_ready_button}>FOLD</button>
+        <button onClick={unfoldAll}  className={styles.admin_ready_button}>UNFOLD</button>
         <input
           type="text"
           placeholder="Type User ID or Listing ID..."
@@ -134,7 +134,7 @@ function GetVehicles() {
             />
           );
         })}
-      <h3>----------------------------------------------</h3>
+      <h3>----------------------------------------------------------------------------------</h3>
       {/*  */}
 
       <button
@@ -167,7 +167,7 @@ function GetVehicles() {
         />
       )}
       {/*  */}
-      <h3>----------------------------------------------</h3>
+      <h3>----------------------------------------------------------------------------------</h3>
 
       <button
         onClick={() => setShowApprovedForRent(!showApprovedForRent)}

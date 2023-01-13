@@ -71,7 +71,7 @@ function GetAllUsers() {
   return (
     <div>
       <div className={styles.admin_links}>
-        <button onClick={getAllUsers}>
+        <button onClick={getAllUsers} className={styles.admin_approve_button}>
           Refresh | Users: {allUsers.length}
         </button>
         <input

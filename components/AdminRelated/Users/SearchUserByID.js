@@ -219,7 +219,7 @@ const UserVideoAds = ({ arrayToDisplay }) => {
                   </td>
                   <td>{item.status}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
-                  <td>{new Date(item.expires).toLocaleDateString()}</td>
+                  <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
                 </tr>
@@ -264,7 +264,7 @@ const UserBannerAds = ({ arrayToDisplay }) => {
                   <td>{item.status}</td>
                   <td>{item.redirect_link}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
-                  <td>{new Date(item.expires).toLocaleDateString()}</td>
+                  <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
                 </tr>
@@ -309,7 +309,7 @@ const UserSideAds = ({ arrayToDisplay }) => {
                   <td>{item.status}</td>
                   <td>{item.redirect_link}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
-                  <td>{new Date(item.expires).toLocaleDateString()}</td>
+                  <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
                 </tr>
@@ -350,7 +350,7 @@ const UserRunningAds = ({ arrayToDisplay }) => {
                   <td>{item.text}</td>
                   <td>{item.status}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
-                  <td>{new Date(item.expires).toLocaleDateString()}</td>
+                  <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
                 </tr>

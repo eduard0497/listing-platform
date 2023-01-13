@@ -111,9 +111,9 @@ function GetAds() {
   return (
     <div className={styles.admin_pending_container}>
       <div className={styles.admin_links}>
-        <button onClick={getAll}>GET All</button>
-        <button onClick={foldAll}>FOLD ALL</button>
-        <button onClick={unfoldAll}>UNFOLD ALL</button>
+        <button onClick={getAll}  className={styles.admin_approve_button}>GET All</button>
+        <button onClick={foldAll}  className={styles.admin_ready_button}>FOLD</button>
+        <button onClick={unfoldAll}  className={styles.admin_ready_button}>UNFOLD</button>
         <input
           type="text"
           placeholder="Type User ID to filter"
@@ -136,7 +136,7 @@ function GetAds() {
         </h5>
       </div>
 
-      <h3>----------------------------------------------</h3>
+      <h3>----------------------------------------------------------------------------------</h3>
 
       <button
         onClick={() => setShowPendingBanners(!showPendingBanners)}
@@ -151,7 +151,7 @@ function GetAds() {
           );
         })}
 
-      {/* ---------------------------------------------- */}
+      {/* ---------------------------------------------------------------------------------- */}
 
       <button
         onClick={() => setShowPendingSides(!showPendingSides)}
@@ -166,7 +166,7 @@ function GetAds() {
           );
         })}
 
-      {/* ---------------------------------------------- */}
+      {/* ---------------------------------------------------------------------------------- */}
 
       <button
         onClick={() => setShowPendingVideos(!showPendingVideos)}
@@ -181,7 +181,7 @@ function GetAds() {
           );
         })}
 
-      {/* ---------------------------------------------- */}
+      {/* ---------------------------------------------------------------------------------- */}
 
       <button
         onClick={() => setShowPendingRunning(!showPendingRunning)}
@@ -200,7 +200,7 @@ function GetAds() {
             />
           );
         })}
-      <h3>----------------------------------------------</h3>
+      <h3>----------------------------------------------------------------------------------</h3>
 
       <button
         onClick={() => setShowApprovedBanners(!showApprovedBanners)}
@@ -217,7 +217,7 @@ function GetAds() {
         />
       )}
 
-      {/* ---------------------------------------------- */}
+      {/* ---------------------------------------------------------------------------------- */}
 
       <button
         onClick={() => setShowArchivedBanners(!showArchivedBanners)}
@@ -234,7 +234,7 @@ function GetAds() {
         />
       )}
 
-      <h3>----------------------------------------------</h3>
+      <h3>----------------------------------------------------------------------------------</h3>
 
       <button
         onClick={() => setShowApprovedSides(!showApprovedSides)}
@@ -251,7 +251,7 @@ function GetAds() {
         />
       )}
 
-      {/* ---------------------------------------------- */}
+      {/* ---------------------------------------------------------------------------------- */}
 
       <button
         onClick={() => setShowArchivedSides(!showArchivedSides)}
@@ -268,7 +268,7 @@ function GetAds() {
         />
       )}
 
-      <h3>----------------------------------------------</h3>
+      <h3>----------------------------------------------------------------------------------</h3>
 
       <button
         onClick={() => setShowApprovedVideos(!showApprovedVideos)}
@@ -285,7 +285,7 @@ function GetAds() {
         />
       )}
 
-      {/* ---------------------------------------------- */}
+      {/* ---------------------------------------------------------------------------------- */}
 
       <button
         onClick={() => setShowArchivedVideos(!showArchivedVideos)}
@@ -302,7 +302,7 @@ function GetAds() {
         />
       )}
 
-      <h3>----------------------------------------------</h3>
+      <h3>----------------------------------------------------------------------------------</h3>
 
       <button
         onClick={() => setShowApprovedRunning(!showApprovedRunning)}
@@ -319,7 +319,7 @@ function GetAds() {
         />
       )}
 
-      {/* ---------------------------------------------- */}
+      {/* ---------------------------------------------------------------------------------- */}
 
       <button
         onClick={() => setShowArchivedRunning(!showArchivedRunning)}

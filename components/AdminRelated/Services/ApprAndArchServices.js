@@ -3,6 +3,7 @@ import styles from "../../../styles/AdminDashboard.module.css";
 import { shortenText } from "../../UsefulFunctions/helperFunctions";
 
 function ApprAndArchServices({ listings, approved, archived, getAll }) {
+
   const archive = (id) => {
     fetch(`${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-archive-service`, {
       method: "PUT",
@@ -64,7 +65,19 @@ function ApprAndArchServices({ listings, approved, archived, getAll }) {
             {listings.map((item) => {
               return (
                 <tr key={item.id} className={styles.table_rows}>
-                  <td>{item.id}</td>
+                  {approved ? (
+                    <td>
+                      {
+                        <a
+                          href={`${process.env.NEXT_PUBLIC_WEBSITE_LINK}/services/${item.id}`}
+                        >
+                          {item.id}
+                        </a>
+                      }
+                    </td>
+                  ) : (
+                    <td>{item.id}</td>
+                  )}
                   <td>{item.user_posted}</td>
                   <td>{shortenText(item.title, 50)}</td>
                   <td>{item.type}</td>
@@ -82,7 +95,7 @@ function ApprAndArchServices({ listings, approved, archived, getAll }) {
                         </a>
                       );
                     })}
-                  </td> 
+                  </td>
                   <td>
                     {item.city}, {item.state} {item.zip}
                   </td>

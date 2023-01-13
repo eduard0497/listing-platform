@@ -4,7 +4,13 @@ import { shortenText } from "../../UsefulFunctions/helperFunctions";
 import UserPayButton from "../../Reusable/UserPayButton";
 import { allPrices } from "../../UsefulFunctions/prices";
 
-function DisplayPostedVehiclesForUser({ data, title }) {
+function DisplayPostedVehiclesForUser({
+  data,
+  canRedirect,
+  sale,
+  rent,
+  title,
+}) {
   if (!data.length) {
     return null;
   } else {
@@ -32,7 +38,27 @@ function DisplayPostedVehiclesForUser({ data, title }) {
               {data.map((item) => {
                 return (
                   <tr key={item.id}>
-                    <td>{item.id}</td>
+                    {canRedirect ? (
+                      <td>
+                        {sale ? (
+                          <a
+                            href={`${process.env.NEXT_PUBLIC_WEBSITE_LINK}/for-sale/vehicles/${item.id}`}
+                          >
+                            {item.id}
+                          </a>
+                        ) : null}
+                        {rent ? (
+                          <a
+                            href={`${process.env.NEXT_PUBLIC_WEBSITE_LINK}/for-rent/vehicles/${item.id}`}
+                          >
+                            {item.id}
+                          </a>
+                        ) : null}
+                      </td>
+                    ) : (
+                      <td>{item.id}</td>
+                    )}
+
                     <td>{shortenText(item.title, 50)}</td>
                     <td>
                       <pre>{shortenText(item.details, 20)}</pre>
@@ -50,14 +76,16 @@ function DisplayPostedVehiclesForUser({ data, title }) {
                       <td>{new Date(item.expires).toLocaleDateString()} </td>
                     ) : null}
                     {item.is_special ? (
-                      <td>
-                        <UserPayButton
-                          status={item.status}
-                          listingID={item.id}
-                          stripeLink={allPrices[4].stripe_link}
-                        />
-                      </td>
-                    ) : (
+                      item.status == "approved" ? null : (
+                        <td>
+                          <UserPayButton
+                            status={item.status}
+                            listingID={item.id}
+                            stripeLink={allPrices[4].stripe_link}
+                          />
+                        </td>
+                      )
+                    ) : item.status == "approved" ? null : (
                       <td>
                         <UserPayButton
                           status={item.status}

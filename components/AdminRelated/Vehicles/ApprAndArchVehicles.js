@@ -84,7 +84,31 @@ function ApprAndArchVehicles({
             {listings.map((item) => {
               return (
                 <tr key={item.id} className={styles.table_rows}>
-                  <td>{item.id}</td>
+                  {approved ? (
+                    sale ? (
+                      <td>
+                        {
+                          <a
+                            href={`${process.env.NEXT_PUBLIC_WEBSITE_LINK}/for-sale/vehicles/${item.id}`}
+                          >
+                            {item.id}
+                          </a>
+                        }
+                      </td>
+                    ) : (
+                      <td>
+                        {
+                          <a
+                            href={`${process.env.NEXT_PUBLIC_WEBSITE_LINK}/for-rent/vehicles/${item.id}`}
+                          >
+                            {item.id}
+                          </a>
+                        }
+                      </td>
+                    )
+                  ) : (
+                    <td>{item.id}</td>
+                  )}
                   <td>{item.user_posted}</td>
                   <td>{item.type}</td>
                   <td>{shortenText(item.title, 30)}</td>

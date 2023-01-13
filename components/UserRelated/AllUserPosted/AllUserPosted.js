@@ -261,23 +261,36 @@ function AllUserPosted() {
           />
           <DisplayPostedHousesForUser
             data={postedHousesForSale}
+            canRedirect={true}
+            sale={true}
+            rent={false}
             title="Posted Houses For Sale"
           />
           <DisplayPostedHousesForUser
             data={postedHousesForRent}
-            title="Posted Houses For Sale"
+            canRedirect={true}
+            sale={false}
+            rent={true}
+            title="Posted Houses For Rent"
           />
           <DisplayPostedVehiclesForUser
             data={postedVehiclesForSale}
+            canRedirect={true}
+            sale={true}
+            rent={false}
             title="Posted Vehicles For Sale"
           />
           <DisplayPostedVehiclesForUser
             data={postedVehiclesForRent}
+            canRedirect={true}
+            sale={false}
+            rent={true}
             title="Posted Vehicles For Rent"
           />
-          <DisplayPostedJobsForUser data={jobsPosted} title="Posted Jobs" />
+          <DisplayPostedJobsForUser data={jobsPosted} canRedirect={true}  title="Posted Jobs" />
           <DisplayPostedServicesForUser
             data={servicesPosted}
+            canRedirect={true}
             title="Posted Services"
           />
         </div>
