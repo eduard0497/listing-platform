@@ -17,7 +17,7 @@ function ApprAndArchJobs({ listings, approved, archived, getAll }) {
       .then((res) => res.json())
       .then((info) => {
         getAll();
-        console.log(info.msg);
+        alert(info.msg);
       });
   };
 
@@ -35,7 +35,7 @@ function ApprAndArchJobs({ listings, approved, archived, getAll }) {
       .then((res) => res.json())
       .then((info) => {
         getAll();
-        console.log(info.msg);
+        alert(info.msg);
       });
   };
 

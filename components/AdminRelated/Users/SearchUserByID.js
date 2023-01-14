@@ -142,6 +142,7 @@ function SearchUserByID() {
         <button className={styles.admin_delete_button} onClick={clearSearch}>
           CLEAR
         </button>
+        {totalEarnedFromUser && <h1>Total Earned From User: {totalEarnedFromUser}</h1>}
       </div>
 
       <UserInfo userData={userData} />
