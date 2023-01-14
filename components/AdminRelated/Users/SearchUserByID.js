@@ -17,7 +17,7 @@ function SearchUserByID() {
   const [sellingVehicles, setSellingVehicles] = useState([]);
   const [rentingVehicles, setRentingVehicles] = useState([]);
   //
-  const [totalEarnedFromUser, setTotalEarnedFromUser] = useState(0);
+  const [totalEarnedFromUser, setTotalEarnedFromUser] = useState("");
 
   const getUserData = () => {
     setLoading(true);
@@ -45,7 +45,7 @@ function SearchUserByID() {
               (tempTotalEarnedFromUser =
                 tempTotalEarnedFromUser + item.payment_amount / 100)
           );
-          setTotalEarnedFromUser(tempTotalEarnedFromUser);
+          setTotalEarnedFromUser(tempTotalEarnedFromUser.toString());
           setUserData(data.userData);
           setBannerAds(
             mergePaymentInfosWithListingsAndSort(allListings, data.bannerAds)
@@ -149,7 +149,7 @@ function SearchUserByID() {
           CLEAR
         </button>
         {totalEarnedFromUser.length != 0 ? (
-          <h2>Total Earned From User: ${totalEarnedFromUser}</h2>
+          <h3>Total Earned From User: ${totalEarnedFromUser}</h3>
         ) : null}
       </div>
 
@@ -389,7 +389,7 @@ const UserRunningAds = ({ arrayToDisplay }) => {
               {arrayToDisplay.map((item) => (
                 <tr key={item.id} className={styles.table_rows}>
                   <td>{item.id}</td>
-                  <td>{item.text}</td>
+                  <td>{shortenText(item.text, 20)}</td>
                   <td>{item.status}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
                   <td>
