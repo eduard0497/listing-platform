@@ -62,8 +62,8 @@ function SearchListingByID() {
                 <th>User Added</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
-                <th>Payment Status</th>
                 <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -74,8 +74,8 @@ function SearchListingByID() {
                   <td>{item.user_added}</td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>${item.payment_amount}</td>
                   <td>{item.payment_status}</td>
-                  <td>${item.stripe_payment_amount}</td>
                 </tr>
               ))}
             </tbody>

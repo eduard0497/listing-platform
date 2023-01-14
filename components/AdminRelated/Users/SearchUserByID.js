@@ -110,6 +110,8 @@ function SearchUserByID() {
       item.stripe_session_id =
         listingsWithPaymentInfo[foundIndex].stripe_session_id;
       item.payment_intent = listingsWithPaymentInfo[foundIndex].payment_intent;
+      item.payment_amount = listingsWithPaymentInfo[foundIndex].payment_amount / 100;
+      item.payment_status = listingsWithPaymentInfo[foundIndex].payment_status;
     });
 
     return arrayToMergePaymentInfoTo;
@@ -207,6 +209,8 @@ const UserVideoAds = ({ arrayToDisplay }) => {
                 <th>Expires</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
+                <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -222,6 +226,8 @@ const UserVideoAds = ({ arrayToDisplay }) => {
                   <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>{item.payment_amount}</td>
+                  <td>{item.payment_status}</td>
                 </tr>
               ))}
             </tbody>
@@ -251,6 +257,8 @@ const UserBannerAds = ({ arrayToDisplay }) => {
                 <th>Expires</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
+                <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -267,6 +275,8 @@ const UserBannerAds = ({ arrayToDisplay }) => {
                   <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>{item.payment_amount}</td>
+                  <td>{item.payment_status}</td>
                 </tr>
               ))}
             </tbody>
@@ -296,6 +306,8 @@ const UserSideAds = ({ arrayToDisplay }) => {
                 <th>Expires</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
+                <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -312,6 +324,8 @@ const UserSideAds = ({ arrayToDisplay }) => {
                   <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>{item.payment_amount}</td>
+                  <td>{item.payment_status}</td>
                 </tr>
               ))}
             </tbody>
@@ -340,6 +354,8 @@ const UserRunningAds = ({ arrayToDisplay }) => {
                 <th>Expires</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
+                <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -353,6 +369,8 @@ const UserRunningAds = ({ arrayToDisplay }) => {
                   <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>{item.payment_amount}</td>
+                  <td>{item.payment_status}</td>
                 </tr>
               ))}
             </tbody>
@@ -382,6 +400,8 @@ const UserJobs = ({ arrayToDisplay }) => {
                 <th>Expires</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
+                <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -400,6 +420,8 @@ const UserJobs = ({ arrayToDisplay }) => {
                   </td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>{item.payment_amount}</td>
+                  <td>{item.payment_status}</td>
                 </tr>
               ))}
             </tbody>
@@ -430,6 +452,8 @@ const UserServices = ({ arrayToDisplay }) => {
                 <th>Expires</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
+                <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -457,6 +481,8 @@ const UserServices = ({ arrayToDisplay }) => {
                   </td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>{item.payment_amount}</td>
+                  <td>{item.payment_status}</td>
                 </tr>
               ))}
             </tbody>
@@ -490,6 +516,8 @@ const UserSellingHouses = ({ arrayToDisplay }) => {
                 <th>Expires</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
+                <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -518,6 +546,8 @@ const UserSellingHouses = ({ arrayToDisplay }) => {
                   </td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>{item.payment_amount}</td>
+                  <td>{item.payment_status}</td>
                 </tr>
               ))}
             </tbody>
@@ -551,6 +581,8 @@ const UserRentingHouses = ({ arrayToDisplay }) => {
                 <th>Expires</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
+                <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -579,6 +611,8 @@ const UserRentingHouses = ({ arrayToDisplay }) => {
                   </td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>{item.payment_amount}</td>
+                  <td>{item.payment_status}</td>
                 </tr>
               ))}
             </tbody>
@@ -613,6 +647,8 @@ const UserSellingVehicles = ({ arrayToDisplay }) => {
                 <th>Expires</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
+                <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -650,6 +686,8 @@ const UserSellingVehicles = ({ arrayToDisplay }) => {
                   </td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>{item.payment_amount}</td>
+                  <td>{item.payment_status}</td>
                 </tr>
               ))}
             </tbody>
@@ -684,6 +722,8 @@ const UserRentingVehicles = ({ arrayToDisplay }) => {
                 <th>Expires</th>
                 <th>Stripe Session</th>
                 <th>Payment Intent</th>
+                <th>Payment Amount</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
 
@@ -721,6 +761,8 @@ const UserRentingVehicles = ({ arrayToDisplay }) => {
                   </td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
+                  <td>{item.payment_amount}</td>
+                  <td>{item.payment_status}</td>
                 </tr>
               ))}
             </tbody>
