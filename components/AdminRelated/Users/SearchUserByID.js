@@ -16,8 +16,8 @@ function SearchUserByID() {
   const [rentingHouses, setRentingHouses] = useState([]);
   const [sellingVehicles, setSellingVehicles] = useState([]);
   const [rentingVehicles, setRentingVehicles] = useState([]);
-  // 
-  const [totalEarnedFromUser, setTotalEarnedFromUser] = useState(0)
+  //
+  const [totalEarnedFromUser, setTotalEarnedFromUser] = useState(0);
 
   const getUserData = () => {
     setLoading(true);
@@ -40,8 +40,12 @@ function SearchUserByID() {
         } else {
           let allListings = data.allListingsPayments;
           let tempTotalEarnedFromUser = 0;
-          allListings.forEach(item => tempTotalEarnedFromUser = tempTotalEarnedFromUser + (item.payment_amount / 100))
-          setTotalEarnedFromUser(tempTotalEarnedFromUser)
+          allListings.forEach(
+            (item) =>
+              (tempTotalEarnedFromUser =
+                tempTotalEarnedFromUser + item.payment_amount / 100)
+          );
+          setTotalEarnedFromUser(tempTotalEarnedFromUser);
           setUserData(data.userData);
           setBannerAds(
             mergePaymentInfosWithListingsAndSort(allListings, data.bannerAds)
@@ -90,6 +94,7 @@ function SearchUserByID() {
 
   const clearSearch = () => {
     setUserIDToSearch("");
+    setTotalEarnedFromUser("");
     setUserData([]);
     setBannerAds([]);
     setSideAds([]);
@@ -115,7 +120,8 @@ function SearchUserByID() {
       item.stripe_session_id =
         listingsWithPaymentInfo[foundIndex].stripe_session_id;
       item.payment_intent = listingsWithPaymentInfo[foundIndex].payment_intent;
-      item.payment_amount = listingsWithPaymentInfo[foundIndex].payment_amount / 100;
+      item.payment_amount =
+        listingsWithPaymentInfo[foundIndex].payment_amount / 100;
       item.payment_status = listingsWithPaymentInfo[foundIndex].payment_status;
     });
 
@@ -142,7 +148,9 @@ function SearchUserByID() {
         <button className={styles.admin_delete_button} onClick={clearSearch}>
           CLEAR
         </button>
-        {totalEarnedFromUser && <h1>Total Earned From User: {totalEarnedFromUser}</h1>}
+        {totalEarnedFromUser.length != 0 ? (
+          <h2>Total Earned From User: ${totalEarnedFromUser}</h2>
+        ) : null}
       </div>
 
       <UserInfo userData={userData} />
@@ -229,7 +237,11 @@ const UserVideoAds = ({ arrayToDisplay }) => {
                   </td>
                   <td>{item.status}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
-                  <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
+                  <td>
+                    {item.expires
+                      ? new Date(item.expires).toLocaleDateString()
+                      : null}
+                  </td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
                   <td>{item.payment_amount}</td>
@@ -278,7 +290,11 @@ const UserBannerAds = ({ arrayToDisplay }) => {
                   <td>{item.status}</td>
                   <td>{item.redirect_link}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
-                  <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
+                  <td>
+                    {item.expires
+                      ? new Date(item.expires).toLocaleDateString()
+                      : null}
+                  </td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
                   <td>{item.payment_amount}</td>
@@ -327,7 +343,11 @@ const UserSideAds = ({ arrayToDisplay }) => {
                   <td>{item.status}</td>
                   <td>{item.redirect_link}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
-                  <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
+                  <td>
+                    {item.expires
+                      ? new Date(item.expires).toLocaleDateString()
+                      : null}
+                  </td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
                   <td>{item.payment_amount}</td>
@@ -372,7 +392,11 @@ const UserRunningAds = ({ arrayToDisplay }) => {
                   <td>{item.text}</td>
                   <td>{item.status}</td>
                   <td>{new Date(item.timestamp).toLocaleDateString()}</td>
-                  <td>{item.expires ?  new Date(item.expires).toLocaleDateString() : null}</td>
+                  <td>
+                    {item.expires
+                      ? new Date(item.expires).toLocaleDateString()
+                      : null}
+                  </td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
                   <td>{item.payment_amount}</td>
