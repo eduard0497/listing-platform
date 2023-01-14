@@ -16,6 +16,8 @@ function SearchUserByID() {
   const [rentingHouses, setRentingHouses] = useState([]);
   const [sellingVehicles, setSellingVehicles] = useState([]);
   const [rentingVehicles, setRentingVehicles] = useState([]);
+  // 
+  const [totalEarnedFromUser, setTotalEarnedFromUser] = useState(0)
 
   const getUserData = () => {
     setLoading(true);
@@ -36,8 +38,11 @@ function SearchUserByID() {
         if (data.msg) {
           alert(data.msg);
         } else {
-          setUserData(data.userData);
           let allListings = data.allListingsPayments;
+          let tempTotalEarnedFromUser = 0;
+          allListings.forEach(item => tempTotalEarnedFromUser = tempTotalEarnedFromUser + (item.payment_amount / 100))
+          setTotalEarnedFromUser(tempTotalEarnedFromUser)
+          setUserData(data.userData);
           setBannerAds(
             mergePaymentInfosWithListingsAndSort(allListings, data.bannerAds)
           );

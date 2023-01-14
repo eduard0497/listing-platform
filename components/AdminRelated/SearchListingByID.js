@@ -74,7 +74,7 @@ function SearchListingByID() {
                   <td>{item.user_added}</td>
                   <td>{item.stripe_session_id}</td>
                   <td>{item.payment_intent}</td>
-                  <td>${item.payment_amount}</td>
+                  <td>${item.payment_amount / 100 }</td>
                   <td>{item.payment_status}</td>
                 </tr>
               ))}
