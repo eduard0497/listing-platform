@@ -13,6 +13,7 @@
 }
 .admin_links > button {
   padding: 3px;
+  white-space: nowrap;
 }
 .admin_links > input {
   padding: 3px;
@@ -27,22 +28,26 @@
   background-color: rgb(46, 203, 255);
   padding: 5px;
   font-weight: bolder;
+  white-space: nowrap;
 }
 .admin_approve_button {
   background-color: rgb(105, 218, 0);
   padding: 5px;
   font-weight: bolder;
+  white-space: nowrap;
 }
 .admin_ready_button {
   background-color: rgb(255, 236, 67);
   padding: 5px;
   font-weight: bolder;
+  white-space: nowrap;
 }
 
 .admin_delete_button {
   background-color: red;
   padding: 5px;
   font-weight: bolder;
+  white-space: nowrap;
 }
 
 /* all users */
@@ -55,7 +60,7 @@
 }
 .table_rows > td {
   border-bottom: 1px solid purple;
-  padding-top: 5px;
+  padding: 5px 10px 0px 10px;
   text-align: center;
   min-width: 10px;
 }
@@ -83,6 +88,7 @@
 .manage_buttons {
   display: flex;
   gap: 10px;
+  white-space: nowrap;
 }
 
 /* display pending components */
@@ -128,4 +134,11 @@
   flex-direction: column;
   justify-content: center;
   gap: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  .admin_pending_container_item {
+    flex-direction: column;
+    gap: 50px;
+  }
 }

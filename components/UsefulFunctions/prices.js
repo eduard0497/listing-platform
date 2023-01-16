@@ -30,15 +30,15 @@ export const allPrices = [
   },
   {
     id: 5,
-    name: "Special Listing",
+    name: "Special Listing (Will be visible on Homepage & with regular listings)",
     price: "30",
     expires: "30",
     stripe_link: "https://buy.stripe.com/test_6oEg0feYj705eMUdQW",
   },
   {
     id: 6,
-    name: "Regular Listing",
-    price: "0",
+    name: "Regular Listing (Will NOT be visible on Homepage)",
+    price: "10",
     expires: "30",
     stripe_link: "https://buy.stripe.com/test_aEUdS7cQb849dIQbIP",
   },

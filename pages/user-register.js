@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../styles/Components/GeneralForm.module.css";
 import PageHeader from "../components/Reusable/PageHeader";
 import RingLoader from "react-spinners/RingLoader";
@@ -11,6 +11,7 @@ const defaultState = {
   lastName: "",
   email: "",
   password: "",
+  confirmedPassword: "",
 };
 
 function UserRegister() {
@@ -19,20 +20,25 @@ function UserRegister() {
   const [loading, setLoading] = useState(false);
   const [infoForUser, setInfoForUser] = useState("");
   const [showInfoForUser, setShowInfoForUser] = useState(false);
+  const [passwordsMatch, setPasswordsMatch] = useState(false);
 
   const checkSubmission = () => {
-    //   sranq stugem
     if (
       !data.firstName.length ||
       !data.lastName.length ||
       !data.email.length ||
-      !data.password.length
+      !data.password.length ||
+      !data.confirmedPassword.length
     ) {
       setInfoForUser("Please fill out the form properly");
       setShowInfoForUser(true);
       return false;
     } else if (data.password.length < 8) {
       setInfoForUser("Password must be greater than 8 chracters");
+      setShowInfoForUser(true);
+      return false;
+    } else if (data.password != data.confirmedPassword) {
+      setInfoForUser("Passwords have to match!");
       setShowInfoForUser(true);
       return false;
     } else {
@@ -67,6 +73,14 @@ function UserRegister() {
     //
     setLoading(false);
   };
+
+  useEffect(() => {
+    if (data.password != data.confirmedPassword) {
+      setPasswordsMatch(false);
+    } else {
+      setPasswordsMatch(true);
+    }
+  }, [data.password, data.confirmedPassword]);
 
   //   sax takinnery nayem
 
@@ -128,12 +142,35 @@ function UserRegister() {
             placeholder="Password (Min: 8)"
             value={data.password}
           />
+          <input
+            onChange={(e) =>
+              setData((prevState) => ({
+                ...prevState,
+                confirmedPassword: e.target.value,
+              }))
+            }
+            type="password"
+            placeholder="Confirm Password"
+            value={data.confirmedPassword}
+          />
+          {data.password.length != 0 ? (
+            <div className={styles.matching_passwords}>
+              {passwordsMatch ? (
+                <p className={styles.matching_passwords_match}>Passwords Match</p>
+              ) : (
+                <p className={styles.matching_passwords_no_match}>Passwords do not match</p>
+              )}
+            </div>
+          ) : null}
         </div>
 
         <div className={styles.form_box_control_buttons}>
           <button
             className={styles.general_form_clear_button}
-            onClick={(e) => setData(defaultState)}
+            onClick={(e) => {
+              setData(defaultState);
+              setPasswordsMatch(false);
+            }}
           >
             CLEAR
           </button>

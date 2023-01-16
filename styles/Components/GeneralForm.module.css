@@ -19,6 +19,7 @@
   box-shadow: var(--box_shadow);
   transition: all var(--transition_time) var(--transition_function);
 }
+
 .form_box:hover {
   box-shadow: var(--box_shadow_hover);
 }
@@ -26,6 +27,21 @@
 .form_box > h1 {
   color: var(--general_form_title_color);
 }
+
+.matching_passwords {
+  text-align: start; 
+  font-weight: bold;
+}
+
+.matching_passwords_match {
+  color: rgb(12, 255, 12);
+}
+
+.matching_passwords_no_match {
+  color: rgb(255, 0, 0);
+}
+
+
 
 .form_box_fields {
   display: flex;
