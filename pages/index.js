@@ -52,9 +52,9 @@ export default function Home() {
   return (
     <div className={styles.homepage_container}>
       <PageHeader
-        title="Home Page | GorcKa.com"
-        description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.com"
+        title="HomePage | GorcKa.us"
+        description="HomePage"
+        content="HomePage - GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       {specialJobs && (

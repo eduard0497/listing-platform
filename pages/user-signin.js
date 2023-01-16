@@ -63,9 +63,9 @@ function UserSignIn() {
   return (
     <div className={styles.form_parent_container}>
       <PageHeader
-        title="Sign In | GorcKa.com"
-        description="Gorc Ka Listing Platform Sign In"
-        content="Sign In For GorcKa.com"
+        title="Sign In | GorcKa.us"
+        description="Gorc Ka Listing Platform User Sign In"
+        content="Sign In For GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       <Popup

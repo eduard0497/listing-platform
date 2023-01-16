@@ -57,9 +57,9 @@ function ContactUs() {
   return (
     <div className={styles.form_parent_container}>
       <PageHeader
-        title="Contact Us | GorcKa.com"
-        description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.com"
+        title="Contact Us | GorcKa.us"
+        description="Contact Us"
+        content="Contact Us - GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       <Popup

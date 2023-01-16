@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles_loading from "../styles/Components/Layout.module.css";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import PageHeader from "../components/Reusable/PageHeader";
 
 function PaymentConfirmation() {
   const [loading, setLoading] = useState(false);
@@ -49,6 +50,12 @@ function PaymentConfirmation() {
 
   return (
     <>
+    <PageHeader
+        title="Payment Confirmation | GorcKa.us"
+        description="Payment Confirmation"
+        content="Payment Confirmation - GorcKa.us"
+        iconLink="/logo/gorcka_logo.jpeg"
+      />
       {loading ? (
         <div className={styles_loading.layout_loading}>
           <PropagateLoader

@@ -7,9 +7,9 @@ function Prices() {
   return (
     <div className={styles.prices_table_outer}>
       <PageHeader
-        title="Prices | GorcKa.com"
-        description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.com"
+        title="Prices | GorcKa.us"
+        description="Prices"
+        content="Prices - GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       <table className={styles.prices_table}>

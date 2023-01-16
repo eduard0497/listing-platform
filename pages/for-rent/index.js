@@ -10,9 +10,9 @@ function GeneralForRent() {
   return (
     <div>
       <PageHeader
-        title="For Rent | GorcKa.com"
-        description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.com"
+        title="All Rentals | GorcKa.us"
+        description="All Rentals"
+        content="All Rentals - GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       <div id="scrollTo" className={styles.sublinks_container}>

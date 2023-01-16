@@ -53,8 +53,8 @@ function Listing() {
     <>
       <PageHeader
         title="Jobs | GorcKa.us"
-        description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.us"
+        description="Jobs"
+        content="Jobs - GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       {listing ? (

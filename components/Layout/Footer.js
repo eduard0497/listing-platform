@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className={styles.footer_container}>
       <h3>© 2022 Eduard H.</h3>
-      <div className={styles.footer_links}>
+      <div className={styles.navbar_sublinks_container}>
         <Link href="/prices">
           <a>prices</a>
         </Link>

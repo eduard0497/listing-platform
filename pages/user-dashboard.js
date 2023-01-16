@@ -67,9 +67,9 @@ function UserDashboard() {
   return (
     <div className={styles.user_dashboard_container}>
       <PageHeader
-        title="User Dashboard | GorcKa.com"
-        description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.com"
+        title="User Dashboard | GorcKa.us"
+        description="User Dashboard"
+        content="User Dashboard - GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       <div className={styles.user_dashboard_container_inner_box}>

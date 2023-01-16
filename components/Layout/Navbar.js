@@ -41,7 +41,6 @@ function Navbar() {
     }, 800);
   };
 
-  // /GorcKaLogo.png
 
   return (
     <div className={styles.navbar_container}>
@@ -71,20 +70,6 @@ function Navbar() {
           burgerToggle ? styles.navbar_links_active : styles.navbar_links
         }
       >
-        <div className={styles.navbar_links_container}>
-          <Link href="/jobs#scrollTo">
-            <a onClick={closeBurger}>jobs</a>
-          </Link>
-          <Link href="/for-sale#scrollTo">
-            <a onClick={closeBurger}>buy</a>
-          </Link>
-          <Link href="/for-rent#scrollTo">
-            <a onClick={closeBurger}>rent</a>
-          </Link>
-          <Link href="/services#scrollTo">
-            <a onClick={closeBurger}>services</a>
-          </Link>
-        </div>
         {userLoggedIn ? (
           <div className={styles.navbar_links_container}>
             <Link href="/user-dashboard">
@@ -128,3 +113,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

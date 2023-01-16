@@ -55,9 +55,9 @@ function Listing() {
   return (
     <>
       <PageHeader
-        title="Jobs | GorcKa.com"
-        description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.com"
+        title="Houses For Sale | GorcKa.us"
+        description="Houses For Sale"
+        content="Houses For Sale - GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       {listing ? (

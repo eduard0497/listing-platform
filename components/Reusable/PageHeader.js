@@ -6,7 +6,7 @@ function PageHeader({ title, description, content, iconLink }) {
     <Head>
       <title>{title}</title>
       <meta name={description} content={content} />
-      <link rel="icon" href={iconLink} />
+      <link rel="icon" href="/logo/gorcka_logo.jpeg" />
     </Head>
   );
 }

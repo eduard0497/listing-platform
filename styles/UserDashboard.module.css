@@ -141,6 +141,7 @@
   padding: var(--user_dashboard_table_container_table_item_padding);
   border: var(--user_dashboard_table_container_table_item_border_width) solid
     var(--user_dashboard_table_container_table_item_border_color);
+    border-radius: 5px;
 }
 
 @media screen and (max-width: 1200px) {

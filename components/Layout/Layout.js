@@ -9,6 +9,7 @@ import TopAds from "../TopAds";
 import SideAds from "../SideAds";
 import { FaSuitcase } from "react-icons/fa";
 import { getAllLiveAds } from "../UsefulFunctions/webViewFetches";
+import Link from "next/link";
 
 function Layout({ children }) {
   const [loading, setLoading] = useState(false);
@@ -91,6 +92,21 @@ function Layout({ children }) {
           ) : (
             <div className={styles.layout_container}>
               <Navbar />
+
+              <div className={styles.navbar_sublinks_container}>
+                <Link href="/jobs#scrollTo">
+                  <a>jobs</a>
+                </Link>
+                <Link href="/for-sale#scrollTo">
+                  <a>buy</a>
+                </Link>
+                <Link href="/for-rent#scrollTo">
+                  <a>rent</a>
+                </Link>
+                <Link href="/services#scrollTo">
+                  <a>services</a>
+                </Link>
+              </div>
 
               <div className={styles.navbar_bottom_border}>
                 <span className={styles.suitcase_icon}>

@@ -6,9 +6,9 @@ function GeneralForServices() {
   return (
     <>
       <PageHeader
-        title="Services | GorcKa.com"
-        description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.com"
+        title="Services | GorcKa.us"
+        description="Services"
+        content="Services - GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       <div id="scrollTo"></div>

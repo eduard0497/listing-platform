@@ -55,7 +55,6 @@
 }
 
 .navbar_links {
-  flex: 0.8;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -86,14 +85,15 @@
   color: #006a82;
   border-radius: var(--border_radius);
   border: var(--navbar_links_link_border_width) solid #006a82;
-  outline: var(--navbar_links_link_outline_width) solid #006a82;
-  outline-offset: var(--navbar_links_link_outline_default_offset);
+  /* outline: var(--navbar_links_link_outline_width) solid #006a82; */
+  /* outline-offset: var(--navbar_links_link_outline_default_offset); */
   transition: all var(--navbar_links_transition_time);
   font-weight: bold;
 }
 
 .navbar_links_container > a:hover {
-  outline-offset: var(--navbar_links_link_outline_hover_offset);
+  /* outline-offset: var(--navbar_links_link_outline_hover_offset); */
+  margin-bottom: 5px;
 }
 .navbar_links_container > button {
   display: flex;
@@ -106,14 +106,16 @@
   color: #006a82;
   border-radius: var(--border_radius);
   border: var(--navbar_links_link_border_width) solid #006a82;
-  outline: var(--navbar_links_link_outline_width) solid #006a82;
-  outline-offset: var(--navbar_links_link_outline_default_offset);
+  /* outline: var(--navbar_links_link_outline_width) solid #006a82; */
+  /* outline-offset: var(--navbar_links_link_outline_default_offset); */
   transition: all var(--navbar_links_transition_time);
   font-weight: bold;
+  cursor: pointer;
 }
 .navbar_links_container > button:hover {
-  cursor: pointer;
-  outline-offset: var(--navbar_links_link_outline_hover_offset);
+  margin-bottom: 5px;
+  
+  /* outline-offset: var(--navbar_links_link_outline_hover_offset); */
 }
 
 .navbar_logo_container {
@@ -128,7 +130,7 @@
 }
 
 .logo img {
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .burger {
@@ -139,7 +141,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
+  height: 45px;
+}
+
+.navbar_sublinks_container > a {
+  list-style: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 2px solid #006a82;
+  font-size: var(--navbar_links_link_font_size);
+  padding: var(--navbar_links_link_padding);
+  color: #006a82;
+  border-radius: var(--border_radius);
+  transition: all var(--navbar_links_transition_time);
+}
+.navbar_sublinks_container > a:hover {
+margin-bottom: 10px;
 }
 
 /* FOOTER */
@@ -234,7 +253,6 @@
 @media only screen and (max-width: 1007px) {
   .burger {
     display: block;
-    /* transition: transform 2s ease-in; */
   }
 
   .burger div {

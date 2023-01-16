@@ -73,9 +73,9 @@ function UserRegister() {
   return (
     <div className={styles.form_parent_container}>
       <PageHeader
-        title="User Register | GorcKa.com"
-        description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.com"
+        title="Register User | GorcKa.us"
+        description="Register User"
+        content="Register User - GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       <Popup

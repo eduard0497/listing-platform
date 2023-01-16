@@ -54,9 +54,9 @@ function ForgotPassword() {
   return (
     <div className={styles.form_parent_container}>
       <PageHeader
-        title="Forgot Password | GorcKa.com"
-        description="Gorc Ka Listing Platform Homepage"
-        content="Home Page For GorcKa.com"
+        title="User Restore Password | GorcKa.us"
+        description="User Restore Password"
+        content="User Restore Password - GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       <Popup
