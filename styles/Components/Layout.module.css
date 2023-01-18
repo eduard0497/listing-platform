@@ -205,7 +205,9 @@
   pointer-events: painted;
 }
 
-.btn_search:focus ~ .input_search {
+.btn_search:focus,
+.input_search:hover
+~ .input_search {
   width: 300px;
   border-radius: 0px;
   background-color: transparent;
@@ -214,7 +216,9 @@
   transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
-.input_search:focus {
+.input_search:focus,
+.input_search:hover
+{
   width: 300px;
   border-radius: 0px;
   background-color: transparent;
