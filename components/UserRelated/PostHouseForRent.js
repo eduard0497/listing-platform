@@ -63,7 +63,7 @@ function PostHouseForRent() {
     for (let i = 0; i < data.images.length; i++) {
       let imageForm = new FormData();
       imageForm.append("file", data.images[i]);
-      imageForm.append("upload_preset", "gorckaimages");
+      imageForm.append("upload_preset", "housesForRent");
       await fetch("https://api.cloudinary.com/v1_1/gorcka-com/image/upload", {
         method: "POST",
         body: imageForm,

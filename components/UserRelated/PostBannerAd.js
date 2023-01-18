@@ -19,7 +19,7 @@ function PostBannerAd() {
       let cloudinaryLink;
       let imageForm = new FormData();
       imageForm.append("file", selectedImages[0]);
-      imageForm.append("upload_preset", "gorckaimages");
+      imageForm.append("upload_preset", "topBannerAds");
       await fetch("https://api.cloudinary.com/v1_1/gorcka-com/image/upload", {
         method: "POST",
         body: imageForm,

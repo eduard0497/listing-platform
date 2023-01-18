@@ -19,7 +19,7 @@ function PostVideoAd() {
       let videoLinkToSave;
       let videoForm = new FormData();
       videoForm.append("file", videoToUpload);
-      videoForm.append("upload_preset", "gorckavideos");
+      videoForm.append("upload_preset", "videoAds");
       //
       await fetch("https://api.cloudinary.com/v1_1/gorcka-com/video/upload", {
         method: "POST",
