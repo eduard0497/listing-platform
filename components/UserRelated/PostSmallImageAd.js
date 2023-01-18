@@ -37,7 +37,7 @@ function PostSideAd() {
           body: JSON.stringify({
             user_id: sessionStorage.getItem("user_id"),
             access_token: sessionStorage.getItem("access_token"),
-            redirect_link: redirectLink,
+            redirect_link: redirectLink.trim(),
             ad_link: cloudinaryLink,
           }),
         }

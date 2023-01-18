@@ -45,7 +45,7 @@ function SearchListingByID() {
           value={listingIDToSearch}
           onChange={(e) => setListingIDToSearch(e.target.value)}
         />
-        <button className={styles.admin_update_button} onClick={getListing}>
+        <button className={styles.admin_approve_button} onClick={getListing}>
           SEARCH
         </button>
         <button className={styles.admin_delete_button} onClick={clearSearch}>

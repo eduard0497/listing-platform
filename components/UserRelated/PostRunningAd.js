@@ -24,7 +24,7 @@ function PostRunningAd() {
           body: JSON.stringify({
             user_id: sessionStorage.getItem("user_id"),
             access_token: sessionStorage.getItem("access_token"),
-            text: text,
+            text: text.trim(),
           }),
         }
       )

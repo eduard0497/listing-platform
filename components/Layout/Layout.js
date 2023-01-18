@@ -7,11 +7,13 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import ScrollingText from "../ScrollingText";
 import TopAds from "../TopAds";
 import SideAds from "../SideAds";
-import { FaSuitcase } from "react-icons/fa";
+import { FaSuitcase, FaSearch } from "react-icons/fa";
 import { getAllLiveAds } from "../UsefulFunctions/webViewFetches";
 import Link from "next/link";
 
 function Layout({ children }) {
+  const iconSize = "35px";
+
   const [loading, setLoading] = useState(false);
   const [showContent, setShowContent] = useState(true);
   const [showContentAdmin, setShowContentAdmin] = useState(false);
@@ -109,12 +111,22 @@ function Layout({ children }) {
               </div>
 
               <div className={styles.navbar_bottom_border}>
-                <span className={styles.suitcase_icon}>
+                <div className={styles.search_box}>
+                  <button className={styles.btn_search}>
+                    <FaSearch size={iconSize} />
+                  </button>
+                  <input
+                    type="text"
+                    className={styles.input_search}
+                    placeholder="Type to Search..."
+                  />
+                </div>
+                {/* <span className={styles.suitcase_icon}>
                   <FaSuitcase
-                    size="2em"
+                    size="2.5em"
                     color={process.env.NEXT_PUBLIC_CLIP_LOADER_COLOR}
                   />
-                </span>
+                </span> */}
               </div>
 
               {showContent ? (

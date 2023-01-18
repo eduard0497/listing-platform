@@ -7,6 +7,7 @@ import { GiArchiveRegister } from "react-icons/gi";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { GoSignOut } from "react-icons/go";
 import { BiSupport } from "react-icons/bi";
+import { FaSearch } from "react-icons/fa";
 import Image from "next/image";
 
 function Navbar() {
@@ -41,7 +42,6 @@ function Navbar() {
     }, 800);
   };
 
-
   return (
     <div className={styles.navbar_container}>
       <div
@@ -52,18 +52,30 @@ function Navbar() {
         <div className={styles.line2}></div>
         <div className={styles.line3}></div>
       </div>
+
       <div className={styles.logo}>
         <Link href="/">
           <a onClick={closeBurger}>
             <Image
               src="/logo/gorcka_logo.jpeg"
               alt="logo"
-              width="70"
-              height="70"
+              width="65"
+              height="65"
             />
           </a>
         </Link>
       </div>
+
+      {/* <div className={styles.search_box}>
+        <button className={styles.btn_search}>
+          <FaSearch size={iconSize} />
+        </button>
+        <input
+          type="text"
+          className={styles.input_search}
+          placeholder="Type to Search..."
+        />
+      </div> */}
 
       <div
         className={
@@ -113,4 +125,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

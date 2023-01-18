@@ -140,7 +140,7 @@ function SearchUserByID() {
         {loading ? (
           <button className={styles.admin_update_button}>Loading...</button>
         ) : (
-          <button className={styles.admin_update_button} onClick={getUserData}>
+          <button className={styles.admin_approve_button} onClick={getUserData}>
             SEARCH
           </button>
         )}
@@ -172,6 +172,39 @@ function SearchUserByID() {
 export default SearchUserByID;
 
 const UserInfo = ({ userData }) => {
+  const [emailSubjectToSendToUser, setEmailSubjectToSendToUser] = useState("");
+  const [emailBodyToSendToUser, setEmailBodyToSendToUser] = useState(``);
+
+  const sendEmailToUser = async () => {
+    if (!emailBodyToSendToUser.length || !emailSubjectToSendToUser.length) {
+      return;
+    } else {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_LINK_TO_FETCH}/admin-send-email-to-user`,
+        {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            admin_id: sessionStorage.getItem("admin_id"),
+            access_token: sessionStorage.getItem("access_token"),
+            userIdToSendEmailTo: userData[0].user_id,
+            subjectToEmail: emailSubjectToSendToUser,
+            bodyToEmail: emailBodyToSendToUser,
+          }),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          alert(data.msg);
+        });
+    }
+  };
+
+  const clearEmailToSend = () => {
+    setEmailSubjectToSendToUser("");
+    setEmailBodyToSendToUser(``);
+  };
+
   return (
     <>
       {userData.length != 0 ? (
@@ -184,6 +217,8 @@ const UserInfo = ({ userData }) => {
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Banned</th>
+                <th>Email Subject</th>
+                <th>Email Body</th>
               </tr>
             </thead>
 
@@ -195,6 +230,37 @@ const UserInfo = ({ userData }) => {
                   <td>{item.last_name}</td>
                   <td>{item.email}</td>
                   <td>{item.is_banned ? "BANNED!!!" : "Not Banned"}</td>
+                  <td>
+                    <input
+                      type="text"
+                      value={emailSubjectToSendToUser}
+                      onChange={(e) =>
+                        setEmailSubjectToSendToUser(e.target.value)
+                      }
+                    />
+                  </td>
+                  <td>
+                    <textarea
+                      cols="30"
+                      rows="3"
+                      value={emailBodyToSendToUser}
+                      onChange={(e) => setEmailBodyToSendToUser(e.target.value)}
+                    ></textarea>
+                  </td>
+                  <td>
+                    <button
+                      className={styles.admin_delete_button}
+                      onClick={clearEmailToSend}
+                    >
+                      CLEAR TEXT
+                    </button>
+                    <button
+                      className={styles.admin_approve_button}
+                      onClick={sendEmailToUser}
+                    >
+                      EMAIL USER
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

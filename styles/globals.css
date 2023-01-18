@@ -15,7 +15,7 @@
   --navbar_background_color: #006a82;
   --navbar_bottom_border_color: #006a82;
   --navbar_bottom_border_width: 3px;
-  --navbar_bottom_border_icon_margin_left_right: 15px;
+  --navbar_bottom_border_icon_margin_left_right: 3px;
   --navbar_bottom_radius: 20px;
   --navbar_padding: 5px 25px;
   --navbar_logo_burger_gap: 15px;
@@ -70,11 +70,11 @@
   --top_ads_container_padding: 0px 10px;
   --top_ads_container_gap: 10px;
   /* video */
-  --top_ads_video_container_flex: 0.5;
+  --top_ads_video_container_flex: 0.4;
   --top_ads_video_width: 100%;
   --top_ads_video_height: 100%;
   /* images */
-  --top_ads_images_container_flex: 0.25;
+  --top_ads_images_container_flex: 0.3;
   --top_ads_images_width: 100%;
   --top_ads_images_height: 100%;
 

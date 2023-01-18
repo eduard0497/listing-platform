@@ -6,7 +6,7 @@ import ReactPlayer from "react-player";
 // redirect link unena avelacnem funkcian
 
 const defaultState = {
-  videoLink: "https://www.youtube.com/watch?v=HKS0BjJMKlY",
+  videoLink: "https://www.youtube.com/watch?v=tJlzIJaokVY",
   images: [],
 };
 
@@ -49,7 +49,7 @@ function TopAds({ video, banners }) {
           </>
         ) : (
           // default image banner image 1
-          <img src="https://sites.imsa.edu/acronym/files/2019/03/advertising-777x437.png" alt="Banner Ad" />
+          <img src="https://i0.wp.com/www.hewsongroup.com/wp-content/uploads/2016/03/your-ad-here.png?w=605&ssl=1" alt="Banner Ad" />
         )}
       </div>
       <div className={styles.top_ads_container_image_two}>
@@ -69,7 +69,7 @@ function TopAds({ video, banners }) {
           </>
         ) : (
           // default image banner image 2
-          <img src="https://sites.imsa.edu/acronym/files/2019/03/advertising-777x437.png" alt="Banner Ad" />
+          <img src="https://media.vanguardcommunications.net/photo-illustration-your-ad-here-e1558639989435.jpg" alt="Banner Ad" />
         )}
       </div>
     </div>
