@@ -188,6 +188,27 @@
   outline-offset: var(--general_form_box_submit_button_hover_offset);
 }
 
+.general_form_disabled_button {
+  min-width: var(--general_form_box_submit_button_min_width);
+  height: var(--general_form_box_submit_button_height);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border_radius);
+  outline: none;
+  background: var(--general_form_box_submit_button_background_color);
+  border: 2px solid gray;
+  color: gray;
+}
+
+.flex_container {
+  color: var(--general-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
 @media screen and (max-width: 450px) {
   .form_parent_container {
     padding: var(--general_form_parent_container_padding_450px);

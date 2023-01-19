@@ -1,6 +1,7 @@
 :root {
   /* GENERAL */
   --web_background-color: #eeeeee;
+  --general-color: #006a82;
   --border_radius: 5px;
   --box_shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   --box_shadow_hover: 0 15px 20px 0 rgba(0, 0, 0, 0.2);

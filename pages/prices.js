@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import styles from "../styles/Prices.module.css";
 import PageHeader from "../components/Reusable/PageHeader";
 import { allPrices } from "../components/UsefulFunctions/prices";

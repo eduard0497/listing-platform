@@ -35,6 +35,8 @@ function Layout({ children }) {
       route.pathname == "/forgot-password" ||
       route.pathname == "/contact-us" ||
       route.pathname == "/prices" ||
+      route.pathname == "/privacy-policy" ||
+      route.pathname == "/terms-and-conditions" ||
       route.pathname == "/payment-confirmation" ||
       route.pathname.includes("/jobs/") ||
       route.pathname.includes("/services/") ||

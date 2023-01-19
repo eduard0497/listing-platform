@@ -21,6 +21,7 @@ function UserRegister() {
   const [infoForUser, setInfoForUser] = useState("");
   const [showInfoForUser, setShowInfoForUser] = useState(false);
   const [passwordsMatch, setPasswordsMatch] = useState(false);
+  const [checkBoxClicked, setCheckBoxClicked] = useState(false);
 
   const checkSubmission = () => {
     if (
@@ -156,12 +157,29 @@ function UserRegister() {
           {data.password.length != 0 ? (
             <div className={styles.matching_passwords}>
               {passwordsMatch ? (
-                <p className={styles.matching_passwords_match}>Passwords Match</p>
+                <p className={styles.matching_passwords_match}>
+                  Passwords Match
+                </p>
               ) : (
-                <p className={styles.matching_passwords_no_match}>Passwords do not match</p>
+                <p className={styles.matching_passwords_no_match}>
+                  Passwords do not match
+                </p>
               )}
             </div>
           ) : null}
+          <div className={styles.flex_container}>
+            <input
+              type="checkbox"
+              checked={checkBoxClicked}
+              onChange={(e) => setCheckBoxClicked(e.target.checked)}
+            />
+            <p>
+              I have read and agree to{" "}
+              <Link href="/terms-and-conditions">
+                <a>terms & conditions</a>
+              </Link>.
+            </p>
+          </div>
         </div>
 
         <div className={styles.form_box_control_buttons}>
@@ -184,12 +202,25 @@ function UserRegister() {
               />
             </button>
           ) : (
-            <button
+            <>
+              {
+                checkBoxClicked ?
+                <button
               className={styles.general_form_submit_button}
               onClick={handleRegister}
-            >
+              >
               SUBMIT
             </button>
+            :
+            <button
+              className={styles.general_form_disabled_button}
+              disabled={true}
+              >
+              SUBMIT
+            </button>
+              }
+            
+              </>
           )}
         </div>
         <div className={styles.form_box_row_with_two_items}>
