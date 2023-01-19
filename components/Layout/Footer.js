@@ -5,18 +5,19 @@ import Link from "next/link";
 function Footer() {
   return (
     <div className={styles.footer_container}>
-      <h3>© 2022 Eduard H.</h3>
+      <div>
+        <h3>© 2022 Eduard H.</h3>
+      </div>
       <div className={styles.footer_sublinks_container}>
-      <Link href="/privacy-policy">
+        <Link href="/privacy-policy">
           <a>privacy policy</a>
         </Link>
-      <Link href="/terms-and-conditions">
+        <Link href="/terms-and-conditions">
           <a>Terms & Conditions</a>
         </Link>
         <Link href="/prices">
           <a>prices</a>
         </Link>
-        
       </div>
     </div>
   );
