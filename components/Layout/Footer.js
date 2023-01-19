@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className={styles.footer_container}>
       <h3>© 2022 Eduard H.</h3>
-      <div className={styles.navbar_sublinks_container}>
+      <div className={styles.footer_sublinks_container}>
       <Link href="/privacy-policy">
           <a>privacy policy</a>
         </Link>
