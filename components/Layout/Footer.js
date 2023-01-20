@@ -9,15 +9,16 @@ function Footer() {
         <h3>© 2022 Eduard H.</h3>
       </div>
       <div className={styles.footer_sublinks_container}>
+      <Link href="/prices">
+          <a>prices</a>
+        </Link>
         <Link href="/privacy-policy">
           <a>privacy policy</a>
         </Link>
         <Link href="/terms-and-conditions">
           <a>Terms & Conditions</a>
         </Link>
-        <Link href="/prices">
-          <a>prices</a>
-        </Link>
+        
       </div>
     </div>
   );

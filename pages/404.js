@@ -7,7 +7,7 @@ function ErrorPage() {
       <PageHeader
         title="404 | GorcKa.us"
         description="Gorc Ka Listing Platform 404"
-        content="Home Page For GorcKa.us"
+        content="404 Page For GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
       <h1>Ooops...</h1>

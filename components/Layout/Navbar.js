@@ -3,11 +3,10 @@ import styles from "../../styles/Components/Layout.module.css";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { VscSignIn } from "react-icons/vsc";
-import { GiArchiveRegister } from "react-icons/gi";
+import { FaUserPlus } from "react-icons/fa";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { GoSignOut } from "react-icons/go";
 import { BiSupport } from "react-icons/bi";
-import { FaSearch } from "react-icons/fa";
 import Image from "next/image";
 
 function Navbar() {
@@ -113,7 +112,7 @@ function Navbar() {
             </Link>
             <Link href="/user-register">
               <a onClick={closeBurger}>
-                <GiArchiveRegister size={iconSize} />
+                <FaUserPlus size={iconSize} />
                 join us
               </a>
             </Link>
