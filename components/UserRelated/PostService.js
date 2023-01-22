@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styles from "../../styles/Components/GeneralForm.module.css";
 import RingLoader from "react-spinners/RingLoader";
+import {
+  _ring_loader_color,
+  _ring_loader_size,
+  _max_allowed_images_to_upload
+} from "../UsefulFunctions/globalVariables";
 import Popup from "../Reusable/Popup";
 import { serviceTypes } from "../UsefulFunctions/serviceTypes";
 import { BsUpload } from "react-icons/bs";
@@ -42,6 +47,9 @@ function PostService() {
       return false;
     } else if (!data.phone.length && !data.email.length) {
       setInfoForUser("Please include either email or phone.");
+      setShowInfoForUser(true);
+    } else if(data.images.length > _max_allowed_images_to_upload) {
+      setInfoForUser("Too many images are selected");
       setShowInfoForUser(true);
     } else {
       return true;
@@ -202,14 +210,14 @@ function PostService() {
           <div className={styles.image_upload_container}>
             <label htmlFor="images" className="logo_and_text_together">
               <BsUpload />{" "}
-              {`Upload up to ${process.env.NEXT_PUBLIC_MAX_ALLOWED_IMAGES_FOR_HOUSE_SELLING} images*`}
+              {`Upload up to ${_max_allowed_images_to_upload} images*`}
             </label>
             {data.images.length != 0 ? (
               <h5>
                 Files selected:{" "}
                 {data.images.length >
                 parseInt(
-                  process.env.NEXT_PUBLIC_MAX_ALLOWED_IMAGES_FOR_HOUSE_SELLING
+                  _max_allowed_images_to_upload
                 )
                   ? "Exceeds the limit"
                   : data.images.length}
@@ -249,9 +257,9 @@ function PostService() {
           {loading ? (
             <button className={styles.general_form_submit_button}>
               <RingLoader
-                color={process.env.NEXT_PUBLIC_GENERAL_FORM_CLIP_LOADER_COLOR}
+                color={_ring_loader_color}
                 loading={loading}
-                size={20}
+                size={_ring_loader_size}
               />
             </button>
           ) : (

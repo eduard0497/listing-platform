@@ -1,6 +1,7 @@
 import React from "react";
 import PageHeader from "../../components/Reusable/PageHeader";
 import Services from "../../components/RoutedComponents/Services";
+import { _amount_of_items_to_display_in_routed_components } from "../../components/UsefulFunctions/globalVariables";
 
 function GeneralForServices() {
   return (
@@ -14,7 +15,9 @@ function GeneralForServices() {
       <div id="scrollTo"></div>
       <Services
         title="Services"
-        amountOfItemsToDisplay={30}
+        amountOfItemsToDisplay={
+          _amount_of_items_to_display_in_routed_components
+        }
         linkToPushTo="/services/"
       />
     </>

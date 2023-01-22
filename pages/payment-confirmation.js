@@ -3,6 +3,10 @@ import { useRouter } from "next/router";
 import styles_loading from "../styles/Components/Layout.module.css";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import PageHeader from "../components/Reusable/PageHeader";
+import {
+  _propagate_loader_color,
+  _propagate_loader_size,
+} from "../components/UsefulFunctions/globalVariables";
 
 function PaymentConfirmation() {
   const [loading, setLoading] = useState(false);
@@ -50,7 +54,7 @@ function PaymentConfirmation() {
 
   return (
     <>
-    <PageHeader
+      <PageHeader
         title="Payment Confirmation | GorcKa.us"
         description="Payment Confirmation"
         content="Payment Confirmation - GorcKa.us"
@@ -59,9 +63,9 @@ function PaymentConfirmation() {
       {loading ? (
         <div className={styles_loading.layout_loading}>
           <PropagateLoader
-            color={process.env.NEXT_PUBLIC_CLIP_LOADER_COLOR}
+            color={_propagate_loader_color}
             loading={loading}
-            size={20}
+            size={_propagate_loader_size}
           />
         </div>
       ) : (

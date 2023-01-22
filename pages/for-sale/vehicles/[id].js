@@ -15,6 +15,10 @@ import {
 import { GiGearStickPattern } from "react-icons/gi";
 import { RiDashboard3Line } from "react-icons/ri";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import {
+  _propagate_loader_color,
+  _propagate_loader_size,
+} from "../../../components/UsefulFunctions/globalVariables";
 import PageHeader from "../../../components/Reusable/PageHeader";
 
 function Listing() {
@@ -121,9 +125,9 @@ function Listing() {
       ) : (
         <div className={stylesOne.layout_loading}>
           <PropagateLoader
-            color={process.env.NEXT_PUBLIC_CLIP_LOADER_COLOR}
+            color={_propagate_loader_color}
             loading={loading}
-            size={20}
+            size={_propagate_loader_size}
           />
         </div>
       )}

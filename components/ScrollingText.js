@@ -8,7 +8,7 @@ function ScrollingText({ data }) {
     if (data.length != 0) {
       setSentence(data[0].text);
     } else {
-      setSentence("Your Advertisement Here!");
+      setSentence("Create an account and place your advertisement here!");
     }
   }, [data]);
 

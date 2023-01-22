@@ -5,6 +5,10 @@ import DisplayPostedRunningAdsForUser from "./DisplayPostedRunningAdsForUser";
 import styles from "../../../styles/UserDashboard.module.css";
 import styles_loading from "../../../styles/Components/Layout.module.css";
 import PropagateLoader from "react-spinners/PropagateLoader";
+import {
+  _propagate_loader_color,
+  _propagate_loader_size,
+} from "../../UsefulFunctions/globalVariables";
 import DisplayPostedHousesForUser from "./DisplayPostedHousesForUser";
 import DisplayPostedJobsForUser from "./DisplayPostedJobsForUser";
 import DisplayPostedVehiclesForUser from "./DisplayPostedVehiclesForUser";
@@ -194,9 +198,9 @@ function AllUserPosted() {
       {loading ? (
         <div className={styles_loading.layout_loading}>
           <PropagateLoader
-            color={process.env.NEXT_PUBLIC_CLIP_LOADER_COLOR}
+            color={_propagate_loader_color}
             loading={loading}
-            size={20}
+            size={_propagate_loader_size}
           />
         </div>
       ) : (
@@ -287,7 +291,11 @@ function AllUserPosted() {
             rent={true}
             title="Posted Vehicles For Rent"
           />
-          <DisplayPostedJobsForUser data={jobsPosted} canRedirect={true}  title="Posted Jobs" />
+          <DisplayPostedJobsForUser
+            data={jobsPosted}
+            canRedirect={true}
+            title="Posted Jobs"
+          />
           <DisplayPostedServicesForUser
             data={servicesPosted}
             canRedirect={true}

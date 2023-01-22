@@ -3,6 +3,8 @@ import PageHeader from "../../components/Reusable/PageHeader";
 import Houses from "../../components/RoutedComponents/Houses";
 import Vehicles from "../../components/RoutedComponents/Vehicles";
 import styles from "../../styles/Components/ReusableSubNavigators.module.css";
+import { _amount_of_items_to_display_in_routed_components } from "../../components/UsefulFunctions/globalVariables";
+
 
 function GeneralForRent() {
   const [pickedCategory, setPickedCategory] = useState("");
@@ -32,7 +34,7 @@ function GeneralForRent() {
       {pickedCategory == "houses-for-rent" ? (
         <Houses
           title="Houses For Rent"
-          amountOfItemsToDisplay={30}
+          amountOfItemsToDisplay={_amount_of_items_to_display_in_routed_components}
           linkToPushTo="/for-rent/houses/"
           housesForRent={true}
         />
@@ -40,7 +42,7 @@ function GeneralForRent() {
       {pickedCategory == "vehicles-for-rent" ? (
         <Vehicles
           title="Vehicles For Rent"
-          amountOfItemsToDisplay={30}
+          amountOfItemsToDisplay={_amount_of_items_to_display_in_routed_components}
           linkToPushTo="/for-rent/vehicles/"
           vehiclesForRent={true}
         />

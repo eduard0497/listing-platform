@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import styles from "../../styles/Components/GeneralForm.module.css";
 import RingLoader from "react-spinners/RingLoader";
+import {
+  _ring_loader_color,
+  _ring_loader_size,
+} from "../UsefulFunctions/globalVariables";
 import Popup from "../Reusable/Popup";
 
 const defaultState = {
@@ -120,9 +124,9 @@ function UpdatePassword() {
           {loading ? (
             <button className={styles.general_form_submit_button}>
               <RingLoader
-                color={process.env.NEXT_PUBLIC_GENERAL_FORM_CLIP_LOADER_COLOR}
+                color={_ring_loader_color}
                 loading={loading}
-                size={20}
+                size={_ring_loader_size}
               />
             </button>
           ) : (

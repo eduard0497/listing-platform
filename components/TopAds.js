@@ -1,9 +1,6 @@
 import React from "react";
 import styles from "../styles/Components/TopAds.module.css";
 import ReactPlayer from "react-player";
-// video default linky Anushikenc caxiknery
-// nkarneri defaultn el dzem
-// redirect link unena avelacnem funkcian
 
 const defaultState = {
   videoLink: "https://www.youtube.com/watch?v=tJlzIJaokVY",

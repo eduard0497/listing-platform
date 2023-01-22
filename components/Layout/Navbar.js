@@ -7,10 +7,10 @@ import { FaUserPlus } from "react-icons/fa";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { GoSignOut } from "react-icons/go";
 import { BiSupport } from "react-icons/bi";
+import { _navbar_buttons_icon_size } from '../UsefulFunctions/globalVariables'
 import Image from "next/image";
 
 function Navbar() {
-  const iconSize = "20px";
   const router = useRouter();
   const [userLoggedIn, setUserLoggedIn] = useState(false);
 
@@ -85,19 +85,19 @@ function Navbar() {
           <div className={styles.navbar_links_container}>
             <Link href="/user-dashboard">
               <a onClick={closeBurger}>
-                <RiUserSettingsLine size={iconSize} />
+                <RiUserSettingsLine size={_navbar_buttons_icon_size} />
                 dashboard
               </a>
             </Link>
             <Link href="/contact-us">
               <a onClick={closeBurger}>
-                <BiSupport size={iconSize} />
+                <BiSupport size={_navbar_buttons_icon_size} />
                 contact us
               </a>
             </Link>
             <button onClick={handleLogOut}>
               <>
-                <GoSignOut size={iconSize} />
+                <GoSignOut size={_navbar_buttons_icon_size} />
                 sign out
               </>
             </button>
@@ -106,13 +106,13 @@ function Navbar() {
           <div className={styles.navbar_links_container}>
             <Link href="/user-signin">
               <a onClick={closeBurger}>
-                <VscSignIn size={iconSize} />
+                <VscSignIn size={_navbar_buttons_icon_size} />
                 sign in
               </a>
             </Link>
             <Link href="/user-register">
               <a onClick={closeBurger}>
-                <FaUserPlus size={iconSize} />
+                <FaUserPlus size={_navbar_buttons_icon_size} />
                 join us
               </a>
             </Link>
