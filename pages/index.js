@@ -13,6 +13,7 @@ import {
   getSpecialVehiclesForRent,
   getSpecialServices,
 } from "../components/UsefulFunctions/webViewFetches";
+import { _amount_of_items_to_display_on_homepage } from "../components/UsefulFunctions/globalVariables";
 
 export default function Home() {
   const [sellingSpecialHouses, setSellingSpecialHouses] = useState([]);
@@ -61,7 +62,7 @@ export default function Home() {
         <DisplayJobs
           containerTitle="Boosted Jobs"
           itemsToDisplay={specialJobs}
-          amountOfItemsToDisplay={10}
+          amountOfItemsToDisplay={_amount_of_items_to_display_on_homepage}
           linkToPushTo="/jobs/"
         />
       )}
@@ -69,7 +70,7 @@ export default function Home() {
         <DisplayHouses
           containerTitle="Houses for Sale"
           itemsToDisplay={sellingSpecialHouses}
-          amountOfItemsToDisplay={10}
+          amountOfItemsToDisplay={_amount_of_items_to_display_on_homepage}
           linkToPushTo="/for-sale/houses/"
         />
       )}
@@ -77,7 +78,7 @@ export default function Home() {
         <DisplayHouses
           containerTitle="Houses for Rent"
           itemsToDisplay={rentingSpecialHouses}
-          amountOfItemsToDisplay={10}
+          amountOfItemsToDisplay={_amount_of_items_to_display_on_homepage}
           linkToPushTo="/for-rent/houses/"
         />
       )}
@@ -85,7 +86,7 @@ export default function Home() {
         <DisplayVehicles
           containerTitle="Vehicles for Sale"
           itemsToDisplay={sellingSpecialVehicles}
-          amountOfItemsToDisplay={10}
+          amountOfItemsToDisplay={_amount_of_items_to_display_on_homepage}
           linkToPushTo="/for-sale/vehicles/"
         />
       )}
@@ -93,7 +94,7 @@ export default function Home() {
         <DisplayVehicles
           containerTitle="Vehicles for Rent"
           itemsToDisplay={rentingSpecialVehicles}
-          amountOfItemsToDisplay={10}
+          amountOfItemsToDisplay={_amount_of_items_to_display_on_homepage}
           linkToPushTo="/for-rent/vehicles/"
         />
       )}
@@ -101,7 +102,7 @@ export default function Home() {
         <DisplayServices
           containerTitle="Boosted Services"
           itemsToDisplay={specialServices}
-          amountOfItemsToDisplay={10}
+          amountOfItemsToDisplay={_amount_of_items_to_display_on_homepage}
           linkToPushTo="/services/"
         />
       )}

@@ -10,7 +10,7 @@ function ErrorPage() {
         content="404 Page For GorcKa.us"
         iconLink="/logo/gorcka_logo.jpeg"
       />
-      <h1>Ooops...</h1>
+      <h1>NO CONTENT HAS BEEN FOUND</h1>
     </div>
   );
 }
