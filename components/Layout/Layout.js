@@ -7,14 +7,13 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import ScrollingText from "../ScrollingText";
 import TopAds from "../TopAds";
 import SideAds from "../SideAds";
-import { FaSearch } from "react-icons/fa";
 import {
   _propagate_loader_color,
   _propagate_loader_size,
-  _search_icon_size,
 } from "../UsefulFunctions/globalVariables";
 import { getAllLiveAds } from "../UsefulFunctions/webViewFetches";
 import Link from "next/link";
+import Search from "../Search";
 
 function Layout({ children }) {
   const [loading, setLoading] = useState(false);
@@ -115,24 +114,7 @@ function Layout({ children }) {
                 </Link>
               </div>
 
-              <div className={styles.navbar_bottom_border}>
-                <div className={styles.search_box}>
-                  <button className={styles.btn_search}>
-                    <FaSearch size={_search_icon_size} />
-                  </button>
-                  <input
-                    type="text"
-                    className={styles.input_search}
-                    placeholder="Type to Search..."
-                  />
-                </div>
-                {/* <span className={styles.suitcase_icon}>
-                  <FaSuitcase
-                    size="2.5em"
-                    color={process.env.NEXT_PUBLIC_CLIP_LOADER_COLOR}
-                  />
-                </span> */}
-              </div>
+              <Search />
 
               {showContent ? (
                 <>

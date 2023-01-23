@@ -40,8 +40,10 @@ function ForgotPassword() {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: data.email,
-          first_name: data.name,
+          email: data.email.toLowerCase().trim(),
+          first_name:
+            data.name.charAt(0).toUpperCase() +
+            data.name.slice(1).toLowerCase(),
         }),
       }
     )

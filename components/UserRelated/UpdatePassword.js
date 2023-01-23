@@ -4,6 +4,7 @@ import RingLoader from "react-spinners/RingLoader";
 import {
   _ring_loader_color,
   _ring_loader_size,
+  _user_min_password_count
 } from "../UsefulFunctions/globalVariables";
 import Popup from "../Reusable/Popup";
 
@@ -32,8 +33,12 @@ function UpdatePassword() {
       setInfoForUser("Passwords do not match");
       setShowInfoForUser(true);
       return false;
-    } else if (data.newPassword.length < 8) {
-      setInfoForUser("Password needs to be more than 8 characters");
+    } else if (data.newPassword.length < _user_min_password_count) {
+      setInfoForUser(`Password needs to be more than ${_user_min_password_count} characters`);
+      setShowInfoForUser(true);
+      return false;
+    } else if (data.newPassword.includes(" ")) {
+      setInfoForUser("Passwords may not contain SPACES!");
       setShowInfoForUser(true);
       return false;
     } else {
@@ -97,7 +102,7 @@ function UpdatePassword() {
               }))
             }
             type="password"
-            placeholder="New Password (Min: 8)"
+            placeholder={`New Password (Min: ${_user_min_password_count})`}
             value={data.newPassword}
           />
           <input

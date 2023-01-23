@@ -5,6 +5,7 @@ import RingLoader from "react-spinners/RingLoader";
 import {
   _ring_loader_color,
   _ring_loader_size,
+  _user_min_password_count,
 } from "../components/UsefulFunctions/globalVariables";
 import Popup from "../components/Reusable/Popup";
 import { useRouter } from "next/router";
@@ -38,12 +39,21 @@ function UserRegister() {
       setInfoForUser("Please fill out the form properly");
       setShowInfoForUser(true);
       return false;
-    } else if (data.password.length < 8) {
-      setInfoForUser("Password must be greater than 8 chracters");
+    } else if (data.password.length < _user_min_password_count) {
+      setInfoForUser(
+        `Password must be greater than ${_user_min_password_count} chracters`
+      );
       setShowInfoForUser(true);
       return false;
     } else if (data.password != data.confirmedPassword) {
       setInfoForUser("Passwords have to match!");
+      setShowInfoForUser(true);
+      return false;
+    } else if (
+      data.password.includes(" ") ||
+      data.confirmedPassword.includes(" ")
+    ) {
+      setInfoForUser("Passwords may not contain SPACES!");
       setShowInfoForUser(true);
       return false;
     } else {
@@ -62,10 +72,12 @@ function UserRegister() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         first_name:
-          data.firstName.charAt(0).toUpperCase() + data.firstName.slice(1),
+          data.firstName.charAt(0).toUpperCase() +
+          data.firstName.slice(1).toLowerCase(),
         last_name:
-          data.lastName.charAt(0).toUpperCase() + data.lastName.slice(1),
-        email: data.email.toLowerCase(),
+          data.lastName.charAt(0).toUpperCase() +
+          data.lastName.slice(1).toLowerCase(),
+        email: data.email.trim().toLowerCase(),
         password: data.password,
       }),
     })
@@ -144,7 +156,7 @@ function UserRegister() {
               }))
             }
             type="password"
-            placeholder="Password (Min: 8)"
+            placeholder={`Password (Min: ${_user_min_password_count})`}
             value={data.password}
           />
           <input
@@ -181,7 +193,8 @@ function UserRegister() {
               I have read and agree to{" "}
               <Link href="/terms-and-conditions">
                 <a>terms & conditions</a>
-              </Link>.
+              </Link>
+              .
             </p>
           </div>
         </div>
@@ -207,24 +220,22 @@ function UserRegister() {
             </button>
           ) : (
             <>
-              {
-                checkBoxClicked ?
+              {checkBoxClicked ? (
                 <button
-              className={styles.general_form_submit_button}
-              onClick={handleRegister}
-              >
-              SUBMIT
-            </button>
-            :
-            <button
-              className={styles.general_form_disabled_button}
-              disabled={true}
-              >
-              SUBMIT
-            </button>
-              }
-            
-              </>
+                  className={styles.general_form_submit_button}
+                  onClick={handleRegister}
+                >
+                  SUBMIT
+                </button>
+              ) : (
+                <button
+                  className={styles.general_form_disabled_button}
+                  disabled={true}
+                >
+                  SUBMIT
+                </button>
+              )}
+            </>
           )}
         </div>
         <div className={styles.form_box_row_with_two_items}>

@@ -73,6 +73,7 @@
   display: flex;
   align-items: center;
   gap: var(--navbar_links_container_link_gaps);
+  padding: 15px 0px 0px 0px;
 }
 
 .navbar_links_container > a {
@@ -241,7 +242,6 @@
   transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
 }
 
-
 /* FOOTER */
 .footer_container {
   min-height: var(--footer_min_height);
@@ -391,7 +391,7 @@
     height: 250px;
     padding: 10px 20px 35px 20px;
   }
-  
+
   .footer_sublinks_container {
     height: fit-content;
     padding: 10px;

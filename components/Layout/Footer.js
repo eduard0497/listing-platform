@@ -6,10 +6,10 @@ function Footer() {
   return (
     <div className={styles.footer_container}>
       <div>
-        <h3>© 2022 Eduard H.</h3>
+        <h3>© 2023 Eduard H.</h3>
       </div>
       <div className={styles.footer_sublinks_container}>
-      <Link href="/prices">
+        <Link href="/prices">
           <a>prices</a>
         </Link>
         <Link href="/privacy-policy">
@@ -18,7 +18,6 @@ function Footer() {
         <Link href="/terms-and-conditions">
           <a>Terms & Conditions</a>
         </Link>
-        
       </div>
     </div>
   );
