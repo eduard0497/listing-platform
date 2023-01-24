@@ -9,7 +9,7 @@
   background: white;
   width: 100%;
   box-shadow: var(--box_shadow);
-  transition: all 2s var(--transition_function);
+  transition: all 0.3s var(--transition_function);
   margin-bottom: 10px;
   color: #006a82;
 }

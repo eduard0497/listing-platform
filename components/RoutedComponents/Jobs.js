@@ -40,15 +40,15 @@ function Jobs({ title, amountOfItemsToDisplay, linkToPushTo }) {
       <div className={styles.sublinks_container}>
         <div className={styles.sublinks_container_row}>
           <button onClick={() => setSelectedType("")}>ALL</button>
-          {jobCategories.map((item) => (
+          {jobCategories.map((item, index) => (
             <button
-              key={item.id}
-              value={item.name}
+              key={index}
+              value={item}
               onClick={(e) => {
                 setSelectedType(e.target.value);
               }}
             >
-              {item.name}
+              {item}
             </button>
           ))}
         </div>

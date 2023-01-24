@@ -17,7 +17,7 @@ function ImageSlider({ images, displayCarousel }) {
   };
 
   if (!images) {
-    return <img src="https://via.placeholder.com/400" alt="default" />;
+    return <img src="/logo/gorcka_logo.jpeg" alt="default" />;
   } else {
     return (
       <>

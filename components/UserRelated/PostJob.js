@@ -67,7 +67,7 @@ function PostJob() {
         user_id: sessionStorage.getItem("user_id"),
         access_token: sessionStorage.getItem("access_token"),
 
-        // 
+        //
 
         // title: "RECEPTIONIST NEEDED - Պահանջվում է Ընդունարանի Աշխատակից",
         // type: "Admin/Office",
@@ -83,7 +83,7 @@ function PostJob() {
         // zip: "91205",
         // is_special: true,
 
-        // 
+        //
 
         title: data.title,
         type: data.type,
@@ -142,9 +142,9 @@ function PostJob() {
             value={data.type}
           >
             <option value="">Select Job Type*</option>
-            {jobCategories.map((type) => (
-              <option key={type.id} value={type.name}>
-                {type.name}
+            {jobCategories.map((type, index) => (
+              <option key={index} value={type}>
+                {type}
               </option>
             ))}
           </select>

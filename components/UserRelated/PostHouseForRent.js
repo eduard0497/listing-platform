@@ -169,9 +169,9 @@ function PostHouseForRent() {
             value={data.type}
           >
             <option value="">Select House Type*</option>
-            {houseTypes.map((type) => (
-              <option key={type.id} value={type.type}>
-                {type.type}
+            {houseTypes.map((type, index) => (
+              <option key={index} value={type}>
+                {type}
               </option>
             ))}
           </select>

@@ -84,15 +84,15 @@ function Houses({
           <div className={styles.sublinks_container_filters}>
             <div className={styles.sublinks_container_row}>
               <button onClick={() => setSelectedType("")}>ALL</button>
-              {houseTypes.map((item) => (
+              {houseTypes.map((item, index) => (
                 <button
-                  key={item.id}
-                  value={item.type}
+                  key={index}
+                  value={item}
                   onClick={(e) => {
                     setSelectedType(e.target.value);
                   }}
                 >
-                  {item.type}
+                  {item}
                 </button>
               ))}
             </div>
