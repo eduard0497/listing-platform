@@ -5,7 +5,7 @@ export const allPrices = [
     price: "120",
     expires: "30",
     stripe_link: "https://buy.stripe.com/test_4gw15l5nJ1FL7ks3ce",
-    // esi live productica u testic chi es linky
+    location_image_link: "/locationsForAdTypes/VideoAds.png"
   },
   {
     id: 2,
@@ -13,6 +13,7 @@ export const allPrices = [
     price: "80",
     expires: "90",
     stripe_link: "https://buy.stripe.com/test_00g7tJ9DZfwB8ow4gj",
+    location_image_link: "/locationsForAdTypes/BannerAds.png"
   },
   {
     id: 3,
@@ -20,6 +21,7 @@ export const allPrices = [
     price: "60",
     expires: "30",
     stripe_link: "https://buy.stripe.com/test_14k3dtaI31FL9sA8wA",
+    location_image_link: "/locationsForAdTypes/SideAds.png"
   },
   {
     id: 4,
@@ -27,6 +29,7 @@ export const allPrices = [
     price: "40",
     expires: "10",
     stripe_link: "https://buy.stripe.com/test_7sI8xN17t1FL208cMR",
+    location_image_link: "/locationsForAdTypes/RunningAds.png"
   },
   {
     id: 5,
