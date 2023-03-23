@@ -11,7 +11,7 @@ export const allPrices = [
     id: 2,
     name: "Top Banner Advertisement",
     price: "70",
-    expires: "90",
+    expires: "30",
     stripe_link: "https://buy.stripe.com/eVacQEcJr512fLi3ci",
     location_image_link: "/locationsForAdTypes/BannerAds.png",
   },
